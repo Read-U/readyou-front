@@ -14,7 +14,6 @@ export const HeaderContainer = styled.div`
 `;
 
 export const Title = styled.div`
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 700;
   font-size: 1.6rem;
