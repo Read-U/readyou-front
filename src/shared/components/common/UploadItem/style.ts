@@ -16,9 +16,11 @@ export const Text = styled.div`
   font-weight: 400;
   font-size: 1.6rem;
 
-  color: #1d2140;
+  color: ${(props) => props.theme.colors.darknavy};
 `;
 
-export const ButtonWrapper = styled.div`
+export const ButtonWrapper = styled.button`
   cursor: pointer;
+  border: none;
+  background-color: white;
 `;
