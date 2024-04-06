@@ -49,6 +49,10 @@ export const MatchItem = styled.li`
   background: #ffffff;
   width: 71.3rem;
   border-bottom: ${(props) => `1px solid ${props.theme.colors.darkgray}`};
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors.lightgray};
+  }
 `;
 
 export const BottomWrapper = styled.div`
