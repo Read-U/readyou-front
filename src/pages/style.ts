@@ -14,7 +14,8 @@ export const SubTitle = styled.p`
   font-weight: 500;
   color: ${(props) => props.theme.colors.lightnavy};
   text-align: center;
-  line-height: 2.387rem;
+  line-height: 3rem;
+  text-shadow: 1px 4px 2px rgba(0, 0, 0, 0.1);
 `;
 
 export const TitleContainer = styled.header`
