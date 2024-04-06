@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.div`
-  width: 829px;
+  width: 82.9rem;
 
   background: #d6d8e5;
   border-radius: 1rem 1rem 0 0;
@@ -52,13 +52,11 @@ export const Input = styled.input`
   border: none;
   appearance: none;
 
-  width: 797px;
-  height: 52px;
-  left: 76px;
-  top: 204px;
+  width: 79.7rem;
+  height: 5.2rem;
 
   background: #ffffff;
-  border-radius: 10px;
+  border-radius: 1rem;
 
   padding: 1.6rem 0 1.6rem 2rem;
 
