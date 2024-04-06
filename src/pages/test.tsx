@@ -1,4 +1,4 @@
-import TemplateItem from '@/shared/components/Item';
+import TemplateItem from '@/shared/components/TemplateItem';
 import Button from '@/shared/components/button';
 import * as S from './style';
 
