@@ -1,4 +1,4 @@
-import Item from '@/shared/components/Item';
+import TemplateItem from '@/shared/components/Item';
 import Button from '@/shared/components/button';
 import * as S from './style';
 
@@ -10,11 +10,13 @@ function test() {
           뒤로 가기
         </Button>
         <S.ItemWrap>
-          <Item action="프로젝트 제목" />
-          <Item action="프로젝트 설명" />
-          <Item action="프로젝트 기간" />
-          <Item action="이미지 삽입" />
-          <Item action="동영상 삽입" />
+          <TemplateItem action="프로젝트 제목" />
+          <TemplateItem action="프로젝트 설명" />
+          <TemplateItem action="프로젝트 기간" />
+          <TemplateItem action="이미지 삽입" />
+          <TemplateItem action="동영상 삽입" />
+          <TemplateItem action="팀원 테이블" />
+          <TemplateItem action="기술 스택 뱃지" />
         </S.ItemWrap>
       </S.EditorBox>
     </S.EditorContainer>

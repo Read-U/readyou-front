@@ -25,13 +25,13 @@ const ITEM_SCRIPT: { [key: string]: JSX.Element } = {
       <Input
         labelText="프로젝트 시작 기간"
         type="date"
-        placeholder="시작한 날짜를 입력하세요."
+        placeholder="시작한 날짜를 입력해 주세요."
         width={388}
       />
       <Input
         labelText="프로젝트 종료 기간"
         type="date"
-        placeholder="종료한 날짜를 입력하세요."
+        placeholder="종료한 날짜를 입력해 주세요."
         width={388}
       />
     </>
@@ -73,10 +73,28 @@ const ITEM_SCRIPT: { [key: string]: JSX.Element } = {
       <Input
         labelText="팀원 Github ID"
         type="text"
-        placeholder="팀원의 Github ID를 입력하세요."
+        placeholder="팀원의 Github ID를 입력해 주세요."
         width={437}
       />
-      <Input labelText="팀원 직무" type="text" placeholder="" width={260} />
+      <Input
+        labelText="팀원 직무"
+        type="text"
+        placeholder="팀원의 직무를 입력해 주세요."
+        width={260}
+      />
+      <Button type="button" width={68} color="blue" bgColor="lightblue">
+        추가
+      </Button>
+    </>
+  ),
+  '기술 스택 뱃지': (
+    <>
+      <Input
+        labelText="기술 스택 뱃지"
+        type="text"
+        placeholder="기술 스택을 검색해 주세요."
+        width={713}
+      />
       <Button type="button" width={68} color="blue" bgColor="lightblue">
         추가
       </Button>
@@ -84,7 +102,7 @@ const ITEM_SCRIPT: { [key: string]: JSX.Element } = {
   ),
 };
 
-function Item({ action }: { action: string }) {
+function TemplateItem({ action }: { action: string }) {
   return (
     <>
       <S.TitleBox>
@@ -96,4 +114,4 @@ function Item({ action }: { action: string }) {
   );
 }
 
-export default Item;
+export default TemplateItem;
