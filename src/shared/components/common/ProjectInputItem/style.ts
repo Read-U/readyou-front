@@ -48,6 +48,8 @@ export const InputContainer = styled.div`
 `;
 
 export const Input = styled.input`
+  font-family: 'Pretendard';
+  font-size: 1.4rem;
   box-shadow: none;
   outline: none;
   border: none;
@@ -59,7 +61,7 @@ export const Input = styled.input`
   background: #ffffff;
   border-radius: 1rem;
 
-  padding: 1.6rem 0 1.6rem 2rem;
+  padding: 1.6rem 2.4rem 1.6rem 2rem;
 
   &::placeholder {
     font-family: 'Pretendard';

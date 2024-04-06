@@ -45,12 +45,12 @@ const Item_Script: ItemScript = {
   '프로젝트 기간': (
     <S.InputContainer>
       <S.Input
-        type="text"
+        type="date"
         placeholder="시작한 날짜를 입력하세요. ex) 2***.**.**"
       />
       <img src="/assets/icons/range.svg" />
       <S.Input
-        type="text"
+        type="date"
         placeholder="완료한 날짜를 입력하세요. ex) 2***.**.**"
       />
     </S.InputContainer>
@@ -66,7 +66,7 @@ const ProjectInputItem = ({
       <S.HeaderContainer>
         <S.Title>{type}</S.Title>
         <S.ButtonWrapper>
-          <img src="/assets/icons/trashcanButton.svg" />
+          <img src="/assets/icons/trashcanButton.svg" alt="trashcan" />
         </S.ButtonWrapper>
       </S.HeaderContainer>
       <S.InputBox>{Item_Script[type]}</S.InputBox>
