@@ -1,0 +1,9 @@
+{
+  "trailingComma": "all",
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "parser": "typescript",
+  "printWidth": 80,
+  "arrowParens": "always"
+}
