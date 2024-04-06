@@ -65,9 +65,9 @@ const ProjectInputItem = ({
     <div>
       <S.HeaderContainer>
         <S.Title>{type}</S.Title>
-        <S.ImageWrapper>
+        <S.ButtonWrapper>
           <img src="/assets/icons/trashcanButton.svg" />
-        </S.ImageWrapper>
+        </S.ButtonWrapper>
       </S.HeaderContainer>
       <S.InputBox>{Item_Script[type]}</S.InputBox>
       {isBottom && (

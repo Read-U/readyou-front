@@ -7,6 +7,5 @@ export interface ProjectInputItemProps {
     | '팀원 테이블'
     | '이미지 삽입'
     | '프로젝트 기간';
-  title?: string;
   isBottom?: boolean;
 }
