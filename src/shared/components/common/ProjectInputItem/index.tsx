@@ -1,5 +1,5 @@
 import * as S from './style';
-import TechStackInput from '../Input';
+import TechStackInput from '../../TechStackInput';
 
 import { ProjectInputItemProps } from '@/shared/types/projectInputItem';
 import Button from '../Button';

@@ -1,8 +1,8 @@
 import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
 import * as S from './style';
 import TECH_STACK_DATA from '@/shared/constants/techStackData';
-import UploadItem from '../UploadItem';
-import Button from '../Button';
+import UploadItem from '../common/UploadItem';
+import Button from '../common/Button';
 
 interface InputProps {
   type: string;
