@@ -1,11 +1,7 @@
 import SampleImage from '/public/images/sample-image.png';
 import * as S from './style';
-import { useContext } from 'react';
-import { ToastContext } from '@/shared/hooks/ToastContext';
 
 export default function Home() {
-  const { showToast } = useContext(ToastContext);
-
   return (
     <S.Container>
       <S.TitleContainer>
@@ -20,16 +16,7 @@ export default function Home() {
           내용만 기입하면 자동으로 써주는 <S.BlueText>READ YOU</S.BlueText>를
           사용해 시간을 단축하세요.
         </S.SubTitle>
-        <S.Button
-          onClick={() =>
-            showToast({
-              message: '전체 복사되었어요!',
-              status: 'info',
-            })
-          }
-        >
-          리드유 작성하기!
-        </S.Button>
+        <S.Button>리드유 작성하기!</S.Button>
       </S.TitleContainer>
       <S.StyledImage
         src={SampleImage}
