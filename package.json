@@ -17,7 +17,7 @@
   "dependencies": {
     "@types/highlightjs": "^9.12.6",
     "axios": "^1.6.8",
-    "next": "14.1.4",
+    "next": "^14.1.4",
     "react": "^18",
     "react-dom": "^18",
     "react-markdown": "^9.0.1",
@@ -46,9 +46,5 @@
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "typescript": "^5"
-  },
-  "main": "index.js",
-  "repository": "https://github.com/Read-U/readyou-front.git",
-  "author": "이시영 <swy05123@gmail.com>",
-  "license": "MIT"
+  }
 }
