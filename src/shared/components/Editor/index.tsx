@@ -13,7 +13,7 @@ const Editor = () => {
           <ProjectInputItem type="프로젝트 기간" />
           <ProjectInputItem type="프로젝트 설명" />
           <ProjectInputItem type="팀원 테이블" />
-          <ProjectInputItem type="기술 스택" isBottom={true} />
+          <ProjectInputItem type="기술 스택" />
           <ProjectInputItem type="동영상 삽입" />
         </S.ItemContainer>
       </S.Inner>

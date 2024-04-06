@@ -1,5 +1,7 @@
 import React from 'react';
+
 import * as S from './style';
+import TechStackInput from '../../TechStackInput';
 
 import { ProjectInputItemProps } from '@/shared/types/projectInputItem';
 import Button from '../Button';
@@ -32,10 +34,10 @@ const ITEM_SCRIPT: ItemScript = {
     </S.InputBox>
   ),
   '기술 스택': (
-    <S.InputContainer>
-      <S.Input type="text" placeholder="이 칸에서 기술 스택을 검색하세요!" />{' '}
-      <Button />
-    </S.InputContainer>
+    <TechStackInput
+      type="text"
+      placeholder="이 칸에서 기술 스택을 검색하세요!"
+    />
   ),
   '팀원 테이블': <TeamTableInput />,
   '이미지 삽입': (
@@ -63,7 +65,10 @@ const ITEM_SCRIPT: ItemScript = {
     </S.InputBox>
   ),
 };
-const ProjectInputItem = ({ type }: ProjectInputItemProps) => {
+const ProjectInputItem = ({
+  type,
+  isBottom = false,
+}: ProjectInputItemProps) => {
   return (
     <div>
       <S.HeaderContainer>
@@ -73,6 +78,7 @@ const ProjectInputItem = ({ type }: ProjectInputItemProps) => {
         </S.ButtonWrapper>
       </S.HeaderContainer>
       {ITEM_SCRIPT[type]}
+      {isBottom && <S.BottomWrapper></S.BottomWrapper>}
     </div>
   );
 };

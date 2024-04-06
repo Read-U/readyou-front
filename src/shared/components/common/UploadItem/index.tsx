@@ -1,11 +1,12 @@
 import * as S from './style';
 
-interface UploadItemProps {
-  text?: string;
-  onClick?: () => void;
-}
-
-const UploadItem = ({ text, onClick }: UploadItemProps) => {
+const UploadItem = ({
+  text,
+  onClick,
+}: {
+  text: string;
+  onClick: () => void;
+}) => {
   return (
     <S.Container>
       <S.Box>
