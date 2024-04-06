@@ -1,14 +1,12 @@
 import { useState } from 'react';
 import * as S from './style';
-type Props = {
+type ToggleProps  = {
+  lightMode: boolean;
   handleToggle: (value:boolean) => void;
 };
-const Toggle: React.FC<Props> = ({ handleToggle }) => {
-  const [lightMode, setLightMode] = useState(true);
-
+const Toggle = ({ lightMode, handleToggle }: ToggleProps) => {
   const toggleHandler = () => {
     handleToggle(!lightMode);
-    setLightMode(!lightMode);
   };
 
   return (

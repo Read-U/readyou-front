@@ -17,7 +17,7 @@ export const ToggleBack = styled.label<{$isLightMode:boolean}>`
   border-radius: 10rem;
   background-color: ${(props) =>
     props.$isLightMode
-      ? `${props.theme.colors.gray}`
+      ? `${props.theme.colors.darkgray}`
       : `${props.theme.colors.darknavy}`};
   transition: all 0.4s ease-in-out;
 `;

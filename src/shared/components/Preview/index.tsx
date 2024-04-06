@@ -32,60 +32,12 @@ const Preview = () => {
 </table>
 
 #### 마크다운 테스트   
-##### 마크다운 테스트  
-#### 마크다운 테스트  
-##### 마크다운 테스트  
-#### 마크다운 테스트  
-##### 마크다운 테스트  
-###### 마크다운 테스트  
-#### 마크다운 테스트  
-##### 마크다운 테스트 
-##### 마크다운 테스트  
-#### 마크다운 테스트  
-##### 마크다운 테스트  
-#### 마크다운 테스트  
-##### 마크다운 테스트  
-#### 마크다운 테스트  
-##### 마크다운 테스트  
-#### 마크다운 테스트  
-##### 마크다운 테스트  
-#### 마크다운 테스트  
-###### 마크다운 테스트  
-##### 마크다운 테스트  
-#### 마크다운 테스트  
-##### 마크다운 테스트  
-#### 마크다운 테스트  
-##### 마크다운 테스트  
-#### 마크다운 테스트  
-##### 마크다운 테스트  
-#### 마크다운 테스트  
-##### 마크다운 테스트  
-#### 마크다운 테스트  
-##### 마크다운 테스트  
-#### 마크다운 테스트  
-##### 마크다운 테스트  
-#### 마크다운 테스트  
-##### 마크다운 테스트  
-#### 마크다운 테스트  
-##### 마크다운 테스트  
-###### 마크다운 테스트  
-#### 마크다운 테스트  
-##### 마크다운 테스트  
-#### 마크다운 테스트  
-##### 마크다운 테스트  
-#### 마크다운 테스트  
-##### 마크다운 테스트  
-#### 마크다운 테스트  
-##### 마크다운 테스트  
----  
-##### 마크다운 테스트  
----
 `);
 
   const [lightMode, setLightMode] = useState(true);
-  const handleToggle = (value:boolean) => {
-    setLightMode(value);
-  };
+  const handleToggle = () => {
+    setLightMode(prev => !prev)
+  }
 
   return (
     <S.Box>
@@ -94,7 +46,7 @@ const Preview = () => {
           <S.HeaderWrapper>
             <S.HeaderTitle>프리뷰</S.HeaderTitle>
             <S.ToggleWrapper>
-              다크/라이트 모드<Toggle handleToggle={handleToggle}></Toggle>
+              다크/라이트 모드<Toggle lightMode={lightMode} handleToggle={handleToggle}></Toggle>
             </S.ToggleWrapper>
           </S.HeaderWrapper>
 
