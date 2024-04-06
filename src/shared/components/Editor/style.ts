@@ -1,13 +1,11 @@
 import { styled } from 'styled-components';
 
 export const Box = styled.div`
-  width: 930px;
-  height: 972px;
-  left: 20px;
-  top: 88px;
+  width: 93rem;
+  height: 97.2rem;
 
   background: #f8f8fc;
-  border-radius: 10px;
+  border-radius: 1rem;
   margin: 2rem;
 
   display: flex;
@@ -18,11 +16,11 @@ export const Box = styled.div`
 
 export const Inner = styled.div`
   position: relative;
-  width: 890px;
-  height: 932px;
+  width: 89rem;
+  height: 93.2rem;
 
   background: #ffffff;
-  border-radius: 10px;
+  border-radius: 1rem;
   padding: 2rem;
 
   display: flex;
