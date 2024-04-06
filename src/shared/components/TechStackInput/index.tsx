@@ -15,9 +15,9 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
   const [matchList, setMatchList] = useState<string[]>([]);
   const [uploadList, setUploadList] = useState<string[]>([]);
 
-  const handleInputValue = (e: ChangeEvent) => {
-    const target = e.target as HTMLInputElement;
-    setValue(target.value);
+  const handleInputValue = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setValue(value);
   };
 
   const handleTeamMemberDelete = (index: number) => {
@@ -49,7 +49,7 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
       <S.RelativeBox>
         <S.Input
           value={value}
-          onChange={(e) => handleInputValue(e)}
+          onChange={handleInputValue}
           type={type}
           placeholder={placeholder}
         />
