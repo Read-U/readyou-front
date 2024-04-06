@@ -21,8 +21,10 @@ export const Title = styled.div`
   color: ${(props) => props.theme.colors.darknavy};
 `;
 
-export const ImageWrapper = styled.div`
+export const ButtonWrapper = styled.button`
   cursor: pointer;
+  border: none;
+  background-color: ${(props) => props.theme.colors.gray};
 `;
 
 export const InputBox = styled.div`
