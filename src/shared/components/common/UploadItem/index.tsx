@@ -1,11 +1,16 @@
 import * as S from './style';
 
-const UploadItem = ({ text }: { text?: string }) => {
+interface UploadItemProps {
+  text?: string;
+  onClick?: () => void;
+}
+
+const UploadItem = ({ text, onClick }: UploadItemProps) => {
   return (
     <S.Container>
       <S.Box>
-        <S.Text>react</S.Text>
-        <S.ButtonWrapper>
+        <S.Text>{text}</S.Text>
+        <S.ButtonWrapper onClick={onClick}>
           <img src="/assets/icons/deleteButton.svg" alt="delete" />
         </S.ButtonWrapper>
       </S.Box>
