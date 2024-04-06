@@ -26,10 +26,10 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
   };
 
   // 연관 데이터 클릭
-  const handleMatchItemClick = (e: MouseEvent) => {
-    const target = e.target as HTMLLIElement;
-    if (target.textContent) {
-      setUploadList((prevList: string[]) => [...prevList, target.textContent!]);
+  const handleMatchItemClick = (e: ChangeEvent<HTMLLIElement>) => {
+    const { textContent } = e.target;
+    if (textContent) {
+      setUploadList((prevList: string[]) => [...prevList, textContent!]);
       setIsOpen(false);
       setValue('');
     }

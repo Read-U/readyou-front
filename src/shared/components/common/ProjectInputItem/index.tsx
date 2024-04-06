@@ -19,12 +19,6 @@ const ITEM_SCRIPT: ItemScript = {
       <S.Input type="text" placeholder="프로젝트 설명을 기입해주세요." />
     </S.InputContainer>
   ),
-  '동영상 삽입': (
-    <S.InputContainer>
-      <S.Input type="text" placeholder="선택한 영상 파일 제목이 보여집니다." />
-      <Button />
-    </S.InputContainer>
-  ),
   '기술 스택': (
     <TechStackInput
       type="text"
