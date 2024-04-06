@@ -3,12 +3,15 @@ import type { AppProps } from 'next/app';
 import { GlobalStyle } from '@/styles/global-styles';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '@/styles/theme';
+import { ToastContextProvider } from '@/shared/hooks/ToastContext';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Component {...pageProps} />
+      <ToastContextProvider>
+        <Component {...pageProps} />
+      </ToastContextProvider>
     </ThemeProvider>
   );
 }
