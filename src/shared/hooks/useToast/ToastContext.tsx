@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useEffect, useState } from 'react';
-import Toast from '../components/Toast';
+import Toast from '../../components/Toast';
 
 interface ShowToastType {
   status: 'info' | 'error';
