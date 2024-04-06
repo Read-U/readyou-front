@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const HeaderContainer = styled.div`
   width: 82.9rem;
 
-  background: #d6d8e5;
+  background: ${(props) => props.theme.colors.gray};
   border-radius: 1rem 1rem 0 0;
 
   padding: 2rem 1.6rem 2rem 2.4rem;
@@ -19,7 +19,7 @@ export const Title = styled.div`
   font-weight: 700;
   font-size: 1.6rem;
 
-  color: #1d2140;
+  color: ${(props) => props.theme.colors.darknavy};
 `;
 
 export const ImageWrapper = styled.div`
@@ -30,7 +30,7 @@ export const InputBox = styled.div`
   width: 82.9rem;
   height: 8.4rem;
 
-  background: #f8f8fc;
+  background: ${(props) => props.theme.colors.lightgray};
   border-radius: 0 0 1rem 1rem;
 
   display: flex;
@@ -65,7 +65,7 @@ export const Input = styled.input`
     font-style: normal;
     font-weight: 400;
     font-size: 1.6rem;
-    color: #d6d8e5;
+    color: ${(props) => props.theme.colors.gray};
   }
 `;
 
@@ -73,7 +73,7 @@ export const BottomWrapper = styled.div`
   width: 82.9rem;
   height: 6.8rem;
 
-  background: #f8f8fc;
+  background: ${(props) => props.theme.colors.lightgray};
   border-radius: 0 0 1rem 1rem;
 
   padding: 1.6rem;
