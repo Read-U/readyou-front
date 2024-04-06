@@ -7,11 +7,7 @@ export const Box = styled.div`
   background: ${(props) => props.theme.colors.lightgray};
   border-radius: 1rem;
   margin: 2rem;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding: 2rem;
 `;
 
 export const Inner = styled.div`
@@ -22,15 +18,12 @@ export const Inner = styled.div`
   background: #ffffff;
   border-radius: 1rem;
   padding: 2rem;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 `;
 
 export const ItemContainer = styled.div`
-  height: 100%;
+  height: 83rem;
   margin: 2rem 0;
+  padding-bottom: 2rem;
 
   display: flex;
   flex-direction: column;
