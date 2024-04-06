@@ -1,6 +1,6 @@
-import React from 'react';
 import UploadItem from '../UploadItem';
 import * as S from './style';
+import TechStackInput from '../Input';
 
 import { ProjectInputItemProps } from '@/shared/types/projectInputItem';
 import Button from '../Button';
@@ -9,12 +9,16 @@ interface ItemScript {
   [key: string]: React.ReactNode;
 }
 
-const Item_Script: ItemScript = {
+const ITEM_SCRIPT: ItemScript = {
   '프로젝트 제목': (
-    <S.Input type="text" placeholder="프로젝트 제목을 기입해주세요." />
+    <S.InputContainer>
+      <S.Input type="text" placeholder="프로젝트 제목을 기입해주세요." />
+    </S.InputContainer>
   ),
   '프로젝트 설명': (
-    <S.Input type="text" placeholder="프로젝트 설명을 기입해주세요." />
+    <S.InputContainer>
+      <S.Input type="text" placeholder="프로젝트 설명을 기입해주세요." />
+    </S.InputContainer>
   ),
   '동영상 삽입': (
     <S.InputContainer>
@@ -23,10 +27,10 @@ const Item_Script: ItemScript = {
     </S.InputContainer>
   ),
   '기술 스택': (
-    <S.InputContainer>
-      <S.Input type="text" placeholder="이 칸에서 기술 스택을 검색하세요!" />{' '}
-      <Button />
-    </S.InputContainer>
+    <TechStackInput
+      type="text"
+      placeholder="이 칸에서 기술 스택을 검색하세요!"
+    />
   ),
   '팀원 테이블': (
     <S.InputContainer>
@@ -38,7 +42,7 @@ const Item_Script: ItemScript = {
   '이미지 삽입': (
     <S.InputContainer>
       <S.Input type="text" placeholder="width를 입력하세요. (% 가능)" />
-      <S.Input type="text" placeholder="height를 입력하세요. (% 가능)" />{' '}
+      <S.Input type="text" placeholder="height를 입력하세요. (% 가능)" />
       <Button />
     </S.InputContainer>
   ),
@@ -69,10 +73,11 @@ const ProjectInputItem = ({
           <img src="/assets/icons/trashcanButton.svg" alt="trashcan" />
         </S.ButtonWrapper>
       </S.HeaderContainer>
-      <S.InputBox>{Item_Script[type]}</S.InputBox>
+      {/* <S.InputBox>{ITEM_SCRIPT[type]}</S.InputBox> */}
+      {ITEM_SCRIPT[type]}
       {isBottom && (
         <S.BottomWrapper>
-          <UploadItem></UploadItem> <UploadItem></UploadItem>
+          {/* <UploadItem></UploadItem> <UploadItem></UploadItem> */}
         </S.BottomWrapper>
       )}
     </div>

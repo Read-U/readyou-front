@@ -1,42 +1,13 @@
 import styled from 'styled-components';
 
-export const HeaderContainer = styled.div`
-  width: 82.9rem;
-
-  background: ${(props) => props.theme.colors.gray};
-  border-radius: 1rem 1rem 0 0;
-
-  padding: 2rem 1.6rem 2rem 2.4rem;
-
+export const RelativeBox = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-export const Title = styled.div`
-  font-style: normal;
-  font-weight: 700;
-  font-size: 1.6rem;
-
-  color: ${(props) => props.theme.colors.darknavy};
-`;
-
-export const ButtonWrapper = styled.button`
-  cursor: pointer;
-  border: none;
-  background-color: ${(props) => props.theme.colors.gray};
-`;
-
-export const InputBox = styled.div``;
-
-export const InputContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 1.6rem;
-  padding: 0 1.6rem;
+  position: relative;
+  padding: 1.6rem;
   width: 82.9rem;
   height: 8.4rem;
+
   background: ${(props) => props.theme.colors.lightgray};
   border-radius: 0 0 1rem 1rem;
 `;
@@ -49,12 +20,11 @@ export const Input = styled.input`
   border: none;
   appearance: none;
 
-  width: 79.7rem;
+  width: 71.3rem;
   height: 5.2rem;
 
   background: #ffffff;
   border-radius: 1rem;
-
   padding: 1.6rem 2.4rem 1.6rem 2rem;
 
   &::placeholder {
@@ -66,16 +36,29 @@ export const Input = styled.input`
   }
 `;
 
+export const MatchList = styled.ul`
+  position: absolute;
+  top: 5.45rem;
+  border-radius: 10rem;
+`;
+
+export const MatchItem = styled.li`
+  font-size: 1.6rem;
+  padding: 1.6rem 2.4rem 1.6rem 2rem;
+  color: ${(props) => props.theme.colors.blue};
+  background: #ffffff;
+  width: 71.3rem;
+  border-bottom: ${(props) => `1px solid ${props.theme.colors.darkgray}`};
+`;
+
 export const BottomWrapper = styled.div`
   width: 82.9rem;
-  height: 6.8rem;
-
+  height: auto;
   background: ${(props) => props.theme.colors.lightgray};
   border-radius: 0 0 1rem 1rem;
-
   padding: 1.6rem;
   border-top: 0.1rem solid rgba(214, 216, 229, 1);
-
   display: flex;
+  flex-wrap: wrap;
   gap: 1.2rem;
 `;
