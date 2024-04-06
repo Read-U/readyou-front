@@ -14,7 +14,7 @@ export const Button = styled.button<ButtonStyleProps>`
   border: none;
   outline: none;
   font-weight: 700;
-  color: ${({ $color }) => `${$color}`};
+  color: ${(props) => props.theme.colors[props.$color]};
   text-align: center;
-  background: ${({ $bgColor }) => `${$bgColor}`};
+  background-color: ${(props) => props.theme.colors[props.$bgColor]};
 `;

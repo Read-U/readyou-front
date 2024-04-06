@@ -50,7 +50,34 @@ const ITEM_SCRIPT: { [key: string]: JSX.Element } = {
         placeholder="넓이를 입력해 주세요"
         width={344}
       />
-      <Button type="button" width={68} color="#648FFF" bgColor="#E0E9FF">
+      <Button type="button" width={68} color="blue" bgColor="lightblue">
+        추가
+      </Button>
+    </>
+  ),
+  '동영상 삽입': (
+    <>
+      <Input
+        labelText="동영상 추가"
+        type="file"
+        placeholder="동영상 파일을 추가해 주세요."
+        width={713}
+      />
+      <Button type="button" width={68} color="blue" bgColor="lightblue">
+        추가
+      </Button>
+    </>
+  ),
+  '팀원 테이블': (
+    <>
+      <Input
+        labelText="팀원 Github ID"
+        type="text"
+        placeholder="팀원의 Github ID를 입력하세요."
+        width={437}
+      />
+      <Input labelText="팀원 직무" type="text" placeholder="" width={260} />
+      <Button type="button" width={68} color="blue" bgColor="lightblue">
         추가
       </Button>
     </>

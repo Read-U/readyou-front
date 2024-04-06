@@ -11,6 +11,7 @@ const colors = {
   lightnavy: '#4D506C',
   navy: '#303351',
   darknavy: '#1D2140',
+  white: '#ffffff',
 };
 
 export type ColorTypes = typeof colors;
