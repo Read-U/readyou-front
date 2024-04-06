@@ -4,7 +4,10 @@ export const Button = styled.button<{ type: string }>`
   cursor: pointer;
   border: none;
   outline: none;
-  background: ${(props) => props.theme.colors.lightgray};
+  background: ${(props) =>
+    props.type === 'back'
+      ? props.theme.colors.blue
+      : props.theme.colors.lightblue};
   border-radius: 1rem;
   white-space: nowrap;
 
@@ -13,5 +16,8 @@ export const Button = styled.button<{ type: string }>`
   font-weight: 700;
   font-size: 1.6rem;
 
-  color: ${(props) => props.theme.colors.blue};
+  color: ${(props) =>
+    props.type === 'back'
+      ? props.theme.colors.lightgray
+      : props.theme.colors.blue};
 `;
