@@ -6,7 +6,7 @@ const UploadItem = ({ text }: { text?: string }) => {
       <S.Box>
         <S.Text>react</S.Text>
         <S.ButtonWrapper>
-          <img src="/assets/icons/deleteButton.svg" />
+          <img src="/assets/icons/deleteButton.svg" alt="delete" />
         </S.ButtonWrapper>
       </S.Box>
     </S.Container>
