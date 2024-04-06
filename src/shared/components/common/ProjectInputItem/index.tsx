@@ -1,4 +1,3 @@
-import UploadItem from '../UploadItem';
 import * as S from './style';
 import TechStackInput from '../Input';
 
@@ -73,13 +72,8 @@ const ProjectInputItem = ({
           <img src="/assets/icons/trashcanButton.svg" alt="trashcan" />
         </S.ButtonWrapper>
       </S.HeaderContainer>
-      {/* <S.InputBox>{ITEM_SCRIPT[type]}</S.InputBox> */}
       {ITEM_SCRIPT[type]}
-      {isBottom && (
-        <S.BottomWrapper>
-          {/* <UploadItem></UploadItem> <UploadItem></UploadItem> */}
-        </S.BottomWrapper>
-      )}
+      {isBottom && <S.BottomWrapper></S.BottomWrapper>}
     </div>
   );
 };
