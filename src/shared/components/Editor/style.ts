@@ -4,7 +4,7 @@ export const Box = styled.div`
   width: 93rem;
   height: 97.2rem;
 
-  background: #f8f8fc;
+  background: ${(props) => props.theme.colors.lightgray};
   border-radius: 1rem;
   margin: 2rem;
 
