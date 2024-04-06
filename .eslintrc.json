@@ -1,7 +1,6 @@
 {
   "extends": [
-    "next/core-web-vitals",
-    "airbnb"
+    "next/core-web-vitals"
   ],
   "rules": {
     "import/prefer-default-export": "off"
