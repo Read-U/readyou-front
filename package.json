@@ -42,5 +42,9 @@
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "typescript": "^5"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/Read-U/readyou-front.git",
+  "author": "이시영 <swy05123@gmail.com>",
+  "license": "MIT"
 }
