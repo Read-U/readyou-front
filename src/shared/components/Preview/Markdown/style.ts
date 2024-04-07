@@ -3,13 +3,10 @@ import { styled } from 'styled-components';
 export const PreviewContainer = styled.div<{ $lightMode: boolean }>`
   position: relative;
   height: 82rem;
-  width: 87rem;
-  margin: 1rem auto;
+  margin: 1rem;
   overflow-y: scroll;
   padding: 1rem;
 
-  display: flex;
-  flex-direction: column;
   gap: 1.6rem;
 
   &::-webkit-scrollbar {

@@ -1,8 +1,6 @@
 import { styled } from 'styled-components';
 
 export const Box = styled.div`
-  width: 93rem;
-  height: 97.2rem;
 
   background: ${(props) => props.theme.colors.lightgray};
   border-radius: 1rem;
@@ -12,8 +10,6 @@ export const Box = styled.div`
 
 export const Inner = styled.div<{ $lightMode: boolean }>`
   position: relative;
-  width: 89rem;
-  height: 93.2rem;
   overflow: hidden;
   background: ${(props) =>
     props.$lightMode ? `#FFFFFF` : `${props.theme.colors.lightnavy}`};
