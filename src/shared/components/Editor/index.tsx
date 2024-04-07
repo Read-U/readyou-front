@@ -8,22 +8,13 @@ import {
 import Button from '../common/Button';
 import ProjectInputItem from '../common/ProjectInputItem';
 import * as S from './style';
-
-const tempData = [
-  // 체크 박스에서 넘어 올 mock 데이터
-  { id: '1', type: '프로젝트 제목' },
-  { id: '2', type: '이미지 삽입' },
-  { id: '3', type: '프로젝트 기간' },
-  { id: '4', type: '프로젝트 설명' },
-  { id: '5', type: '팀원 테이블' },
-  { id: '6', type: '기술 스택' },
-  { id: '7', type: '동영상 삽입' },
-];
+import { useRecoilState } from 'recoil';
+import { defaultSettings, stepState } from '@/recoil/states';
 
 const Editor = () => {
   const [enabled, setEnabled] = useState(false);
-  const [itemList, setItemList] = useState(tempData);
-
+  const [itemList, setItemList] = useRecoilState(defaultSettings);
+  const [step, setStep] = useRecoilState(stepState);
   useEffect(() => {
     const animation = requestAnimationFrame(() => setEnabled(true));
 
@@ -53,7 +44,7 @@ const Editor = () => {
     <DragDropContext onDragEnd={onDragEnd}>
       <S.Box>
         <S.Inner>
-          <Button type="back" />
+          <Button type="back" onClick={() => setStep(step - 1)} />
           <Droppable droppableId="editor">
             {(provided) => (
               <S.ItemContainer
