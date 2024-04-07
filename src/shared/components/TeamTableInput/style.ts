@@ -5,7 +5,7 @@ export const RelativeBox = styled.div`
   gap: 1.6rem;
   position: relative;
   padding: 1.6rem;
-  width: 82.9rem;
+  width: 100%;
   height: 8.4rem;
 
   background: ${(props) => props.theme.colors.lightgray};
@@ -20,7 +20,7 @@ export const Input = styled.input`
   border: none;
   appearance: none;
 
-  width: 71.3rem;
+  width: 100%;
   height: 5.2rem;
 
   background: #ffffff;
@@ -37,7 +37,7 @@ export const Input = styled.input`
 `;
 
 export const BottomWrapper = styled.div`
-  width: 82.9rem;
+  width: 100%;
   height: 6.8rem;
 
   background: ${(props) => props.theme.colors.lightgray};
