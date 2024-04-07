@@ -46,7 +46,9 @@ const Editor = () => {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <S.Inner>
-        <Button type="back" onClick={() => setStep(step - 1)} />
+        <Button type="back" onClick={() => setStep(step - 1)}>
+          뒤로가기
+        </Button>
         <Droppable droppableId="editor">
           {(provided) => (
             <S.ItemContainer
