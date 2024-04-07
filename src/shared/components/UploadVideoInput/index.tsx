@@ -74,7 +74,7 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
     }
     const newMarkdown = markdown.map((item) => {
       if (item.name === 'video') {
-        return { ...item, detail: item.detail + validationResult };
+        return { ...item, detail: item.detail + `${validationResult}\n` };
       }
       return item;
     });
@@ -96,9 +96,7 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
           type={type}
           placeholder={placeholder}
         />
-        <Button disabled={!value} onClick={handleUploadItemAdd}>
-          추가
-        </Button>
+        <Button onClick={handleUploadItemAdd}>추가</Button>
       </S.RelativeBox>
       <S.BottomWrapper>
         {markdown.map((item) => {
