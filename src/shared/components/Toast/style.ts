@@ -43,7 +43,7 @@ export const Container = styled.div<{
       : ''};
 `;
 
-export const Span = styled.span`
+export const Message = styled.span`
   color: white;
   font-size: 1.6rem;
   font-weight: 700;
