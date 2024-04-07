@@ -1,13 +1,9 @@
 import { ReactNode, createContext, useEffect, useState } from 'react';
 import Toast from '../../components/Toast';
-
-interface ShowToastType {
-  status: 'info' | 'error';
-  message: string;
-}
+import { ToastProps } from '@/shared/types/toast';
 
 interface ToastContextValues {
-  showToast: ({ message, status }: ShowToastType) => void;
+  showToast: ({ message, status }: ToastProps) => void;
 }
 
 export const ToastContext = createContext<ToastContextValues>({
@@ -16,9 +12,9 @@ export const ToastContext = createContext<ToastContextValues>({
 
 export const ToastContextProvider = ({ children }: { children: ReactNode }) => {
   const TIME_OUT = 3000;
-  const [toast, setToast] = useState<ShowToastType | null>(null);
+  const [toast, setToast] = useState<ToastProps | null>(null);
 
-  const showToast = ({ message, status }: ShowToastType) => {
+  const showToast = ({ message, status }: ToastProps) => {
     setToast({ message, status });
   };
 

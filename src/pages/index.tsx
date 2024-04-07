@@ -1,7 +1,10 @@
 import SampleImage from '/public/images/sample-image.png';
-import * as S from './style';
+import * as S from '../styles/style';
+import { useRouter } from 'next/router';
 
 export default function Home() {
+  const router = useRouter();
+
   return (
     <S.Container>
       <S.TitleContainer>
@@ -16,7 +19,9 @@ export default function Home() {
           내용만 기입하면 자동으로 써주는 <S.BlueText>READ YOU</S.BlueText>를
           사용해 시간을 단축하세요.
         </S.SubTitle>
-        <S.Button>리드유 작성하기!</S.Button>
+        <S.Button onClick={() => router.push('/editor')}>
+          리드유 작성하기!
+        </S.Button>
       </S.TitleContainer>
       <S.StyledImage
         src={SampleImage}
