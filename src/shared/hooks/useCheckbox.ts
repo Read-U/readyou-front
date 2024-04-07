@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { DefaultItemProps } from '@/shared/types/markdown';
+import { useRecoilState } from 'recoil';
+import { defaultSettings } from '@/recoil/states';
 
 const useCheckbox = (initialCheckeds: DefaultItemProps[]) => {
   const [checkedList, setCheckedList] =
-    useState<DefaultItemProps[]>(initialCheckeds);
+  useRecoilState<DefaultItemProps[]>(defaultSettings);
   const handleCheckedElement = (markdownItem: DefaultItemProps) => {
     const isAlreadyChecked = checkedList.some(
       (item) => item.id === markdownItem.id,
