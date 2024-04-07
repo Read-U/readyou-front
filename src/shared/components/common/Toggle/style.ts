@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 export const ToggleWrapper = styled.div`
   display: flex;
   z-index: 0;
-  margin-left: 1rem;
+  margin-left: 0.8rem;
 `;
 
 export const CheckBox = styled.input`
@@ -20,6 +20,7 @@ export const ToggleBack = styled.label<{ $isLightMode: boolean }>`
       ? `${props.theme.colors.darkgray}`
       : `${props.theme.colors.darknavy}`};
   transition: all 0.4s ease-in-out;
+  cursor: pointer;
 `;
 
 export const ToggleLabel = styled.label<{ $isLightMode: boolean }>`

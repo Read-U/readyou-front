@@ -1,18 +1,20 @@
 import { styled } from 'styled-components';
 
 export const Box = styled.div`
-  width: 93rem;
+  flex: 1;
+  max-width: 50%;
   height: 97.2rem;
 
   background: ${(props) => props.theme.colors.lightgray};
   border-radius: 1rem;
   margin: 2rem 2rem 2rem 0;
   padding: 2rem;
-`;
+
+  `;
 
 export const Inner = styled.div<{ $lightMode: boolean }>`
   position: relative;
-  width: 89rem;
+  width: 100%;
   height: 93.2rem;
   overflow: hidden;
   background: ${(props) =>
@@ -35,44 +37,25 @@ export const Header = styled.div<{ $lightMode: boolean }>`
     props.$lightMode
       ? `${props.theme.colors.gray}`
       : `${props.theme.colors.navy}`};
-  padding: 1rem;
+  padding: 2rem 2rem 1.6rem 2rem;
 `;
 export const HeaderWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-left: 1rem;
-  margin-top: 1rem;
+  gap: 0.8rem;
   font-size: 1.9rem;
 `;
 
 export const HeaderTitle = styled.div`
   position: relative;
   font-weight: bold;
+  font-size: 1.6rem;
 `;
 export const ToggleWrapper = styled.div`
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
-
-export const CopyButton = styled.div`
-  position: relative;
-  left: 0;
-  width: 9.9rem;
-  height: 5.2rem;
-  border-radius: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.9rem;
-  cursor: pointer;
-  color: ${(props) => props.theme.colors.lightblue};
-  background: ${(props) => props.theme.colors.blue};
-  &:hover {
-    color: ${(props) => props.theme.colors.blue};
-    background: ${(props) => props.theme.colors.lightblue};
-  }
+  font-size: 1.6rem;
 `;

@@ -1,12 +1,10 @@
 import React from 'react';
 import * as S from './style';
 import { ProjectInputItemProps } from '@/shared/types/projectInputItem';
-import Button from '../Button';
-
+import UploadVideoInput from '../../UploadVideoInput';
 import TechStackInput from '../../TechStackInput';
 import TeamTableInput from '../../TeamTableInput';
 import ImageCreateInput from '../../ImageCreateInput';
-
 
 interface ItemScript {
   [key: string]: React.ReactNode;
@@ -24,15 +22,10 @@ const ITEM_SCRIPT: ItemScript = {
     </S.InputBox>
   ),
   '동영상 삽입': (
-    <S.InputBox>
-      <S.InputContainer>
-        <S.Input
-          type="text"
-          placeholder="선택한 영상 파일 제목이 보여집니다."
-        />
-        <Button />
-      </S.InputContainer>
-    </S.InputBox>
+    <UploadVideoInput
+      type="text"
+      placeholder="유튜브 링크만 입력 가능합니다!"
+    />
   ),
   '기술 스택': (
     <TechStackInput
@@ -58,10 +51,7 @@ const ITEM_SCRIPT: ItemScript = {
     </S.InputBox>
   ),
 };
-const ProjectInputItem = ({
-  type,
-  isBottom = false,
-}: ProjectInputItemProps) => {
+const ProjectInputItem = ({ type }: ProjectInputItemProps) => {
   return (
     <div>
       <S.HeaderContainer>
