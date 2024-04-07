@@ -58,7 +58,7 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
           type={type}
           placeholder={placeholder}
         />
-        <Button onClick={handleUploadItemAdd} />
+        <Button onClick={handleUploadItemAdd}>추가</Button>
       </S.RelativeBox>
       {uploadList.length !== 0 && (
         <S.BottomWrapper>

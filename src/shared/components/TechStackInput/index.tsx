@@ -73,7 +73,6 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
             </S.MatchList>
           )}
         </S.ReletiveBox>
-        <Button />
       </S.Wrap>
 
       {uploadList.length !== 0 && (
