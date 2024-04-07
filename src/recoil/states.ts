@@ -1,5 +1,6 @@
 import { atom } from 'recoil';
 import { recoilPersist } from 'recoil-persist';
+import { DefaultItemProps } from '@/shared/types/markdown';
 import { ITEM_LIST } from '@/shared/constants/editor';
 
 const sessionStorage =
@@ -15,7 +16,7 @@ export const stepState = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
-export const projectItems = atom({
+export const projectItems = atom<DefaultItemProps[]>({
   key: 'projectItems',
   default: ITEM_LIST,
   effects_UNSTABLE: [persistAtom],
