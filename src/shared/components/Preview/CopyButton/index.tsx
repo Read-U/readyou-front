@@ -1,13 +1,13 @@
 import React from 'react';
 import 'github-markdown-css';
 import { useRecoilValue } from 'recoil';
-import { defaultSettings } from '@/recoil/states';
+import { projectItems } from '@/recoil/states';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import useToast from '@/shared/hooks/useToast';
 import Button from '../../common/Button';
 
 const CopyButton = () => {
-  const markdown = useRecoilValue(defaultSettings);
+  const markdown = useRecoilValue(projectItems);
   const newData = markdown.map((v) => v.detail).join('\n');
 
   const toast = useToast();
