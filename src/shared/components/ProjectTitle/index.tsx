@@ -1,15 +1,18 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent } from 'react';
 import * as S from './style';
 import { useRecoilState } from 'recoil';
 import { projectItems } from '@/recoil/states';
 
 const ProjectTitle = () => {
-  const [title, setTitle] = useState('');
   const [markdown, setMarkdown] = useRecoilState(projectItems);
 
-  const handleChangeTitle = (e: ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value);
+  const newValue = markdown.find((item) => {
+    if (item.name === 'title') {
+      return item;
+    }
+  });
 
+  const handleChangeTitle = (e: ChangeEvent<HTMLInputElement>) => {
     const newMarkdown = markdown.map((item) => {
       if (item.name === 'title') {
         return { ...item, detail: `# ${e.target.value}` };
@@ -17,7 +20,6 @@ const ProjectTitle = () => {
       return item;
     });
 
-    console.log(newMarkdown);
     setMarkdown(newMarkdown);
   };
 
@@ -25,7 +27,7 @@ const ProjectTitle = () => {
     <S.InputBox>
       <S.Input
         type="text"
-        value={title}
+        value={newValue.detail.split(' ')[1]}
         placeholder="프로젝트 제목을 기입해주세요."
         onChange={(e) => handleChangeTitle(e)}
       />
