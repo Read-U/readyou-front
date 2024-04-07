@@ -27,7 +27,17 @@ export const ButtonWrapper = styled.button`
   background-color: ${(props) => props.theme.colors.gray};
 `;
 
-export const InputBox = styled.div``;
+export const InputBox = styled.div`
+  width: 82.9rem;
+  height: 8.4rem;
+
+  background: ${(props) => props.theme.colors.lightgray};
+  border-radius: 0 0 1rem 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export const InputContainer = styled.div`
   display: flex;

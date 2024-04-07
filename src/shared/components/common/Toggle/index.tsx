@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import * as S from './style';
-type ToggleProps  = {
+type ToggleProps = {
   lightMode: boolean;
-  handleToggle: (value:boolean) => void;
+  handleToggle: (value: boolean) => void;
 };
 const Toggle = ({ lightMode, handleToggle }: ToggleProps) => {
   const toggleHandler = () => {

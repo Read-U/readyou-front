@@ -1,5 +1,5 @@
 import SampleImage from '/public/images/sample-image.png';
-import * as S from './style';
+import * as S from '../styles/style';
 
 export default function Home() {
   return (
