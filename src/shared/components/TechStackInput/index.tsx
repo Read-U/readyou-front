@@ -56,7 +56,7 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
         {isOpen && (
           <S.MatchList>
             {matchList?.map((list, idx) => (
-              <S.MatchItem key={idx} onClick={(e) => handleMatchItemClick(e)}>
+              <S.MatchItem key={idx} onClick={handleMatchItemClick}>
                 {list}
               </S.MatchItem>
             ))}
