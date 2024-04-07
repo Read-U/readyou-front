@@ -22,21 +22,14 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
     setUploadList(newUploadItem);
   };
 
-  const validationLink = async (link: string): Promise<[boolean, unknown]> => {
+  const validationLink = async (link: string) => {
     try {
       const res = await fetch(`${BASE_URL}/api/youtube?link=${link}`);
       if (!res.ok) {
         throw new Error('유효하지 않은 링크입니다!');
       }
-      return [true, res.json()];
+      return res.json();
     } catch (error) {
-      return [false, error];
-    }
-  };
-
-  const handleUploadItemAdd = async () => {
-    const validationResult = await validationLink(value);
-    if (!validationResult[0]) {
       toast({
         message: '유효하지 않는 링크입니다!',
         status: 'error',
@@ -44,7 +37,14 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
       setValue('');
       return;
     }
-    const linkMarkdown = validationResult[1];
+  };
+
+  const handleUploadItemAdd = async () => {
+    const validationResult = await validationLink(value);
+    if (!validationResult) {
+      return;
+    }
+    const linkMarkdown = validationResult;
     setUploadList((prevList) => [...prevList, value]);
     setValue('');
   };
