@@ -11,14 +11,10 @@
     "node": true
   },
   "extends": [
+    "next/core-web-vitals",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "eslint:recommended",
-    "prettier",
-    "next/core-web-vitals",
-    "next",
-    "plugin:prettier/recommended" // 항상 마지막 위치
+    "prettier"
   ],
   "rules": {
 	    "import/prefer-default-export": "off",

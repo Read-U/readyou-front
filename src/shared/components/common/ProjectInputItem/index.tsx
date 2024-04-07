@@ -32,6 +32,9 @@ const ITEM_SCRIPT: ItemScript = {
         <Button />
       </S.InputContainer>
     </S.InputBox>
+    <S.InputContainer>
+      <S.Input type="text" placeholder="프로젝트 제목을 기입해주세요." />
+    </S.InputContainer>
   ),
   '기술 스택': (
     <TechStackInput
