@@ -39,14 +39,14 @@ export const PreviewContainer = styled.div<{ $lightMode: boolean }>`
 
   .markdown-body {
     box-sizing: border-box;
-		min-width: 200px;
-		max-width: 100%;
-		margin: 0 auto;
-		padding: 45px;
+    min-width: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 45px;
     background-color: inherit;
     color: inherit;
-    table tr{
-      background-color:inherit
+    table tr {
+      background-color: inherit;
     }
   }
 `;

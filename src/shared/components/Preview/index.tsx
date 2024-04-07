@@ -178,8 +178,10 @@ const Preview = ({ markdown }: Markdown) => {
 
           <S.CopyButton>전체 복사</S.CopyButton>
         </S.Header>
-        <MarkdownPreview lightMode={lightMode} markdown={markdown? markdown:test}></MarkdownPreview>
-        
+        <MarkdownPreview
+          lightMode={lightMode}
+          markdown={markdown ? markdown : test}
+        ></MarkdownPreview>
       </S.Inner>
     </S.Box>
   );
