@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
@@ -7,6 +7,7 @@ import 'github-markdown-css';
 import remarkGfm from 'remark-gfm';
 import { useRecoilValue } from 'recoil';
 import { projectItems } from '@/recoil/states';
+import { ItemProps } from '@/shared/types/markdown';
 
 interface Markdown {
   lightMode: boolean;
@@ -14,7 +15,10 @@ interface Markdown {
 
 const MarkdownPreview = ({ lightMode }: Markdown) => {
   const markdown = useRecoilValue(projectItems);
-  const newData = markdown.map((v) => v.detail).join('\n');
+
+  useEffect(() => {
+    console.log(markdown.map((v: ItemProps) => v.detail).join('\n'));
+  }, [markdown]);
 
   return (
     <S.PreviewContainer $lightMode={lightMode}>
@@ -22,7 +26,7 @@ const MarkdownPreview = ({ lightMode }: Markdown) => {
         className="markdown-body"
         rehypePlugins={[remarkGfm, rehypeHighlight, rehypeRaw]}
       >
-        {newData}
+        {markdown.map((v: ItemProps) => v.detail).join('\n')}
       </ReactMarkdown>
     </S.PreviewContainer>
   );

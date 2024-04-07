@@ -2,13 +2,14 @@ import { useRecoilState } from 'recoil';
 import * as S from './style';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { projectItems } from '@/recoil/states';
+import { ItemProps } from '@/shared/types/markdown';
 
 const ProjectContent = () => {
   const [content, setContent] = useState('');
   const [markdown, setMarkdown] = useRecoilState(projectItems);
 
   useEffect(() => {
-    const newMarkdown = markdown.map((item) => {
+    const newMarkdown = markdown.map((item: ItemProps) => {
       if (item.name === 'content') {
         return { ...item, detail: `### ${content}` };
       }
