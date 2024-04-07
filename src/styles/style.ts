@@ -35,12 +35,12 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 5rem;
-  padding-top: 10rem;
   background: linear-gradient(
     ${(props) => props.theme.colors.lightblue},
     white
   );
   overflow: hidden;
+  padding: 10rem 3rem 0 3rem;
 `;
 
 export const Button = styled.button`

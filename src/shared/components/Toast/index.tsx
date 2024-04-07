@@ -1,13 +1,10 @@
+import { ToastProps } from '@/shared/types/toast';
 import * as S from './style';
-interface ToastProps {
-  message?: string;
-  status?: 'error' | 'info';
-}
 
-const Toast = ({ message = '', status = 'info' }: ToastProps) => {
+const Toast = ({ message = '', status = 'info' }: Partial<ToastProps>) => {
   return (
     <S.Container status={status} message={message}>
-      <S.Span>{message}</S.Span>
+      <S.Message>{message}</S.Message>
     </S.Container>
   );
 };
