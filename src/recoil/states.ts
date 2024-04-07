@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 import { recoilPersist } from 'recoil-persist';
-import { DEFAULT_CHECKED_ITEM } from '@/shared/constants/editor';
+import { ITEM_LIST } from '@/shared/constants/editor';
 
 const sessionStorage =
   typeof window !== 'undefined' ? window.sessionStorage : undefined;
@@ -15,8 +15,8 @@ export const stepState = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
-export const defaultSettings = atom({
-  key: 'defaultSettings',
-  default: DEFAULT_CHECKED_ITEM,
+export const projectItems = atom({
+  key: 'projectItems',
+  default: ITEM_LIST,
   effects_UNSTABLE: [persistAtom],
 });

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import 'github-markdown-css';
 import { useRecoilValue } from 'recoil';
-import { defaultSettings } from '@/recoil/states';
+import { projectItems } from '@/recoil/states';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import useToast from '@/shared/hooks/useToast';
 import Button from '../../common/Button';
@@ -9,8 +9,9 @@ import { DefaultItemProps } from '@/shared/types/markdown';
 import * as S from './style';
 
 const CopyButton = () => {
+  const markdown = useRecoilValue(projectItems);
+
   const [isWork, SetIsWork] = useState(false);
-  const markdown = useRecoilValue(defaultSettings);
 
   useEffect(() => {
     let text = markdown
@@ -23,6 +24,7 @@ const CopyButton = () => {
     } else SetIsWork(true);
     console.log(text);
   }, [markdown]);
+
 
   const toast = useToast();
 

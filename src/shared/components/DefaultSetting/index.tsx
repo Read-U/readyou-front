@@ -2,10 +2,7 @@ import * as S from './style';
 import Checkbox from '@/shared/components/common/Checkbox';
 import useCheckbox from '@/shared/hooks/useCheckbox';
 import Badge from '@/shared/components/common/Badge';
-import {
-  DEFAULT_CHECKED_ITEM,
-  DEFAULT_ITEM_LIST,
-} from '@/shared/constants/editor';
+import { ITEM_LIST } from '@/shared/constants/editor';
 import { useRecoilState } from 'recoil';
 import { stepState } from '@/recoil/states';
 import Button from '../common/Button';
@@ -15,8 +12,7 @@ interface DefaultSettingProps {
 }
 
 const DefaultSetting = () => {
-  const { checkedList, handleCheckedElement } =
-    useCheckbox(DEFAULT_CHECKED_ITEM);
+  const { checkedList, handleCheckedElement } = useCheckbox(ITEM_LIST);
   const [step, setStep] = useRecoilState(stepState);
 
   return (
@@ -34,7 +30,7 @@ const DefaultSetting = () => {
           완료
         </Button>
       </S.TemplateHeader>
-      {DEFAULT_ITEM_LIST.map((markdownItem, index) => (
+      {ITEM_LIST.map((markdownItem, index) => (
         <S.MarkdownTemplateItem
           key={markdownItem.id}
           type={index === 0 ? 'required' : 'optional'}
