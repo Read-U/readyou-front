@@ -1,11 +1,12 @@
 import React from 'react';
-
 import * as S from './style';
 import { ProjectInputItemProps } from '@/shared/types/projectInputItem';
 import Button from '../Button';
+
 import TechStackInput from '../../TechStackInput';
 import TeamTableInput from '../../TeamTableInput';
 import ImageCreateInput from '../../ImageCreateInput';
+
 
 interface ItemScript {
   [key: string]: React.ReactNode;
@@ -57,7 +58,6 @@ const ITEM_SCRIPT: ItemScript = {
     </S.InputBox>
   ),
 };
-
 const ProjectInputItem = ({
   type,
   isBottom = false,
