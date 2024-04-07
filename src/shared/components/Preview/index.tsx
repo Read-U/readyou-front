@@ -5,6 +5,7 @@ import 'github-markdown-css';
 import MarkdownPreview from './Markdown';
 import { useRecoilState } from 'recoil';
 import { markdownState } from '@/recoil/states';
+import CopyButton from './CopyButton';
 
 const Preview = () => {
   const [lightMode, setLightMode] = useState(true);
@@ -79,8 +80,7 @@ makeDeveloper('ONE:A', 'JavaScript');
               ></Toggle>
             </S.ToggleWrapper>
           </S.HeaderWrapper>
-
-          <S.CopyButton>전체 복사</S.CopyButton>
+          <CopyButton />
         </S.Header>
         <MarkdownPreview lightMode={lightMode}></MarkdownPreview>
       </S.Inner>

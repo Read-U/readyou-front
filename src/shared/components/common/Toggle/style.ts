@@ -20,6 +20,7 @@ export const ToggleBack = styled.label<{ $isLightMode: boolean }>`
       ? `${props.theme.colors.darkgray}`
       : `${props.theme.colors.darknavy}`};
   transition: all 0.4s ease-in-out;
+  cursor: pointer;
 `;
 
 export const ToggleLabel = styled.label<{ $isLightMode: boolean }>`
