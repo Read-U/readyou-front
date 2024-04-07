@@ -9,11 +9,12 @@ import Button from '../common/Button';
 import ProjectInputItem from '../common/ProjectInputItem';
 import * as S from './style';
 import { useRecoilState } from 'recoil';
-import { defaultSettings, stepState } from '@/recoil/states';
+import { markdownState, stepState } from '@/recoil/states';
 
 const Editor = () => {
+  const [markdown, setMarkdown] = useRecoilState(markdownState);
   const [enabled, setEnabled] = useState(false);
-  const [itemList, setItemList] = useRecoilState(defaultSettings);
+  const [itemList, setItemList] = useState(markdown);
   const [step, setStep] = useRecoilState(stepState);
   useEffect(() => {
     const animation = requestAnimationFrame(() => setEnabled(true));
@@ -35,7 +36,17 @@ const Editor = () => {
     const targetItem = _items.splice(source.index, 1); // 타겟을 빼서
     _items.splice(destination.index, 0, targetItem[0]); // 이동하는 곳 뒤에 추가
 
+    markdown.map((markdownItem) => {
+      const itemIndex = _items.findIndex(
+        (item: any) => item.name === markdownItem.name,
+      );
+      if (itemIndex !== -1) {
+        _items[itemIndex].detail = markdownItem.detail;
+      }
+    });
+
     setItemList(_items);
+    setMarkdown(_items);
   };
 
   return (

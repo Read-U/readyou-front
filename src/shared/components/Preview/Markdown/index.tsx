@@ -14,13 +14,15 @@ interface Markdown {
 
 const MarkdownPreview = ({ lightMode }: Markdown) => {
   const markdown = useRecoilValue(markdownState);
+  const newData = markdown.map((v) => v.detail).join('\n');
+
   return (
     <S.PreviewContainer $lightMode={lightMode}>
       <ReactMarkdown
         className="markdown-body"
         rehypePlugins={[remarkGfm, rehypeHighlight, rehypeRaw]}
       >
-        {markdown}
+        {newData}
       </ReactMarkdown>
     </S.PreviewContainer>
   );

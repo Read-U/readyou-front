@@ -1,9 +1,18 @@
 import { ChangeEvent } from 'react';
 import * as S from './style';
+import { useRecoilState } from 'recoil';
+import { markdownState } from '@/recoil/states';
+
 const ProjectTitle = () => {
+  const [markdown, setMarkdown] = useRecoilState(markdownState);
   const handleChangeTitle = (e: ChangeEvent<HTMLInputElement>) => {
-    const title = `# ${e.target.value}`;
-    // TODO : 추후 전역으로 상태 전달
+    const newMarkdown = markdown.map((item) => {
+      if (item.name === 'title') {
+        return { ...item, detail: `# ${e.target.value}` };
+      }
+      return item;
+    });
+    setMarkdown(newMarkdown);
   };
 
   return (
