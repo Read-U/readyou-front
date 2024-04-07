@@ -42,34 +42,32 @@ const Editor = () => {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <S.Box>
-        <S.Inner>
-          <Button type="back" onClick={() => setStep(step - 1)} />
-          <Droppable droppableId="editor">
-            {(provided) => (
-              <S.ItemContainer
-                ref={provided.innerRef}
-                {...provided.droppableProps}
-              >
-                {itemList.map((item, index) => (
-                  <Draggable key={item.id} draggableId={item.id} index={index}>
-                    {(provided) => (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.dragHandleProps}
-                        {...provided.draggableProps}
-                      >
-                        <ProjectInputItem type={item.type} />
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </S.ItemContainer>
-            )}
-          </Droppable>
-        </S.Inner>
-      </S.Box>
+      <S.Inner>
+        <Button type="back" onClick={() => setStep(step - 1)} />
+        <Droppable droppableId="editor">
+          {(provided) => (
+            <S.ItemContainer
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+            >
+              {itemList.map((item, index) => (
+                <Draggable key={item.id} draggableId={item.id} index={index}>
+                  {(provided) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.dragHandleProps}
+                      {...provided.draggableProps}
+                    >
+                      <ProjectInputItem type={item.type} />
+                    </div>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+            </S.ItemContainer>
+          )}
+        </Droppable>
+      </S.Inner>
     </DragDropContext>
   );
 };

@@ -1,14 +1,5 @@
 import { styled } from 'styled-components';
 
-export const Box = styled.div`
-  height: 97.2rem;
-
-  background: ${(props) => props.theme.colors.lightgray};
-  border-radius: 1rem;
-  margin: 2rem 0 2rem 2rem;
-  padding: 2rem;
-`;
-
 export const Inner = styled.div`
   position: relative;
   width: 100%;
