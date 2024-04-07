@@ -1,5 +1,8 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import * as S from './style';
+import { useRecoilState } from 'recoil';
+import { projectItems } from '@/recoil/states';
+import { ItemProps } from '@/shared/types/markdown';
 
 const DURATION = {
   START: 'start',
@@ -8,13 +11,48 @@ const DURATION = {
 
 type DURATION_TYPE = (typeof DURATION)[keyof typeof DURATION];
 
+interface DurationPair {
+  start: string;
+  end: string;
+}
+
 const ProjectDuration = () => {
+  const [markdown, setMarkdown] = useRecoilState(projectItems);
+  const [duration, setDuration] = useState<DurationPair>({
+    start: '',
+    end: '',
+  });
+
   const handleChangeDuration = (
     e: ChangeEvent<HTMLInputElement>,
     type: DURATION_TYPE,
   ) => {
-    // TODO : 프로젝트 기간 마크다운 디자인 정하기, 전역 상태랑 연결
+    const date = e.target.value.split('-');
+    const newFormDate = `${date[0]}.${date[1]}.${date[2]}`;
+    console.log('ss');
+    if (type === 'start') {
+      setDuration({ start: newFormDate, end: duration.end });
+    }
+    if (type === 'end') {
+      setDuration({ start: duration.start, end: newFormDate });
+    }
+    console.log(duration);
   };
+
+  useEffect(() => {
+    console.log(duration);
+    const newMarkdown = markdown.map((item: ItemProps) => {
+      if (item.name === 'period') {
+        return {
+          ...item,
+          detail: `<div align="center"> ${duration.start} ~ ${duration.end} </div>\n`,
+        };
+      }
+      return item;
+    });
+
+    setMarkdown(newMarkdown);
+  }, [duration]);
 
   return (
     <S.InputBox>

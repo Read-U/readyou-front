@@ -5,8 +5,8 @@ import { projectItems } from '@/recoil/states';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import useToast from '@/shared/hooks/useToast';
 import Button from '../../common/Button';
-import { DefaultItemProps } from '@/shared/types/markdown';
 import * as S from './style';
+import { ItemProps } from '@/shared/types/markdown';
 
 const CopyButton = () => {
   const markdown = useRecoilValue(projectItems);
@@ -15,7 +15,7 @@ const CopyButton = () => {
 
   useEffect(() => {
     let text = markdown
-      .map((v: DefaultItemProps) => v.detail)
+      .map((v: ItemProps) => v.detail)
       .join('\n')
       .replace(/#+\s+/gm, '')
       .trim();
@@ -30,7 +30,7 @@ const CopyButton = () => {
 
   return isWork ? (
     <CopyToClipboard
-      text={markdown.map((v: DefaultItemProps) => v.detail).join('\n')}
+      text={markdown.map((v: ItemProps) => v.detail).join('\n')}
       onCopy={() =>
         toast({
           message: '전체 복사되었어요!',
