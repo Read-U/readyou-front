@@ -119,10 +119,10 @@ const ImageCreateInput = () => {
       </S.RelativeBox>
       {imageNameList.length > 0 && (
         <S.BottomWrapper>
-          {imageNameList.map((list, index) => (
+          {imageNameList.map((imageName, index) => (
             <UploadItem
-              key={index}
-              text={list}
+              key={imageName}
+              text={imageName}
               onClick={handleItemDelete(index)}
             />
           ))}
