@@ -6,7 +6,7 @@ export const Box = styled.div`
 
   background: ${(props) => props.theme.colors.lightgray};
   border-radius: 1rem;
-  margin: 2rem;
+  margin: 2rem 0 2rem 2rem;
   padding: 2rem;
 `;
 
