@@ -3,6 +3,9 @@ import * as S from './style';
 import UploadItem from '../common/UploadItem';
 import Button from '../common/Button';
 import useToast from '@/shared/hooks/useToast';
+import { useRecoilState } from 'recoil';
+import { projectItems } from '@/recoil/states';
+
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 interface InputProps extends React.HTMLProps<HTMLInputElement> {}
@@ -10,6 +13,7 @@ interface InputProps extends React.HTMLProps<HTMLInputElement> {}
 const UploadVideoInput = ({ type, placeholder }: InputProps) => {
   const [value, setValue] = useState('');
   const [uploadList, setUploadList] = useState<string[]>([]);
+  const [markdown, setMarkdown] = useRecoilState(projectItems);
   const toast = useToast();
 
   const handleInputValue = (e: ChangeEvent<HTMLInputElement>) => {
@@ -28,7 +32,8 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
       if (!res.ok) {
         throw new Error('유효하지 않은 링크입니다!');
       }
-      return res.json();
+      const result = await res.json();
+      return result.iframe;
     } catch (error) {
       toast({
         message: '유효하지 않는 링크입니다!',
@@ -44,7 +49,14 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
     if (!validationResult) {
       return;
     }
-    const linkMarkdown = validationResult;
+    const newMarkdown = markdown.map((item) => {
+      if (item.name === 'video') {
+        return { ...item, detail: item.detail + validationResult };
+      }
+      return item;
+    });
+    console.log(validationResult);
+    setMarkdown(newMarkdown);
     setUploadList((prevList) => [...prevList, value]);
     setValue('');
   };
