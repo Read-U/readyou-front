@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 
-export const RelativeBox = styled.div`
+export const Wrap = styled.div`
   display: flex;
   gap: 1.6rem;
-  position: relative;
   padding: 1.6rem;
   width: 100%;
   height: 8.4rem;
-
   background: ${(props) => props.theme.colors.lightgray};
   border-radius: 0 0 1rem 1rem;
 `;
@@ -40,12 +38,16 @@ export const Input = styled.input`
   }
 `;
 
+export const ReletiveBox = styled.div`
+  width: 100%;
+  position: relative;
+`;
+
 export const MatchList = styled.ul`
   position: absolute;
   top: 5.45rem;
-  border-radius: 10rem;
   width: 100%;
-
+  z-index: 999;
 `;
 
 export const MatchItem = styled.li`
@@ -55,7 +57,17 @@ export const MatchItem = styled.li`
   color: ${(props) => props.theme.colors.blue};
   background: #ffffff;
   width: 100%;
-  border-bottom: ${(props) => `1px solid ${props.theme.colors.darkgray}`};
+  border: ${(props) => `1px solid ${props.theme.colors.darkgray}`};
+  border-top: none;
+
+  &:nth-of-type(1) {
+    border-top: ${(props) => `1px solid ${props.theme.colors.darkgray}`};
+    border-radius: 0.7rem 0.7rem 0 0;
+  }
+
+  &:last-of-type {
+    border-radius: 0 0 0.7rem 0.7rem;
+  }
 
   &:hover {
     background-color: ${(props) => props.theme.colors.lightgray};
