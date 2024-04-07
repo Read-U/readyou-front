@@ -1,11 +1,12 @@
 import React from 'react';
-
 import * as S from './style';
-import TechStackInput from '../../TechStackInput';
-
 import { ProjectInputItemProps } from '@/shared/types/projectInputItem';
 import Button from '../Button';
+
+import TechStackInput from '../../TechStackInput';
 import TeamTableInput from '../../TeamTableInput';
+import ImageCreateInput from '../../ImageCreateInput';
+
 
 interface ItemScript {
   [key: string]: React.ReactNode;
@@ -32,9 +33,6 @@ const ITEM_SCRIPT: ItemScript = {
         <Button />
       </S.InputContainer>
     </S.InputBox>
-    <S.InputContainer>
-      <S.Input type="text" placeholder="프로젝트 제목을 기입해주세요." />
-    </S.InputContainer>
   ),
   '기술 스택': (
     <TechStackInput
@@ -43,15 +41,7 @@ const ITEM_SCRIPT: ItemScript = {
     />
   ),
   '팀원 테이블': <TeamTableInput />,
-  '이미지 삽입': (
-    <S.InputBox>
-      <S.InputContainer>
-        <S.Input type="text" placeholder="width를 입력하세요. (% 가능)" />
-        <S.Input type="text" placeholder="height를 입력하세요. (% 가능)" />{' '}
-        <Button />
-      </S.InputContainer>
-    </S.InputBox>
-  ),
+  '이미지 삽입': <ImageCreateInput />,
   '프로젝트 기간': (
     <S.InputBox>
       <S.InputContainer>
@@ -81,7 +71,6 @@ const ProjectInputItem = ({
         </S.ButtonWrapper>
       </S.HeaderContainer>
       {ITEM_SCRIPT[type]}
-      {isBottom && <S.BottomWrapper></S.BottomWrapper>}
     </div>
   );
 };
