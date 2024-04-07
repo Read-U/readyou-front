@@ -48,5 +48,18 @@ export const PreviewContainer = styled.div<{ $lightMode: boolean }>`
     table tr {
       background-color: inherit;
     }
+    strong {
+      font-weight: bold;
+    }
+    ol {
+      list-style: decimal;
+    }
+    menu,
+    ul {
+      list-style: disc;
+    }
+    img {
+      background-color: inherit;
+    }
   }
 `;
