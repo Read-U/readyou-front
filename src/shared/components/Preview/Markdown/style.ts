@@ -2,18 +2,16 @@ import { styled } from 'styled-components';
 
 export const PreviewContainer = styled.div<{ $lightMode: boolean }>`
   position: relative;
-  width: 100%; 
+  width: 100%;
   height: 83rem;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
 
-
-
   &::-webkit-scrollbar {
-    width: 1.3rem; 
+    width: 1.3rem;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -29,7 +27,7 @@ export const PreviewContainer = styled.div<{ $lightMode: boolean }>`
     background: ${(props) =>
       props.$lightMode
         ? `${props.theme.colors.gray}`
-    : `${props.theme.colors.navy}`};
+        : `${props.theme.colors.navy}`};
   }
 
   color: ${(props) =>
