@@ -111,17 +111,6 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
           }
         })}
       </S.BottomWrapper>
-      {/* {uploadList.length > 0 && (
-        <S.BottomWrapper>
-          {uploadList?.map((list, idx) => (
-            <UploadItem
-              onClick={() => handleUploadItemDelete(idx, list.markdown)}
-              key={idx}
-              text={list.link}
-            />
-          ))}
-        </S.BottomWrapper>
-      )} */}
     </>
   );
 };
