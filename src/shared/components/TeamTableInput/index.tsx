@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import * as S from './style';
 import UploadItem from '../common/UploadItem';
 import Button from '../common/Button';
+import { useRecoilState } from 'recoil';
+import { projectItems } from '@/recoil/states';
 
 interface TeamMember {
   profileUrl: string[];
@@ -13,6 +15,9 @@ const TeamTableInput = () => {
   const [githubId, setGithubId] = useState('');
   const [role, setRole] = useState('');
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [teamTableMarkdown, setTeamTableMarkdown] = useState<string>('');
+
+  const [markdown, setMarkdown] = useRecoilState(projectItems);
 
   /** github user 정보 불러오기 */
   const getUsers = async (props: string): Promise<string[] | undefined> => {
@@ -61,11 +66,28 @@ const TeamTableInput = () => {
       .join('');
 
     const table = '|:-:'.repeat(teamMembers.length);
-    console.log(markDownImage + '\n' + table + '\n' + markDownUserInfo);
+    setTeamTableMarkdown(
+      markDownImage + '\n' + table + '\n' + markDownUserInfo,
+    );
 
     setGithubId('');
     setRole('');
   }, [teamMembers]);
+
+  /** 프리뷰 동기화 */
+  useEffect(() => {
+    const newMarkdown = markdown.map((item) => {
+      if (item.name === 'teamTable') {
+        return {
+          ...item,
+          detail: `## 팀원 구성 \n ${teamTableMarkdown} <br />`,
+        };
+      }
+      return item;
+    });
+
+    setMarkdown(newMarkdown);
+  }, [teamTableMarkdown]);
 
   /** 삭제 */
   const handleTeamMemberDelete = (index: number) => {
