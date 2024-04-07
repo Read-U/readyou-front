@@ -23,6 +23,7 @@ const ImageCreateInput = () => {
         (image) =>
           `<img src=${image.link} width="${image.width}" height="${image.height}" />`,
       )
+
       .join('\n');
 
     console.log(markdown);
