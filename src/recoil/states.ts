@@ -9,11 +9,6 @@ const { persistAtom } = recoilPersist({
   storage: sessionStorage,
 });
 
-export const markdownState = atom<string>({
-  key: 'markdownState',
-  default: '',
-});
-
 export const stepState = atom({
   key: 'stepState',
   default: 0,
