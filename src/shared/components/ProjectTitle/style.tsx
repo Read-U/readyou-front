@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
 export const InputBox = styled.div`
-  width: 82.9rem;
+  width: 100%;
   height: 8.4rem;
 
   background: ${(props) => props.theme.colors.lightgray};
@@ -10,6 +10,8 @@ export const InputBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  padding: 1.6rem;
 `;
 
 export const Input = styled.input`
@@ -20,7 +22,7 @@ export const Input = styled.input`
   border: none;
   appearance: none;
 
-  width: 79.7rem;
+  width: 100%;
   height: 5.2rem;
 
   background: #ffffff;

@@ -5,6 +5,9 @@ export const MarkdownTemplateList = styled.ul`
   width: 100%;
   padding: 2.4rem 2rem;
   overflow-y: auto;
+
+  background: #ffffff;
+  border-radius: 1rem;
 `;
 
 export const TemplateHeader = styled.div`
