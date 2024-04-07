@@ -40,8 +40,6 @@ const Editor = () => {
 
   const handleItemDelete = (type: string) => {
     const filterResult = itemList.filter((list) => list.type !== type);
-    console.log(type);
-    console.log(filterResult);
     setItemList(filterResult);
   };
 
