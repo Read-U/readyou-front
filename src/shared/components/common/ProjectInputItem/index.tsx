@@ -5,22 +5,17 @@ import UploadVideoInput from '../../UploadVideoInput';
 import TechStackInput from '../../TechStackInput';
 import TeamTableInput from '../../TeamTableInput';
 import ImageCreateInput from '../../ImageCreateInput';
+import ProjectTitle from '../../ProjectTitle';
+import ProjectContent from '../../ProjectContent';
+import ProjectDuration from '../../ProjectDuration';
 
 interface ItemScript {
   [key: string]: React.ReactNode;
 }
 
 const ITEM_SCRIPT: ItemScript = {
-  '프로젝트 제목': (
-    <S.InputBox>
-      <S.Input type="text" placeholder="프로젝트 제목을 기입해주세요." />
-    </S.InputBox>
-  ),
-  '프로젝트 설명': (
-    <S.InputBox>
-      <S.Input type="text" placeholder="프로젝트 설명을 기입해주세요." />
-    </S.InputBox>
-  ),
+  '프로젝트 제목': <ProjectTitle></ProjectTitle>,
+  '프로젝트 설명': <ProjectContent></ProjectContent>,
   '동영상 삽입': (
     <UploadVideoInput
       type="text"
@@ -35,21 +30,7 @@ const ITEM_SCRIPT: ItemScript = {
   ),
   '팀원 테이블': <TeamTableInput />,
   '이미지 삽입': <ImageCreateInput />,
-  '프로젝트 기간': (
-    <S.InputBox>
-      <S.InputContainer>
-        <S.Input
-          type="date"
-          placeholder="시작한 날짜를 입력하세요. ex) 2***.**.**"
-        />
-        <img src="/assets/icons/range.svg" />
-        <S.Input
-          type="date"
-          placeholder="완료한 날짜를 입력하세요. ex) 2***.**.**"
-        />
-      </S.InputContainer>
-    </S.InputBox>
-  ),
+  '프로젝트 기간': <ProjectDuration></ProjectDuration>,
 };
 const ProjectInputItem = ({ type }: ProjectInputItemProps) => {
   return (
