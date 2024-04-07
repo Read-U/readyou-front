@@ -26,6 +26,7 @@
     "react-dom": "^18",
     "react-markdown": "^9.0.1",
     "recoil": "^0.7.7",
+    "recoil-persist": "^5.1.0",
     "rehype-highlight": "^7.0.0",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.0",
