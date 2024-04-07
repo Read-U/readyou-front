@@ -10,7 +10,7 @@ export const CheckBox = styled.input`
   display: none;
 `;
 
-export const ToggleBack = styled.label<{$isLightMode:boolean}>`
+export const ToggleBack = styled.label<{ $isLightMode: boolean }>`
   z-index: 5;
   width: 5.2rem;
   height: 3.2rem;
@@ -22,7 +22,7 @@ export const ToggleBack = styled.label<{$isLightMode:boolean}>`
   transition: all 0.4s ease-in-out;
 `;
 
-export const ToggleLabel = styled.label<{$isLightMode:boolean}>`
+export const ToggleLabel = styled.label<{ $isLightMode: boolean }>`
   z-index: 10;
   width: 2.4rem;
   height: 2.4rem;
@@ -43,7 +43,7 @@ export const ToggleLabel = styled.label<{$isLightMode:boolean}>`
   transition: all 0.4s ease-in-out;
 `;
 
-export const InnerCircle = styled.label<{$isLightMode:boolean}>`
+export const InnerCircle = styled.label<{ $isLightMode: boolean }>`
   z-index: 15;
   width: 1.3rem;
   height: 1.3rem;
@@ -55,5 +55,5 @@ export const InnerCircle = styled.label<{$isLightMode:boolean}>`
     props.$isLightMode
       ? ''
       : `background-color: ${props.theme.colors.lightnavy}`};
-      transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 `;
