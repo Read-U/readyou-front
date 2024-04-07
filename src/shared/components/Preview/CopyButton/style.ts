@@ -13,6 +13,7 @@ export const CopyButton = styled.div`
   cursor: pointer;
   color: ${(props) => props.theme.colors.lightblue};
   background: ${(props) => props.theme.colors.blue};
+  white-space: nowrap;
   &:hover {
     color: ${(props) => props.theme.colors.blue};
     background: ${(props) => props.theme.colors.lightblue};

@@ -1,18 +1,20 @@
 import { styled } from 'styled-components';
 
 export const Box = styled.div`
-  width: 93rem;
+  flex: 1;
+  max-width: 50%;
   height: 97.2rem;
 
   background: ${(props) => props.theme.colors.lightgray};
   border-radius: 1rem;
   margin: 2rem 2rem 2rem 0;
   padding: 2rem;
-`;
+
+  `;
 
 export const Inner = styled.div<{ $lightMode: boolean }>`
   position: relative;
-  width: 89rem;
+  width: 100%;
   height: 93.2rem;
   overflow: hidden;
   background: ${(props) =>
@@ -35,7 +37,7 @@ export const Header = styled.div<{ $lightMode: boolean }>`
     props.$lightMode
       ? `${props.theme.colors.gray}`
       : `${props.theme.colors.navy}`};
-  padding: 1rem;
+  padding: 2rem 2rem 1.6rem 2rem;
 `;
 export const HeaderWrapper = styled.div`
   position: relative;
