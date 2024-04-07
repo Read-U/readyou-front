@@ -27,12 +27,6 @@ const ITEM_SCRIPT: ItemScript = {
       type="text"
       placeholder="유튜브 링크만 입력 가능합니다!"
     />
-    // <S.InputBox>
-    //   <S.InputContainer>
-    //     <S.Input type="text" placeholder="유튜브 링크만 입력 가능합니다!" />
-    //     <Button />
-    //   </S.InputContainer>
-    // </S.InputBox>
   ),
   '기술 스택': (
     <TechStackInput
