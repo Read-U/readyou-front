@@ -2,18 +2,18 @@ import { styled } from 'styled-components';
 
 export const PreviewContainer = styled.div<{ $lightMode: boolean }>`
   position: relative;
-  height: 82rem;
-  width: 87rem;
-  margin: 1rem auto;
+  width: 100%; 
+  height: 83rem;
   overflow-y: scroll;
-  padding: 1rem;
 
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
 
+
+
   &::-webkit-scrollbar {
-    width: 1.3rem;
+    width: 1.3rem; 
   }
 
   &::-webkit-scrollbar-thumb {
@@ -29,7 +29,7 @@ export const PreviewContainer = styled.div<{ $lightMode: boolean }>`
     background: ${(props) =>
       props.$lightMode
         ? `${props.theme.colors.gray}`
-        : `${props.theme.colors.navy}`};
+    : `${props.theme.colors.navy}`};
   }
 
   color: ${(props) =>
@@ -41,8 +41,7 @@ export const PreviewContainer = styled.div<{ $lightMode: boolean }>`
     box-sizing: border-box;
     min-width: 200px;
     max-width: 100%;
-    margin: 0 auto;
-    padding: 45px;
+    padding: 2rem;
     background-color: inherit;
     color: inherit;
     table tr {
