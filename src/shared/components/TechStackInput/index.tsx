@@ -20,9 +20,9 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
     setValue(value);
   };
 
-  const handleTeamMemberDelete = (index: number) => {
-    const newTeamMembers = uploadList.filter((_, i) => i !== index);
-    setUploadList(newTeamMembers);
+  const handleUploadItemDelete = (index: number) => {
+    const newUploadItem = uploadList.filter((_, i) => i !== index);
+    setUploadList(newUploadItem);
   };
 
   // 연관 데이터 클릭
@@ -38,7 +38,9 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
   // 연관 데이터 필터
   useEffect(() => {
     const matchDataList = value
-      ? TECH_STACK_DATA.filter((target) => target.includes(value.toLowerCase()))
+      ? Object.keys(TECH_STACK_DATA).filter((target) =>
+          target.includes(value.toLowerCase()),
+        )
       : [];
     setMatchList(matchDataList);
     setIsOpen(true);
@@ -68,7 +70,7 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
         <S.BottomWrapper>
           {uploadList?.map((list, idx) => (
             <UploadItem
-              onClick={() => handleTeamMemberDelete(idx)}
+              onClick={() => handleUploadItemDelete(idx)}
               key={idx}
               text={list}
             />
