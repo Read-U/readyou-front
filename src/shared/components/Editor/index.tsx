@@ -38,8 +38,6 @@ const Editor = () => {
     setItemList(_items);
   };
 
-  console.log(itemList);
-
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <S.Inner>

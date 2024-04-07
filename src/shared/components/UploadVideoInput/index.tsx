@@ -5,7 +5,6 @@ import Button from '../common/Button';
 import useToast from '@/shared/hooks/useToast';
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
-
 interface InputProps extends React.HTMLProps<HTMLInputElement> {}
 
 const UploadVideoInput = ({ type, placeholder }: InputProps) => {
@@ -22,7 +21,6 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
     const newUploadItem = uploadList.filter((_, i) => i !== index);
     setUploadList(newUploadItem);
   };
-
 
   const validationLink = async (link: string) => {
     try {
