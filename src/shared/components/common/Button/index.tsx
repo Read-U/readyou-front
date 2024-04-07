@@ -2,6 +2,7 @@ import * as S from './style';
 
 interface ButtonType {
   type?: 'back' | 'add';
+  onClick?: () => void; // Added this line
 }
 
 const LABEL_TYPE = {
@@ -9,8 +10,12 @@ const LABEL_TYPE = {
   back: '뒤로가기',
 };
 
-const Button = ({ type = 'add' }: ButtonType) => {
-  return <S.Button type={type}>{LABEL_TYPE[type]}</S.Button>;
+const Button = ({ type = 'add', onClick }: ButtonType) => {
+  return (
+    <S.Button type={type} onClick={onClick}>
+      {LABEL_TYPE[type]}
+    </S.Button>
+  );
 };
 
 export default Button;

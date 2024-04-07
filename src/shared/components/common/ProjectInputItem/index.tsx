@@ -1,8 +1,12 @@
+import React from 'react';
 import * as S from './style';
-import TechStackInput from '../../TechStackInput';
-
 import { ProjectInputItemProps } from '@/shared/types/projectInputItem';
 import Button from '../Button';
+
+import TechStackInput from '../../TechStackInput';
+import TeamTableInput from '../../TeamTableInput';
+import ImageCreateInput from '../../ImageCreateInput';
+
 
 interface ItemScript {
   [key: string]: React.ReactNode;
@@ -10,14 +14,25 @@ interface ItemScript {
 
 const ITEM_SCRIPT: ItemScript = {
   '프로젝트 제목': (
-    <S.InputContainer>
+    <S.InputBox>
       <S.Input type="text" placeholder="프로젝트 제목을 기입해주세요." />
-    </S.InputContainer>
+    </S.InputBox>
   ),
   '프로젝트 설명': (
-    <S.InputContainer>
+    <S.InputBox>
       <S.Input type="text" placeholder="프로젝트 설명을 기입해주세요." />
-    </S.InputContainer>
+    </S.InputBox>
+  ),
+  '동영상 삽입': (
+    <S.InputBox>
+      <S.InputContainer>
+        <S.Input
+          type="text"
+          placeholder="선택한 영상 파일 제목이 보여집니다."
+        />
+        <Button />
+      </S.InputContainer>
+    </S.InputBox>
   ),
   '기술 스택': (
     <TechStackInput
@@ -25,35 +40,24 @@ const ITEM_SCRIPT: ItemScript = {
       placeholder="이 칸에서 기술 스택을 검색하세요!"
     />
   ),
-  '팀원 테이블': (
-    <S.InputContainer>
-      <S.Input type="text" placeholder="팀원의 Github ID를 입력하세요." />
-      <S.Input type="text" placeholder="팀원의 직무를 입력하세요." />
-      <Button />
-    </S.InputContainer>
-  ),
-  '이미지 삽입': (
-    <S.InputContainer>
-      <S.Input type="text" placeholder="width를 입력하세요. (% 가능)" />
-      <S.Input type="text" placeholder="height를 입력하세요. (% 가능)" />
-      <Button />
-    </S.InputContainer>
-  ),
+  '팀원 테이블': <TeamTableInput />,
+  '이미지 삽입': <ImageCreateInput />,
   '프로젝트 기간': (
-    <S.InputContainer>
-      <S.Input
-        type="date"
-        placeholder="시작한 날짜를 입력하세요. ex) 2***.**.**"
-      />
-      <img src="/assets/icons/range.svg" />
-      <S.Input
-        type="date"
-        placeholder="완료한 날짜를 입력하세요. ex) 2***.**.**"
-      />
-    </S.InputContainer>
+    <S.InputBox>
+      <S.InputContainer>
+        <S.Input
+          type="date"
+          placeholder="시작한 날짜를 입력하세요. ex) 2***.**.**"
+        />
+        <img src="/assets/icons/range.svg" />
+        <S.Input
+          type="date"
+          placeholder="완료한 날짜를 입력하세요. ex) 2***.**.**"
+        />
+      </S.InputContainer>
+    </S.InputBox>
   ),
 };
-
 const ProjectInputItem = ({
   type,
   isBottom = false,
@@ -67,7 +71,6 @@ const ProjectInputItem = ({
         </S.ButtonWrapper>
       </S.HeaderContainer>
       {ITEM_SCRIPT[type]}
-      {isBottom && <S.BottomWrapper></S.BottomWrapper>}
     </div>
   );
 };
