@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { stepState } from '@/recoil/states';
 import DefaultSetting from '@/shared/components/DefaultSetting';
 import Editor from '@/shared/components/Editor';
@@ -24,7 +25,12 @@ const EditorBox = styled.div`
 
 const EditorPage = () => {
   const [step, setStep] = useRecoilState(stepState);
+  const [isSsr, setIsSsr] = useState(false);
+  useEffect(() => {
+    setIsSsr(true);
+  }, []);
 
+  if (!isSsr) return <></>;
   return (
     <EditorPageContainer>
       <EditorBox>
