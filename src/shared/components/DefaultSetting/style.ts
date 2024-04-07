@@ -19,7 +19,7 @@ export const Info = styled.p`
   line-height: 2.4rem;
 `;
 
-export const hightlightText = styled.span`
+export const HightlightText = styled.span`
   color: ${(props) => props.theme.colors.blue};
 `;
 
