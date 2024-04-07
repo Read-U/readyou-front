@@ -1,15 +1,17 @@
 import styled from 'styled-components';
 
-export const RelativeBox = styled.div`
+export const Wrap = styled.div`
   display: flex;
   gap: 1.6rem;
-  position: relative;
   padding: 1.6rem;
-  width: 82.9rem;
+  width: 100%;
   height: 8.4rem;
-
   background: ${(props) => props.theme.colors.lightgray};
   border-radius: 0 0 1rem 1rem;
+`;
+
+export const InputWrapper = styled.div`
+  width: 100%;
 `;
 
 export const Input = styled.input`
@@ -20,7 +22,7 @@ export const Input = styled.input`
   border: none;
   appearance: none;
 
-  width: 71.3rem;
+  width: 100%;
   height: 5.2rem;
 
   background: #ffffff;
@@ -36,19 +38,36 @@ export const Input = styled.input`
   }
 `;
 
+export const ReletiveBox = styled.div`
+  width: 100%;
+  position: relative;
+`;
+
 export const MatchList = styled.ul`
   position: absolute;
   top: 5.45rem;
-  border-radius: 10rem;
+  width: 100%;
+  z-index: 999;
 `;
 
 export const MatchItem = styled.li`
+  cursor: pointer;
   font-size: 1.6rem;
   padding: 1.6rem 2.4rem 1.6rem 2rem;
   color: ${(props) => props.theme.colors.blue};
   background: #ffffff;
-  width: 71.3rem;
-  border-bottom: ${(props) => `1px solid ${props.theme.colors.darkgray}`};
+  width: 100%;
+  border: ${(props) => `1px solid ${props.theme.colors.darkgray}`};
+  border-top: none;
+
+  &:nth-of-type(1) {
+    border-top: ${(props) => `1px solid ${props.theme.colors.darkgray}`};
+    border-radius: 0.7rem 0.7rem 0 0;
+  }
+
+  &:last-of-type {
+    border-radius: 0 0 0.7rem 0.7rem;
+  }
 
   &:hover {
     background-color: ${(props) => props.theme.colors.lightgray};
@@ -56,7 +75,7 @@ export const MatchItem = styled.li`
 `;
 
 export const BottomWrapper = styled.div`
-  width: 82.9rem;
+  width: 100%;
   height: auto;
   background: ${(props) => props.theme.colors.lightgray};
   border-radius: 0 0 1rem 1rem;

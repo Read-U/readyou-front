@@ -1,43 +1,70 @@
-import React, { useState } from 'react';
-import ReactMarkdown from 'react-markdown';
-import rehypeHighlight from 'rehype-highlight';
-import rehypeRaw from 'rehype-raw';
-import 'highlight.js/styles/github.css';
+import React, { useEffect, useState } from 'react';
 import * as S from './style';
 import Toggle from '../common/Toggle';
+import 'github-markdown-css';
+import MarkdownPreview from './Markdown';
+import { useRecoilState } from 'recoil';
+import { markdownState } from '@/recoil/states';
+import CopyButton from './CopyButton';
 
 const Preview = () => {
-  const [markdown, setMd] = useState<string | undefined>(`
-# 마크다운 테스트  
-## 마크다운 테스트  
-### 마크다운 테스트  
-#### 마크다운 테스트  
-##### 마크다운 테스트  
-###### 마크다운 테스트  
-<table>
-    <tr>
-        <td height="140px" align="center"> <a href="https://github.com/swy0123">
-        <img src="https://avatars.githubusercontent.com/swy0123" /> <br><br> 🐲 이시영 <br>(Front-End) </a> <br></td>
-        <td height="140px" align="center"> <a href="https://github.com/swy0123">
-        <img src="https://avatars.githubusercontent.com/swy0123" /> <br><br> 🐲 이시영 <br>(Front-End) </a> <br></td>
-        <td height="140px" align="center"> <a href="https://github.com/swy0123">
-        <img src="https://avatars.githubusercontent.com/swy0123" /> <br><br> 🐲 이시영 <br>(Front-End) </a> <br></td>
-        <td height="140px" align="center"> <a href="https://github.com/swy0123">
-        <img src="https://avatars.githubusercontent.com/swy0123" /> <br><br> 🐲 이시영 <br>(Front-End) </a> <br></td>
-        <td height="140px" align="center"> <a href="https://github.com/swy0123">
-        <img src="https://avatars.githubusercontent.com/swy0123" /> <br><br> 🐲 이시영 <br>(Front-End) </a> <br></td>
-        <td height="140px" align="center"> <a href="https://github.com/swy0123">
-        <img src="https://avatars.githubusercontent.com/swy0123" /> <br><br> 🐲 이시영 <br>(Front-End) </a> <br></td>
-    </tr>
-</table>
-
-#### 마크다운 테스트   
-`);
-
   const [lightMode, setLightMode] = useState(true);
   const handleToggle = () => {
-    setLightMode(prev => !prev)
+    setLightMode((prev) => !prev);
+  };
+
+  const [markdown, setMarkdown] = useRecoilState(markdownState);
+  useEffect(() => {
+    setMarkdown(
+      `
+
+<br>
+
+1. hhh
+2. 888
+## Link   
+### General link
+- [🚗 Visit EASYME.md's Repo](https://github.com/EASYME-md/client)   
+- [🙋‍♂️ Visit ONE:A's Github](https://github.com/onealog)
+
+### Image link
+![onealog](/assets/readme/easyme.png)   
+   
+<br>   
+   
+## Code Block   
+### Code inline
+- \`console.log('Hello EASYME.md!');\`   
+   
+### Code block
+\`\`\`js
+function makeDeveloper(name, language) {
+  if (name === 'ONE:A' && language === 'JavaScript') {
+    return 'perfect!';
   }
+
+  return false;
+}
+
+makeDeveloper('ONE:A', 'JavaScript');
+\`\`\`
+
+<br>   
+   
+## Table   
+
+
+| title1 | title2 | title3 |
+| --- | --- | --- |
+| 1 | 2 | 3 |
+| 4 | 5 | 6 |
+| 7 | 8 | 9 |
+
+
+# 🖥 **프로젝트 개요**
+`,
+    );
+  });
 
   return (
     <S.Box>
@@ -46,17 +73,16 @@ const Preview = () => {
           <S.HeaderWrapper>
             <S.HeaderTitle>프리뷰</S.HeaderTitle>
             <S.ToggleWrapper>
-              다크/라이트 모드<Toggle lightMode={lightMode} handleToggle={handleToggle}></Toggle>
+              다크/라이트 모드
+              <Toggle
+                lightMode={lightMode}
+                handleToggle={handleToggle}
+              ></Toggle>
             </S.ToggleWrapper>
           </S.HeaderWrapper>
-
-          <S.CopyButton>전체 복사</S.CopyButton>
+          <CopyButton />
         </S.Header>
-        <S.PreviewContainer $lightMode={lightMode}>
-          <ReactMarkdown rehypePlugins={[rehypeHighlight, rehypeRaw]}>
-            {markdown}
-          </ReactMarkdown>
-        </S.PreviewContainer>
+        <MarkdownPreview lightMode={lightMode}></MarkdownPreview>
       </S.Inner>
     </S.Box>
   );
