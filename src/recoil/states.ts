@@ -1,6 +1,7 @@
 import { atom } from 'recoil';
 import { recoilPersist } from 'recoil-persist';
 import { DEFAULT_CHECKED_ITEM } from '@/shared/constants/editor';
+import { DefaultItemProps } from '@/shared/types/markdown';
 
 const sessionStorage =
   typeof window !== 'undefined' ? window.sessionStorage : undefined;
@@ -15,7 +16,7 @@ export const stepState = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
-export const defaultSettings = atom({
+export const defaultSettings = atom<DefaultItemProps[]>({
   key: 'defaultSettings',
   default: DEFAULT_CHECKED_ITEM,
   effects_UNSTABLE: [persistAtom],
