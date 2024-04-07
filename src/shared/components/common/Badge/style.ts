@@ -13,8 +13,8 @@ export const Badge = styled.div<BadgeProps>`
   padding: 0.25rem 0.5rem;
   color: ${(props) =>
     props.isRequired
-      ? props.theme.colors.lightnavy
-      : props.theme.colors.lightgray};
+      ? props.theme.colors.lightgray
+      : props.theme.colors.lightnavy};
   background-color: ${(props) =>
     props.isRequired ? props.theme.colors.navy : props.theme.colors.gray};
 `;
