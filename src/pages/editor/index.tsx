@@ -5,6 +5,7 @@ import Editor from '@/shared/components/Editor';
 import Preview from '@/shared/components/Preview';
 import { useRecoilState } from 'recoil';
 import { styled } from 'styled-components';
+import Head from 'next/head';
 
 const EditorPageContainer = styled.div`
   display: flex;
@@ -32,13 +33,15 @@ const EditorPage = () => {
 
   if (!isSsr) return <></>;
   return (
-    <EditorPageContainer>
-      <EditorBox>
-        {step === 0 && <DefaultSetting />}
-        {step === 1 && <Editor />}
-      </EditorBox>
-      <Preview />
-    </EditorPageContainer>
+    <>
+      <EditorPageContainer>
+        <EditorBox>
+          {step === 0 && <DefaultSetting />}
+          {step === 1 && <Editor />}
+        </EditorBox>
+        <Preview />
+      </EditorPageContainer>
+    </>
   );
 };
 
