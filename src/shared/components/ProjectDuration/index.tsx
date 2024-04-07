@@ -23,6 +23,16 @@ const ProjectDuration = () => {
     end: '',
   });
 
+  useEffect(() => {
+    const newMarkdown = markdown.map((item: ItemProps) => {
+      if (item.name === 'period' && item.detail) {
+        const dateRegex = /\b\d{4}.\d{2}.\d{2}\b/g;
+        const dates = item.detail.match(dateRegex);
+        if (dates !== null) setDuration({ start: dates[0], end: dates[1] });
+      }
+    });
+  }, []);
+
   const handleChangeDuration = (
     e: ChangeEvent<HTMLInputElement>,
     type: DURATION_TYPE,
@@ -61,12 +71,14 @@ const ProjectDuration = () => {
           type="date"
           placeholder="시작한 날짜를 입력하세요. ex) 2***.**.**"
           onChange={(e) => handleChangeDuration(e, DURATION.START)}
+          value={duration.start && duration.start.split('.').join('-')}
         />
         <img src="/assets/icons/range.svg" />
         <S.Input
           type="date"
           placeholder="완료한 날짜를 입력하세요. ex) 2***.**.**"
           onChange={(e) => handleChangeDuration(e, DURATION.END)}
+          value={duration.end && duration.end.split('.').join('-')}
         />
       </S.InputContainer>
     </S.InputBox>
