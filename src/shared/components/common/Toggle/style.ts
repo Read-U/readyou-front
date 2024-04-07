@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 export const ToggleWrapper = styled.div`
   display: flex;
   z-index: 0;
-  margin-left: 1rem;
+  margin-left: 0.8rem;
 `;
 
 export const CheckBox = styled.input`
