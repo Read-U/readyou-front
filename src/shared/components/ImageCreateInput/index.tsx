@@ -9,6 +9,12 @@ const ImageCreateInput = () => {
     const { files } = event.target;
     if (files && files.length > 0) {
       const fileName = files[0].name;
+
+      /** 이미지 파일 유효성 검사 */
+      const extension = fileName.split('.').pop();
+      if (!extension || !['jpg', 'png', 'jpeg'].includes(extension))
+        return alert('이미지 타입이 아닙니다.');
+
       setImageList((prevImageList) => [...prevImageList, fileName]);
     }
   };
