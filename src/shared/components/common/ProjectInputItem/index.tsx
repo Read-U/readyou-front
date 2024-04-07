@@ -1,7 +1,6 @@
 import React from 'react';
 import * as S from './style';
 import { ProjectInputItemProps } from '@/shared/types/projectInputItem';
-import Button from '../Button';
 import UploadVideoInput from '../../UploadVideoInput';
 import TechStackInput from '../../TechStackInput';
 import TeamTableInput from '../../TeamTableInput';
@@ -52,10 +51,7 @@ const ITEM_SCRIPT: ItemScript = {
     </S.InputBox>
   ),
 };
-const ProjectInputItem = ({
-  type,
-  isBottom = false,
-}: ProjectInputItemProps) => {
+const ProjectInputItem = ({ type }: ProjectInputItemProps) => {
   return (
     <div>
       <S.HeaderContainer>

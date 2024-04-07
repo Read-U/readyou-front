@@ -21,7 +21,7 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
     setUploadList(newUploadItem);
   };
 
-  const handleUploadItemAdd = () => {
+  const handleUploadItemAdd = async () => {
     /* 
     백 api 요청 후 에러가 나오면 토스트 사용 예정
     toast({
