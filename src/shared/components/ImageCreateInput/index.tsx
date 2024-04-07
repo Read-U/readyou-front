@@ -3,14 +3,35 @@ import * as S from './style';
 import UploadItem from '../common/UploadItem';
 import axios from 'axios';
 
-const ImageCreateInput = () => {
-  const [imageNameList, setImageNameList] = useState<string[]>([]);
-  const [ImageLinkList, setImageLinkList] = useState<string[]>([]);
+interface ImageLink {
+  link: string;
+  width: string;
+  height: string;
+}
 
-  /** test */
+const ImageCreateInput = () => {
+  const [width, setWidth] = useState<string>('');
+  const [height, setHeight] = useState<string>('');
+
+  const [imageNameList, setImageNameList] = useState<string[]>([]);
+  const [imageLinkList, setImageLinkList] = useState<ImageLink[]>([]);
+  const [imageMarkdown, setImageMarkdown] = useState<string>('');
+
   useEffect(() => {
-    console.log(ImageLinkList);
-  }, [ImageLinkList]);
+    const markdown = imageLinkList
+      .map(
+        (image) =>
+          `<img src=${image.link} width="${image.width}" height="${image.height}" />`,
+      )
+      .join('\n');
+
+    console.log(markdown);
+    setImageMarkdown(markdown);
+
+    /** 초기화 */
+    setWidth('');
+    setHeight('');
+  }, [imageLinkList]);
 
   /** 이미지 -> 링크 변환 API */
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +57,7 @@ const ImageCreateInput = () => {
           const imageLink = response.data.imageLink;
           setImageLinkList((prevImageLinkList) => [
             ...prevImageLinkList,
-            imageLink,
+            { link: imageLink, width, height },
           ]);
         })
         .catch((error) => {
@@ -45,6 +66,7 @@ const ImageCreateInput = () => {
     }
   };
 
+  /** 이미지 추가 */
   const handleAddImage = (event: ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target;
     if (files && files.length > 0) {
@@ -61,18 +83,32 @@ const ImageCreateInput = () => {
     }
   };
 
+  /** 이미지 삭제 */
   const handleItemDelete = (index: number) => {
     return () => {
-      const newList = imageNameList.filter((_, i) => i !== index);
-      setImageNameList(newList);
+      const newNameList = imageNameList.filter((_, i) => i !== index);
+      setImageNameList(newNameList);
+
+      const newLinkList = imageLinkList.filter((_, i) => i !== index);
+      setImageLinkList(newLinkList);
     };
   };
 
   return (
     <>
       <S.RelativeBox>
-        <S.Input type="text" placeholder="width를 입력하세요. (% 가능)" />
-        <S.Input type="text" placeholder="height를 입력하세요. (% 가능)" />
+        <S.Input
+          type="text"
+          value={width}
+          onChange={(e) => setWidth(e.target.value)}
+          placeholder="width를 입력하세요. (% 가능)"
+        />
+        <S.Input
+          type="text"
+          value={height}
+          onChange={(e) => setHeight(e.target.value)}
+          placeholder="height를 입력하세요. (% 가능)"
+        />
         <S.FileButton htmlFor="input-file">추가</S.FileButton>
         <S.FileHiddenButton
           type="file"
