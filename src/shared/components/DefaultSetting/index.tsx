@@ -8,6 +8,7 @@ import {
 } from '@/shared/constants/editor';
 import { useRecoilState } from 'recoil';
 import { stepState } from '@/recoil/states';
+import Button from '../common/Button';
 
 interface DefaultSettingProps {
   handleNextStep: () => void;
@@ -29,9 +30,9 @@ const DefaultSetting = () => {
             버튼을 눌러주세요.
           </S.Info>
         </div>
-        <S.SettingButton onClick={() => setStep(step + 1)}>
-          설정
-        </S.SettingButton>
+        <Button type="complete" onClick={() => setStep(step + 1)}>
+          완료
+        </Button>
       </S.TemplateHeader>
       {DEFAULT_ITEM_LIST.map((markdownItem, index) => (
         <S.MarkdownTemplateItem
@@ -49,9 +50,7 @@ const DefaultSetting = () => {
           ) : (
             <Checkbox
               key={markdownItem.id}
-              defaultChecked={checkedList.some(
-                (item) => item.id === markdownItem.id,
-              )}
+              checked={checkedList.some((item) => item.id === markdownItem.id)}
             />
           )}
           <Badge isRequired={index === 0} />

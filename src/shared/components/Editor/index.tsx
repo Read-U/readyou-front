@@ -49,10 +49,17 @@ const Editor = () => {
     setMarkdown(_items);
   };
 
+  const handleItemDelete = (type: string) => {
+    const filterResult = itemList.filter((list) => list.type !== type);
+    setItemList(filterResult);
+  };
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <S.Inner>
-        <Button type="back" onClick={() => setStep(step - 1)} />
+        <Button type="back" onClick={() => setStep(step - 1)}>
+          뒤로가기
+        </Button>
         <Droppable droppableId="editor">
           {(provided) => (
             <S.ItemContainer
@@ -67,7 +74,10 @@ const Editor = () => {
                       {...provided.dragHandleProps}
                       {...provided.draggableProps}
                     >
-                      <ProjectInputItem type={item.type} />
+                      <ProjectInputItem
+                        handleItemDelete={handleItemDelete}
+                        type={item.type}
+                      />
                     </div>
                   )}
                 </Draggable>

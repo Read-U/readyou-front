@@ -1,20 +1,15 @@
 import * as S from './style';
 
 interface ButtonType {
-  type?: 'back' | 'add' |'copy';
-  onClick?: () => void; // Added this line
+  type?: 'back' | 'add' | 'copy' | 'complete';
+  onClick?: () => void;
+  children: React.ReactNode;
 }
 
-const LABEL_TYPE = {
-  add: '추가',
-  back: '뒤로가기',
-  copy: '전체 복사',
-};
-
-const Button = ({ type = 'add', onClick }: ButtonType) => {
+const Button = ({ type = 'add', onClick, children }: ButtonType) => {
   return (
     <S.Button type={type} onClick={onClick}>
-      {LABEL_TYPE[type]}
+      {children}
     </S.Button>
   );
 };

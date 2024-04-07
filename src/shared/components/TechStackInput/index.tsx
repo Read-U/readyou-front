@@ -47,10 +47,10 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
   useEffect(() => {
     const matchDataList = value
       ? Object.keys(TECH_STACK_DATA).filter((target) =>
-          target.includes(value.toLowerCase()),
+          target.startsWith(value.toLowerCase()),
         )
       : [];
-    setMatchList(matchDataList);
+    setMatchList(matchDataList.slice(0, 4));
   }, [value]);
 
   return (
@@ -73,7 +73,6 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
             </S.MatchList>
           )}
         </S.ReletiveBox>
-        <Button />
       </S.Wrap>
 
       {uploadList.length !== 0 && (

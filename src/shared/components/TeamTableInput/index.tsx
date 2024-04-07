@@ -90,7 +90,7 @@ const TeamTableInput = () => {
           onChange={(e) => setRole(e.target.value)}
           placeholder="팀원의 직무를 입력하세요."
         />
-        <Button onClick={handleTeamMemberCreate} />
+        <Button onClick={handleTeamMemberCreate}>추가</Button>
       </S.RelativeBox>
       {teamMembers.length > 0 && (
         <S.BottomWrapper>

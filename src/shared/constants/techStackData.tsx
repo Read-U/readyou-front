@@ -5,6 +5,9 @@ interface TechStackDataType {
 }
 
 const TECH_STACK_DATA: TechStackDataType = {
+  react: (
+    <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
+  ),
   html: (
     <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
   ),
@@ -43,6 +46,9 @@ const TECH_STACK_DATA: TechStackDataType = {
   ),
   'next.js': (
     <img src="https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white" />
+  ),
+  'nest.js': (
+    <img src="https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white" />
   ),
   'react-query': (
     <img src="https://img.shields.io/badge/-React%20Query-FF4154?style=for-the-badge&logo=react%20query&logoColor=white" />
