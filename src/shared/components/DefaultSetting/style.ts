@@ -7,6 +7,27 @@ export const MarkdownTemplateList = styled.ul`
   overflow-y: auto;
 `;
 
+export const TemplateHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.6rem;
+`;
+
+export const Info = styled.p`
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2.4rem;
+`;
+
+export const hightlightText = styled.span`
+  color: ${(props) => props.theme.colors.blue};
+`;
+
+export const SettingButton = styled.button`
+  color: ${(props) => props.theme.colors.lightblue};
+  background: ${(props) => props.theme.colors.blue};
+`;
+
 export const MarkdownTemplateItem = styled.li<{
   checked: boolean;
   type: DefaultItemProps['type'];

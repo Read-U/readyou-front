@@ -6,25 +6,45 @@ import {
   DEFAULT_CHECKED_ITEM,
   DEFAULT_ITEM_LIST,
 } from '@/shared/constants/editor';
+import { useRecoilState } from 'recoil';
+import { stepState } from '@/recoil/states';
+
+interface DefaultSettingProps {
+  handleNextStep: () => void;
+}
 
 const DefaultSetting = () => {
   const { checkedList, handleCheckedElement } =
     useCheckbox(DEFAULT_CHECKED_ITEM);
+  const [step, setStep] = useRecoilState(stepState);
 
   return (
     <S.MarkdownTemplateList>
-      {DEFAULT_ITEM_LIST.map((markdownItem) => (
+      <S.TemplateHeader>
+        <div>
+          <S.Info>원하는 항목들만 골라 자신만의 README를 쓸 수 있어요!</S.Info>
+          <S.Info>
+            전부 선택했다면 옆에
+            <S.hightlightText> 설정 </S.hightlightText>
+            버튼을 눌러주세요.
+          </S.Info>
+        </div>
+        <S.SettingButton onClick={() => setStep(step + 1)}>
+          설정
+        </S.SettingButton>
+      </S.TemplateHeader>
+      {DEFAULT_ITEM_LIST.map((markdownItem, index) => (
         <S.MarkdownTemplateItem
           key={markdownItem.id}
-          type={markdownItem.type}
+          type={index === 0 ? 'required' : 'optional'}
           checked={checkedList.some((item) => item.id === markdownItem.id)}
           onClick={() => {
-            if (markdownItem.type !== 'required') {
+            if (index !== 0) {
               handleCheckedElement(markdownItem);
             }
           }}
         >
-          {markdownItem.type === 'required' ? (
+          {index === 0 ? (
             <S.EmptyBox />
           ) : (
             <Checkbox
@@ -34,8 +54,8 @@ const DefaultSetting = () => {
               )}
             />
           )}
-          <Badge type={markdownItem.type} />
-          <S.Title>{markdownItem.name}</S.Title>
+          <Badge isRequired={index === 0} />
+          <S.Title>{markdownItem.type}</S.Title>
         </S.MarkdownTemplateItem>
       ))}
     </S.MarkdownTemplateList>
