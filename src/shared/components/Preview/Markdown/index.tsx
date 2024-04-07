@@ -5,13 +5,15 @@ import rehypeRaw from 'rehype-raw';
 import * as S from './style';
 import 'github-markdown-css';
 import remarkGfm from 'remark-gfm';
+import { useRecoilValue } from 'recoil';
+import { markdownState } from '@/recoil/states';
 
 interface Markdown {
-  markdown: string;
   lightMode: boolean;
 }
 
-const MarkdownPreview = ({ lightMode, markdown }: Markdown) => {
+const MarkdownPreview = ({ lightMode }: Markdown) => {
+  const markdown = useRecoilValue(markdownState);
   return (
     <S.PreviewContainer $lightMode={lightMode}>
       <ReactMarkdown
