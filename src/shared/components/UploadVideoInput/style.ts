@@ -37,7 +37,7 @@ export const Input = styled.input`
 `;
 
 export const BottomWrapper = styled.div`
-  width: 82.9rem;
+  width: 100%;
   height: auto;
   background: ${(props) => props.theme.colors.lightgray};
   border-radius: 0 0 1rem 1rem;
