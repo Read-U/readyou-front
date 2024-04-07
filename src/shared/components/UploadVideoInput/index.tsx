@@ -9,10 +9,16 @@ import { projectItems } from '@/recoil/states';
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 interface InputProps extends React.HTMLProps<HTMLInputElement> {}
+interface UploadListType {
+  link: string;
+  markdown: string;
+}
+
+const regex = /\/embed\/([\w-]{11})/;
 
 const UploadVideoInput = ({ type, placeholder }: InputProps) => {
   const [value, setValue] = useState('');
-  const [uploadList, setUploadList] = useState<string[]>([]);
+  const [uploadList, setUploadList] = useState<UploadListType[]>([]);
   const [markdown, setMarkdown] = useRecoilState(projectItems);
   const toast = useToast();
 
@@ -21,7 +27,16 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
     setValue(value);
   };
 
-  const handleUploadItemDelete = (index: number) => {
+  // 항목 삭제
+  const handleUploadItemDelete = (index: number, link: string) => {
+    const newMarkdown = markdown.map((item) => {
+      if (item.name === 'video') {
+        const newData = item.detail.replace(link, '');
+        return { ...item, detail: newData };
+      }
+      return item;
+    });
+    setMarkdown(newMarkdown);
     const newUploadItem = uploadList.filter((_, i) => i !== index);
     setUploadList(newUploadItem);
   };
@@ -44,6 +59,7 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
     }
   };
 
+  // 항목 추가
   const handleUploadItemAdd = async () => {
     const validationResult = await validationLink(value);
     if (!validationResult) {
@@ -55,9 +71,12 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
       }
       return item;
     });
-    console.log(validationResult);
+
     setMarkdown(newMarkdown);
-    setUploadList((prevList) => [...prevList, value]);
+    setUploadList((prevList) => [
+      ...prevList,
+      { link: value, markdown: validationResult },
+    ]);
     setValue('');
   };
 
@@ -72,17 +91,37 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
         />
         <Button onClick={handleUploadItemAdd}>추가</Button>
       </S.RelativeBox>
-      {uploadList.length !== 0 && (
+      <S.BottomWrapper>
+        {markdown.map((item) => {
+          if (item.name === 'video') {
+            const slice = item.detail.split('</iframe>');
+            slice.pop();
+            return slice?.map((list, idx) => {
+              const match = list.match(regex);
+              if (match) {
+                return (
+                  <UploadItem
+                    onClick={() => handleUploadItemDelete(idx, list)}
+                    key={idx}
+                    text={`https://www.youtube.com/watch?v=${match[1]}`}
+                  />
+                );
+              }
+            });
+          }
+        })}
+      </S.BottomWrapper>
+      {/* {uploadList.length > 0 && (
         <S.BottomWrapper>
           {uploadList?.map((list, idx) => (
             <UploadItem
-              onClick={() => handleUploadItemDelete(idx)}
+              onClick={() => handleUploadItemDelete(idx, list.markdown)}
               key={idx}
-              text={list}
+              text={list.link}
             />
           ))}
         </S.BottomWrapper>
-      )}
+      )} */}
     </>
   );
 };

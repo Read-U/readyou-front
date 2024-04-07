@@ -22,9 +22,8 @@ const CopyButton = () => {
     if (!text.length) {
       SetIsWork(false);
     } else SetIsWork(true);
-    console.log(text);
+    // console.log(text);
   }, [markdown]);
-
 
   const toast = useToast();
 
