@@ -1,8 +1,6 @@
 import { styled } from 'styled-components';
 
 export const Box = styled.div`
-  flex: 1;
-  max-width: 50%; 
   height: 97.2rem;
 
   background: ${(props) => props.theme.colors.lightgray};
@@ -24,7 +22,7 @@ export const Inner = styled.div`
 export const ItemContainer = styled.div`
   height: 83rem;
   margin: 2rem 0;
- padding: 0 2rem 1.6rem 0;
+  padding: 0 2rem 1.6rem 0;
 
   display: flex;
   flex-direction: column;
