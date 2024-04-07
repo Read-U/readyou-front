@@ -6,14 +6,14 @@ import * as S from './style';
 import 'github-markdown-css';
 import remarkGfm from 'remark-gfm';
 import { useRecoilValue } from 'recoil';
-import { markdownState } from '@/recoil/states';
+import { defaultSettings } from '@/recoil/states';
 
 interface Markdown {
   lightMode: boolean;
 }
 
 const MarkdownPreview = ({ lightMode }: Markdown) => {
-  const markdown = useRecoilValue(markdownState);
+  const markdown = useRecoilValue(defaultSettings);
   const newData = markdown.map((v) => v.detail).join('\n');
 
   return (

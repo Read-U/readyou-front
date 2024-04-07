@@ -17,7 +17,9 @@ export const DEFAULT_CHECKED_ITEM: DefaultItemProps[] = [
   {
     id: '1',
     type: '프로젝트 제목',
+    name: 'title',
+    detail: '',
   },
-  { id: '4', type: '프로젝트 설명' },
-  { id: '5', type: '팀원 테이블' },
+  { id: '4', type: '프로젝트 설명', name: 'content', detail: '' },
+  { id: '5', type: '팀원 테이블', name: 'team', detail: '' },
 ];

@@ -9,10 +9,10 @@ import Button from '../common/Button';
 import ProjectInputItem from '../common/ProjectInputItem';
 import * as S from './style';
 import { useRecoilState } from 'recoil';
-import { markdownState, stepState } from '@/recoil/states';
+import { defaultSettings, stepState } from '@/recoil/states';
 
 const Editor = () => {
-  const [markdown, setMarkdown] = useRecoilState(markdownState);
+  const [markdown, setMarkdown] = useRecoilState(defaultSettings);
   const [enabled, setEnabled] = useState(false);
   const [itemList, setItemList] = useState(markdown);
   const [step, setStep] = useRecoilState(stepState);

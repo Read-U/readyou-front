@@ -3,10 +3,7 @@ import * as S from './style';
 import Toggle from '../common/Toggle';
 import 'github-markdown-css';
 import MarkdownPreview from './Markdown';
-import { useRecoilState } from 'recoil';
-import { markdownState } from '@/recoil/states';
 import CopyButton from './CopyButton';
-import { SAMPLE_MARKDOWN } from '@/shared/constants/markdown';
 
 const Preview = () => {
   const [lightMode, setLightMode] = useState(true);
@@ -14,6 +11,7 @@ const Preview = () => {
     setLightMode((prev) => !prev);
   };
 
+  // TODO
   // const [markdown, setMarkdown] = useRecoilState(markdownState);
   // useEffect(() => {
   //   setMarkdown(SAMPLE_MARKDOWN);

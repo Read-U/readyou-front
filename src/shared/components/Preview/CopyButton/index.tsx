@@ -1,18 +1,20 @@
 import React from 'react';
 import 'github-markdown-css';
 import { useRecoilValue } from 'recoil';
-import { markdownState } from '@/recoil/states';
+import { defaultSettings } from '@/recoil/states';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import useToast from '@/shared/hooks/useToast';
 import Button from '../../common/Button';
 
 const CopyButton = () => {
-  const markdown = useRecoilValue(markdownState);
+  const markdown = useRecoilValue(defaultSettings);
+  const newData = markdown.map((v) => v.detail).join('\n');
+
   const toast = useToast();
 
   return (
     <CopyToClipboard
-      text={markdown}
+      text={newData}
       onCopy={() =>
         toast({
           message: '전체 복사되었어요!',
