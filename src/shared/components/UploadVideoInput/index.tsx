@@ -61,6 +61,13 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
 
   // 항목 추가
   const handleUploadItemAdd = async () => {
+    if (!value) {
+      toast({
+        message: '링크를 입력해 주세요!',
+        status: 'error',
+      });
+      return;
+    }
     const validationResult = await validationLink(value);
     if (!validationResult) {
       return;
@@ -89,7 +96,9 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
           type={type}
           placeholder={placeholder}
         />
-        <Button onClick={handleUploadItemAdd}>추가</Button>
+        <Button disabled={!value} onClick={handleUploadItemAdd}>
+          추가
+        </Button>
       </S.RelativeBox>
       <S.BottomWrapper>
         {markdown.map((item) => {
