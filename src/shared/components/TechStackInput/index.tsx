@@ -4,10 +4,7 @@ import TECH_STACK_DATA from '@/shared/constants/techStackData';
 import UploadItem from '../common/UploadItem';
 import Button from '../common/Button';
 
-interface InputProps {
-  type: string;
-  placeholder: string;
-}
+interface InputProps extends React.HTMLProps<HTMLInputElement> {}
 
 const TechStackInput = ({ type, placeholder }: InputProps) => {
   const [value, setValue] = useState('');
