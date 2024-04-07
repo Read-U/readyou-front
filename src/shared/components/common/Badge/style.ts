@@ -1,7 +1,10 @@
-import { BadgeProps } from '@/shared/components/common/Badge';
 import styled from 'styled-components';
 
-export const Badge = styled.div<BadgeProps>`
+interface BadgeStyleType {
+  $isrequired?: boolean;
+}
+
+export const Badge = styled.div<BadgeStyleType>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,9 +15,9 @@ export const Badge = styled.div<BadgeProps>`
   font-size: 1.6rem;
   padding: 0.25rem 0.5rem;
   color: ${(props) =>
-    props.isRequired
-      ? props.theme.colors.lightnavy
-      : props.theme.colors.lightgray};
+    props.$isrequired
+      ? props.theme.colors.lightgray
+      : props.theme.colors.lightnavy};
   background-color: ${(props) =>
-    props.isRequired ? props.theme.colors.navy : props.theme.colors.gray};
+    props.$isrequired ? props.theme.colors.navy : props.theme.colors.gray};
 `;

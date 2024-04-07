@@ -49,9 +49,7 @@ const DefaultSetting = () => {
           ) : (
             <Checkbox
               key={markdownItem.id}
-              defaultChecked={checkedList.some(
-                (item) => item.id === markdownItem.id,
-              )}
+              checked={checkedList.some((item) => item.id === markdownItem.id)}
             />
           )}
           <Badge isRequired={index === 0} />

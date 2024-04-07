@@ -5,7 +5,7 @@ export const RelativeBox = styled.div`
   gap: 1.6rem;
   position: relative;
   padding: 1.6rem;
-  width: 82.9rem;
+  width: 100%;
   height: 8.4rem;
 
   background: ${(props) => props.theme.colors.lightgray};
@@ -20,7 +20,7 @@ export const Input = styled.input`
   border: none;
   appearance: none;
 
-  width: 71.3rem;
+  width: 100%;
   height: 5.2rem;
 
   background: #ffffff;
@@ -33,25 +33,6 @@ export const Input = styled.input`
     font-weight: 400;
     font-size: 1.6rem;
     color: ${(props) => props.theme.colors.gray};
-  }
-`;
-
-export const MatchList = styled.ul`
-  position: absolute;
-  top: 5.45rem;
-  border-radius: 10rem;
-`;
-
-export const MatchItem = styled.li`
-  font-size: 1.6rem;
-  padding: 1.6rem 2.4rem 1.6rem 2rem;
-  color: ${(props) => props.theme.colors.blue};
-  background: #ffffff;
-  width: 71.3rem;
-  border-bottom: ${(props) => `1px solid ${props.theme.colors.darkgray}`};
-
-  &:hover {
-    background-color: ${(props) => props.theme.colors.lightgray};
   }
 `;
 

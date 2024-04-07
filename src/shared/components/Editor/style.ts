@@ -13,13 +13,13 @@ export const Inner = styled.div`
 export const ItemContainer = styled.div`
   height: 83rem;
   margin: 2rem 0;
-  padding: 0 2rem 1.6rem 0;
+  padding: 0 1.2rem 1.6rem 0;
 
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
 
-  overflow-y: scroll;
+  overflow-y: auto;
 
   &::-webkit-scrollbar {
     width: 1.3rem;
