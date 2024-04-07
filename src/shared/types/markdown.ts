@@ -1,5 +1,4 @@
 export interface DefaultItemProps {
-  id: number;
-  name: string;
-  type: 'optional' | 'required';
+  id: string;
+  type: string;
 }
