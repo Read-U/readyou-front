@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import * as S from './style';
 import 'github-markdown-css';
 import { useRecoilValue } from 'recoil';
 import { markdownState } from '@/recoil/states';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import useToast from '@/shared/hooks/useToast';
+import Button from '../../common/Button';
 const CopyButton = () => {
   const markdown = useRecoilValue(markdownState);
   const toast = useToast();
@@ -19,7 +19,7 @@ const CopyButton = () => {
         })
       }
     >
-      <S.CopyButton>전체 복사</S.CopyButton>
+      <Button type='copy'/>
     </CopyToClipboard>
   );
 };

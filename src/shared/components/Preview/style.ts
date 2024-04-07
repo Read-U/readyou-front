@@ -43,19 +43,19 @@ export const HeaderWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-left: 1rem;
-  margin-top: 1rem;
+  gap: 0.8rem;
   font-size: 1.9rem;
 `;
 
 export const HeaderTitle = styled.div`
   position: relative;
   font-weight: bold;
+  font-size: 1.6rem;
 `;
 export const ToggleWrapper = styled.div`
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 1.6rem;
 `;

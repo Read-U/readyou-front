@@ -5,7 +5,7 @@ export const Button = styled.button<{ type: string }>`
   border: none;
   outline: none;
   background: ${(props) =>
-    props.type === 'back'
+    props.type === 'back' || props.type === 'copy'
       ? props.theme.colors.blue
       : props.theme.colors.lightblue};
   border-radius: 1rem;
@@ -17,7 +17,7 @@ export const Button = styled.button<{ type: string }>`
   font-size: 1.6rem;
 
   color: ${(props) =>
-    props.type === 'back'
+    props.type === 'back' || props.type === 'copy'
       ? props.theme.colors.lightgray
       : props.theme.colors.blue};
 `;
