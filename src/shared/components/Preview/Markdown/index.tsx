@@ -7,6 +7,7 @@ import 'github-markdown-css';
 import remarkGfm from 'remark-gfm';
 import { useRecoilValue } from 'recoil';
 import { defaultSettings } from '@/recoil/states';
+import { DefaultItemProps } from '@/shared/types/markdown';
 
 interface Markdown {
   lightMode: boolean;
@@ -14,7 +15,7 @@ interface Markdown {
 
 const MarkdownPreview = ({ lightMode }: Markdown) => {
   const markdown = useRecoilValue(defaultSettings);
-  const newData = markdown.map((v) => v.detail).join('\n');
+  const newData = markdown.map((v: DefaultItemProps) => v.detail).join('\n');
 
   return (
     <S.PreviewContainer $lightMode={lightMode}>
