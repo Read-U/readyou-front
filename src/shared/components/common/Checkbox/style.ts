@@ -17,7 +17,7 @@ export const CheckboxInput = styled.input`
 
   &:checked {
     background-image: url('/images/check.jpg');
-    background-size: 80%;
+    background-size: 75%;
     background-repeat: no-repeat;
     background-position: center;
   }

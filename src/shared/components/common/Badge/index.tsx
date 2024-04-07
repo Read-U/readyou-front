@@ -1,12 +1,12 @@
 import * as S from './style';
 
 export interface BadgeProps {
-  type: 'required' | 'optional';
+  isRequired?: boolean;
 }
 
-const Badge = ({ type }: BadgeProps) => {
+const Badge = ({ isRequired }: BadgeProps) => {
   return (
-    <S.Badge type={type}> {type === 'optional' ? '옵션' : '필수'}</S.Badge>
+    <S.Badge isRequired={isRequired}> {isRequired ? '필수' : '옵션'}</S.Badge>
   );
 };
 
