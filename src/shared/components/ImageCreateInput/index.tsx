@@ -2,6 +2,8 @@ import { ChangeEvent, useEffect, useState } from 'react';
 import * as S from './style';
 import UploadItem from '../common/UploadItem';
 import axios from 'axios';
+import { useRecoilState } from 'recoil';
+import { projectItems } from '@/recoil/states';
 
 interface ImageLink {
   link: string;
@@ -17,16 +19,28 @@ const ImageCreateInput = () => {
   const [imageLinkList, setImageLinkList] = useState<ImageLink[]>([]);
   const [imageMarkdown, setImageMarkdown] = useState<string>('');
 
+  const [markdown, setMarkdown] = useRecoilState(projectItems);
+
+  useEffect(() => {
+    const newMarkdown = markdown.map((item) => {
+      if (item.name === 'image') {
+        return { ...item, detail: `## 이미지 \n ${imageMarkdown} <br />` };
+      }
+      return item;
+    });
+
+    setMarkdown(newMarkdown);
+  }, [imageMarkdown]);
+
   useEffect(() => {
     const markdown = imageLinkList
       .map(
         (image) =>
-          `<img src=${image.link} width="${image.width}" height="${image.height}" />`,
+          `<img src="${image.link}" width="${image.width}" height="${image.height}" />`,
       )
 
       .join('\n');
 
-    console.log(markdown);
     setImageMarkdown(markdown);
 
     /** 초기화 */
