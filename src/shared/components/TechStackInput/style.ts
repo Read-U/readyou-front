@@ -62,6 +62,11 @@ export const MatchItem = styled.li`
 
   &:nth-of-type(1) {
     border-top: ${(props) => `1px solid ${props.theme.colors.darkgray}`};
+    border-radius: 0.7rem 0.7rem 0 0;
+  }
+
+  &:last-of-type {
+    border-radius: 0 0 0.7rem 0.7rem;
   }
 
   &:hover {
