@@ -26,8 +26,8 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
   };
 
   // 연관 데이터 클릭
-  const handleMatchItemClick = (e: ChangeEvent<HTMLLIElement>) => {
-    const { textContent } = e.target;
+  const handleMatchItemClick = (e: MouseEvent) => {
+    const { textContent } = e.target as HTMLLIElement;
     if (textContent) {
       setUploadList((prevList: string[]) => [...prevList, textContent!]);
       setIsOpen(false);
