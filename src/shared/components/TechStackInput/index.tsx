@@ -12,9 +12,20 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
   const [matchList, setMatchList] = useState<string[]>([]);
   const [uploadList, setUploadList] = useState<string[]>([]);
 
+  const handleAreaClick = () => {
+    setIsOpen(false);
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleAreaClick);
+
+    return () => document.removeEventListener('click', handleAreaClick);
+  }, []);
+
   const handleInputValue = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setValue(value);
+    setIsOpen(true);
   };
 
   const handleUploadItemDelete = (index: number) => {
@@ -40,29 +51,31 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
         )
       : [];
     setMatchList(matchDataList);
-    setIsOpen(true);
   }, [value]);
 
   return (
     <>
-      <S.RelativeBox>
-        <S.Input
-          value={value}
-          onChange={handleInputValue}
-          type={type}
-          placeholder={placeholder}
-        />
+      <S.Wrap>
+        <S.ReletiveBox>
+          <S.Input
+            value={value}
+            onChange={handleInputValue}
+            type={type}
+            placeholder={placeholder}
+          />
+          {isOpen && (
+            <S.MatchList>
+              {matchList?.map((list, idx) => (
+                <S.MatchItem key={idx} onClick={handleMatchItemClick}>
+                  {list}
+                </S.MatchItem>
+              ))}
+            </S.MatchList>
+          )}
+        </S.ReletiveBox>
         <Button />
-        {isOpen && (
-          <S.MatchList>
-            {matchList?.map((list, idx) => (
-              <S.MatchItem key={idx} onClick={handleMatchItemClick}>
-                {list}
-              </S.MatchItem>
-            ))}
-          </S.MatchList>
-        )}
-      </S.RelativeBox>
+      </S.Wrap>
+
       {uploadList.length !== 0 && (
         <S.BottomWrapper>
           {uploadList?.map((list, idx) => (
