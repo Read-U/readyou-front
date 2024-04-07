@@ -38,6 +38,11 @@ const Editor = () => {
     setItemList(_items);
   };
 
+  const handleItemDelete = (type: string) => {
+    const filterResult = itemList.filter((list) => list.type !== type);
+    setItemList(filterResult);
+  };
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <S.Inner>
@@ -56,7 +61,10 @@ const Editor = () => {
                       {...provided.dragHandleProps}
                       {...provided.draggableProps}
                     >
-                      <ProjectInputItem type={item.type} />
+                      <ProjectInputItem
+                        handleItemDelete={handleItemDelete}
+                        type={item.type}
+                      />
                     </div>
                   )}
                 </Draggable>

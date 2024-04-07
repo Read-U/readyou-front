@@ -32,13 +32,22 @@ const ITEM_SCRIPT: ItemScript = {
   '이미지 삽입': <ImageCreateInput />,
   '프로젝트 기간': <ProjectDuration></ProjectDuration>,
 };
-const ProjectInputItem = ({ type }: ProjectInputItemProps) => {
+const ProjectInputItem = ({
+  handleItemDelete,
+  type,
+}: ProjectInputItemProps) => {
   return (
     <div>
       <S.HeaderContainer>
         <S.Title>{type}</S.Title>
         <S.ButtonWrapper>
-          <img src="/assets/icons/trashcanButton.svg" alt="trashcan" />
+          {type !== '프로젝트 제목' && (
+            <img
+              onClick={() => handleItemDelete(type)}
+              src="/assets/icons/trashcanButton.svg"
+              alt="trashcan"
+            />
+          )}
         </S.ButtonWrapper>
       </S.HeaderContainer>
       {ITEM_SCRIPT[type]}
