@@ -21,18 +21,19 @@ export const Container = styled.div<{
   status: 'info' | 'error';
   message: string;
 }>`
-  width: 24.8rem;
   height: 6rem;
   border-radius: 1rem;
+  padding: 2.1rem 6.4rem;
   background-color: ${({ status, theme }) =>
     status === 'info' ? 'rgba(29, 33, 64, 0.6)' : theme.colors.pink};
+
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  bottom: 0;
+  position: fixed;
   left: 50%;
+  bottom: 8%;
+  transform: translateX(-50%);
   z-index: 100;
   visibility: ${({ message }) => (message ? 'visible' : 'hidden')};
   animation: ${({ message }) =>
