@@ -8,24 +8,9 @@ export const Inner = styled.div`
 `;
 
 export const ItemListContainer = styled.div`
-  height: calc(100vh - 15.4rem);
+  height: calc(100vh - 22rem);
   margin-top: 2rem;
   overflow-y: auto;
-`;
-
-export const ItemContainer = styled.div`
-  margin: 2rem 0;
-  padding: 0 1.2rem 1.6rem 0;
-
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
-  width: calc(100% - 2rem);
-  height: calc(100vh - 20rem);
-  margin: 1rem;
-
-  overflow: auto;
-
   &::-webkit-scrollbar {
     width: 1.3rem;
   }
@@ -41,4 +26,16 @@ export const ItemContainer = styled.div`
     border-radius: 10rem;
     background: ${(props) => props.theme.colors.gray};
   }
+`;
+
+export const ItemContainer = styled.div`
+  margin: 2rem 0;
+  padding: 0 1.2rem 1.6rem 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  width: calc(100% - 2rem);
+  height: calc(100vh - 20rem);
+  margin: 1rem;
 `;
