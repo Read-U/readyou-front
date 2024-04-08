@@ -52,7 +52,7 @@ const ImageCreateInput = () => {
                   ...item,
                   detail:
                     item.detail +
-                    `<img src="${imageLink}" width="${width}" height="${height}" />\n`,
+                    `<br><img src="${imageLink}" width="${width}" height="${height}" /><br>`,
                   imageNameList: [...item.imageNameList, files[0].name],
                 };
               }
@@ -86,15 +86,16 @@ const ImageCreateInput = () => {
   const handleItemDelete = (index: number) => {
     const newMarkdown = markdown.map((item) => {
       if (item.name === 'image' && item.detail && item.imageNameList) {
-        const arr = item.detail.split('\n');
+        const arr =
+          item.detail.replace(/<br\s*\/?>/g, '').match(/<img[^>]+>/g) || [];
         const newArr = arr.filter((_, i) => i !== index);
-        const newDetail = newArr.join('\n');
+        const newDetail = newArr.join('<br>');
         const newImageNameList = item.imageNameList.filter(
           (_, i) => i !== index,
         );
         return {
           ...item,
-          detail: newDetail,
+          detail: `<br>${newDetail}<br>`,
           imageNameList: newImageNameList,
         };
       }
