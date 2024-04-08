@@ -5,48 +5,22 @@ import axios from 'axios';
 import { useRecoilState } from 'recoil';
 import { projectItems } from '@/recoil/states';
 
-interface ImageLink {
-  link: string;
-  width: string;
-  height: string;
-}
-
 const ImageCreateInput = () => {
   const [width, setWidth] = useState<string>('');
   const [height, setHeight] = useState<string>('');
 
-  const [imageNameList, setImageNameList] = useState<string[]>([]);
-  const [imageLinkList, setImageLinkList] = useState<ImageLink[]>([]);
-  const [imageMarkdown, setImageMarkdown] = useState<string>('');
+  const [imageNameList, setImageNameList] = useState<string[]>([]); // upload된 이미지 파일명
 
   const [markdown, setMarkdown] = useRecoilState(projectItems);
 
+  /** sessionStorage에 이미 존재하는 경우 setting */
   useEffect(() => {
-    const newMarkdown = markdown.map((item) => {
+    markdown.map((item) => {
       if (item.name === 'image') {
-        return { ...item, detail: `## 이미지 \n ${imageMarkdown} <br />` };
+        if (item.imageNameList) return setImageNameList(item.imageNameList);
       }
-      return item;
     });
-
-    setMarkdown(newMarkdown);
-  }, [imageMarkdown]);
-
-  useEffect(() => {
-    const markdown = imageLinkList
-      .map(
-        (image) =>
-          `<img src="${image.link}" width="${image.width}" height="${image.height}" />`,
-      )
-
-      .join('\n');
-
-    setImageMarkdown(markdown);
-
-    /** 초기화 */
-    setWidth('');
-    setHeight('');
-  }, [imageLinkList]);
+  }, []);
 
   /** 이미지 -> 링크 변환 API */
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -70,10 +44,27 @@ const ImageCreateInput = () => {
         .request(config)
         .then((response) => {
           const imageLink = response.data.imageLink;
-          setImageLinkList((prevImageLinkList) => [
-            ...prevImageLinkList,
-            { link: imageLink, width, height },
-          ]);
+          console.log(imageLink);
+          const newMarkdown = markdown.map((item) => {
+            if (item.name === 'image') {
+              if (item.imageNameList) {
+                return {
+                  ...item,
+                  detail:
+                    item.detail +
+                    `<img src="${imageLink}" width="${width}" height="${height}" />\n`,
+                  imageNameList: [...item.imageNameList, files[0].name],
+                };
+              }
+            }
+            return item;
+          });
+
+          setMarkdown(newMarkdown);
+
+          /** 초기화 */
+          setWidth('');
+          setHeight('');
         })
         .catch((error) => {
           console.log(error);
@@ -93,13 +84,26 @@ const ImageCreateInput = () => {
 
   /** 이미지 삭제 */
   const handleItemDelete = (index: number) => {
-    return () => {
-      const newNameList = imageNameList.filter((_, i) => i !== index);
-      setImageNameList(newNameList);
+    const newMarkdown = markdown.map((item) => {
+      if (item.name === 'image' && item.detail && item.imageNameList) {
+        const arr = item.detail.split('\n');
+        const newArr = arr.filter((_, i) => i !== index);
+        const newDetail = newArr.join('\n');
+        const newImageNameList = item.imageNameList.filter(
+          (_, i) => i !== index,
+        );
+        return {
+          ...item,
+          detail: newDetail,
+          imageNameList: newImageNameList,
+        };
+      }
+      return item;
+    });
 
-      const newLinkList = imageLinkList.filter((_, i) => i !== index);
-      setImageLinkList(newLinkList);
-    };
+    setMarkdown(newMarkdown);
+    const newImageNameList = imageNameList.filter((_, i) => i !== index);
+    setImageNameList(newImageNameList);
   };
 
   return (
@@ -131,7 +135,7 @@ const ImageCreateInput = () => {
             <UploadItem
               key={imageName}
               text={imageName}
-              onClick={handleItemDelete(index)}
+              onClick={() => handleItemDelete(index)}
             />
           ))}
         </S.BottomWrapper>

@@ -3,4 +3,5 @@ export interface ItemProps {
   type: string;
   name?: string;
   detail?: string;
+  imageNameList?: string[];
 }

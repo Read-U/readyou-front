@@ -12,6 +12,7 @@ export const ITEM_LIST: ItemProps[] = [
     type: '이미지 삽입',
     name: 'image',
     detail: '',
+    imageNameList: [],
   },
   {
     id: '3',
