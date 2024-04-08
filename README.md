@@ -1,7 +1,7 @@
 # [2조_READ US] READ YOU _ 테오의 스프린트 17기
 
 <p align="center">
-<img src="https://readyou.s3.ap-southeast-2.amazonaws.com/92f37744-a33a-491c-91c1-d7ec6f61ce2c-facebook.png" width="650" height="350" />
+<img src="https://readyou.s3.ap-southeast-2.amazonaws.com/92f37744-a33a-491c-91c1-d7ec6f61ce2c-facebook.png" width="60%" />
 </p>
 
 # 💼 서비스 소개
