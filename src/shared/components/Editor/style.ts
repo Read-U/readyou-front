@@ -1,25 +1,25 @@
 import { styled } from 'styled-components';
 
 export const Inner = styled.div`
-  position: relative;
   width: 100%;
-  height: 93.2rem;
-
   background: #ffffff;
   border-radius: 1rem;
-  padding: 2rem;
+  padding: 2rem 0 2rem 2rem;
+`;
+
+export const ItemListContainer = styled.div`
+  height: calc(100vh - 15.4rem);
+  margin-top: 2rem;
+  overflow-y: auto;
 `;
 
 export const ItemContainer = styled.div`
-  height: 83rem;
   margin: 2rem 0;
   padding: 0 1.2rem 1.6rem 0;
 
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
-
-  overflow-y: auto;
 
   &::-webkit-scrollbar {
     width: 1.3rem;
