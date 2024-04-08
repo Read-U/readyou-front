@@ -20,6 +20,11 @@ export const ItemContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
+  width: calc(100% - 2rem);
+  height: calc(100vh - 20rem);
+  margin: 1rem;
+
+  overflow: auto;
 
   &::-webkit-scrollbar {
     width: 1.3rem;
