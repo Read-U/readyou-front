@@ -39,14 +39,12 @@ const ProjectDuration = () => {
   ) => {
     const date = e.target.value.split('-');
     const newFormDate = `${date[0]}.${date[1]}.${date[2]}`;
-    console.log('ss');
     if (type === 'start') {
       setDuration({ start: newFormDate, end: duration.end });
     }
     if (type === 'end') {
       setDuration({ start: duration.start, end: newFormDate });
     }
-    console.log(duration);
   };
 
   useEffect(() => {
@@ -55,7 +53,7 @@ const ProjectDuration = () => {
       if (item.name === 'period') {
         return {
           ...item,
-          detail: `<div align="center"> ${duration.start} ~ ${duration.end} </div>\n`,
+          detail: `## 프로젝트 기간: ${duration.start} ~ ${duration.end}`,
         };
       }
       return item;
