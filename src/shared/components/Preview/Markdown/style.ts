@@ -3,7 +3,6 @@ import { styled } from 'styled-components';
 export const PreviewContainer = styled.div<{ $lightMode: boolean }>`
   position: relative;
   width: 100%;
-  overflow-y: auto;
 
   display: flex;
   flex-direction: column;
@@ -57,5 +56,9 @@ export const PreviewContainer = styled.div<{ $lightMode: boolean }>`
     img {
       background-color: inherit;
     }
+  }
+  > div {
+    height: calc(100vh - 13.4rem);
+    overflow: auto;
   }
 `;

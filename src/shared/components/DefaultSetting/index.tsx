@@ -34,7 +34,7 @@ const DefaultSetting = () => {
           <S.Info>원하는 항목들만 골라 자신만의 README를 쓸 수 있어요!</S.Info>
           <S.Info>
             전부 선택했다면 옆에
-            <S.HightlightText> 설정 </S.HightlightText>
+            <S.HightlightText> 완료 </S.HightlightText>
             버튼을 눌러주세요.
           </S.Info>
         </div>
