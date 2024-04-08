@@ -36,7 +36,7 @@ const ImageCreateInput = () => {
             'Content-Type': 'multipart/form-data',
           },
         };
-        const response = await axios.post('/api/img', formData, config);
+        const response = await axios.post('/api/image', formData, config);
         const imageLink = response.data.imageLink;
         const newMarkdown = markdown.map((item) => {
           if (item.name === 'image') {
