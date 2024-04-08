@@ -1,15 +1,19 @@
 import styled from 'styled-components';
 import { ItemProps } from '@/shared/types/markdown';
 
-export const MarkdownTemplateList = styled.ul`
+export const MarkdownTemplateContainer = styled.div`
   width: 100%;
-  padding: 2.4rem 2rem;
-  overflow-y: auto;
-  height: 100%;
+  padding-top: 2.4rem;
 
   background: #ffffff;
   border-radius: 1rem;
+`;
 
+export const MarkdownTemplateList = styled.ul`
+  padding: 1rem 2rem;
+  height: calc(100vh - 22rem);
+  overflow-y: auto;
+  margin-right: 0.8rem;
   &::-webkit-scrollbar {
     width: 1.3rem;
   }
@@ -31,6 +35,7 @@ export const TemplateHeader = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 1.6rem;
+  padding: 0 2rem;
 `;
 
 export const Info = styled.p`

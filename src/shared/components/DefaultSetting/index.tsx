@@ -28,7 +28,7 @@ const DefaultSetting = () => {
   };
 
   return (
-    <S.MarkdownTemplateList>
+    <S.MarkdownTemplateContainer>
       <S.TemplateHeader>
         <div>
           <S.Info>원하는 항목들만 골라 자신만의 README를 쓸 수 있어요!</S.Info>
@@ -42,6 +42,7 @@ const DefaultSetting = () => {
           완료
         </Button>
       </S.TemplateHeader>
+      <S.MarkdownTemplateList>
       {DEFAULT_ITEM_LIST.map((markdownItem, index) => (
         <S.MarkdownTemplateItem
           key={markdownItem.id}
@@ -65,7 +66,8 @@ const DefaultSetting = () => {
           <S.Title>{markdownItem.type}</S.Title>
         </S.MarkdownTemplateItem>
       ))}
-    </S.MarkdownTemplateList>
+      </S.MarkdownTemplateList>
+    </S.MarkdownTemplateContainer>
   );
 };
 
