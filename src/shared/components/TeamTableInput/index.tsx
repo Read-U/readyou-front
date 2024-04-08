@@ -5,7 +5,8 @@ import Button from '../common/Button';
 import { useRecoilState } from 'recoil';
 import { projectItems } from '@/recoil/states';
 
-interface TeamMemberInfo {
+export interface TeamMemberInfo {
+  name: string;
   githubUserInfo: string[];
   role: string;
 }
@@ -23,28 +24,28 @@ const TeamTableInput = () => {
 
   /** sessionStorage에 이미 존재하는 경우 setting */
   useEffect(() => {
-    markdown.map((item) => {
-      if (item.name === 'teamTable' && item.teamMembers) {
-        return setTeamMemberList(item.teamMembers);
-      }
-    });
-  }, [markdown]);
+    const teamItem = markdown.find((item) => item.name === 'teamTable');
+    if (teamItem && teamItem.name === 'teamTable' && teamItem.teamMembers) {
+      const newMemberList:string[] = [];
+      teamItem.teamMembers.map((item:TeamMemberInfo) => {
+        newMemberList.push(item.name);
+      })
+      setTeamMemberList(newMemberList);
+      setTeamMemberInfoList(teamItem.teamMembers);
+    }
+  }, []);
 
   useEffect(() => {
     if (teamMemberInfoList.length > 0) {
       const newMarkdown = markdown.map((item) => {
         if (item.name === 'teamTable' && item.teamMembers) {
-          const newMembers = teamMemberInfoList.map((member) => {
-            return `${member.githubUserInfo[1]} | ${member.role}`;
-          });
-
           return {
             ...item,
             detail:
               teamMemberInfoList.length > 0
                 ? `### ${item.type}` + '\n' + teamTableMarkdown
                 : '',
-            teamMembers: newMembers,
+            teamMembers: [...teamMemberInfoList],
           };
         }
         return item;
@@ -62,14 +63,14 @@ const TeamTableInput = () => {
     const markDownImage = teamMemberInfoList
       .map(
         (member) =>
-          `|<img src="${member.githubUserInfo[0]}" width="150" height="150"/>`,
+          `|<img src="${member.githubUserInfo}" width="150" height="150"/>`,
       )
       .join('');
 
     const markDownUserInfo = teamMemberInfoList
       .map(
         (member) =>
-          `|${member.role}: ${member.githubUserInfo[2]}<br/>[@${member.githubUserInfo[1]}](${member.githubUserInfo[3]})`,
+          `|${member.role}: ${member.name}<br/>[@${member.githubUserInfo[1]}](${member.githubUserInfo[3]})`,
       )
       .join('');
 
@@ -104,10 +105,12 @@ const TeamTableInput = () => {
     const githubUserInfo = await getUsers(githubId);
     if (githubUserInfo) {
       const newMember: TeamMemberInfo = {
+        name: githubId,
         githubUserInfo,
         role,
       };
 
+      setTeamMemberList([...teamMemberList, githubId]);
       setTeamMemberInfoList([...teamMemberInfoList, newMember]);
     }
   };
@@ -121,7 +124,7 @@ const TeamTableInput = () => {
             teamMemberInfoList.length > 0
               ? `### ${item.type}` + '\n' + teamTableMarkdown
               : '',
-          teamMembers: teamMemberList,
+          teamMembers: [...teamMemberInfoList],
         };
       }
       return item;
