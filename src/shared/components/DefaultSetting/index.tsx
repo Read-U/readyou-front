@@ -10,7 +10,6 @@ import { ItemProps } from '@/shared/types/markdown';
 const DefaultSetting = () => {
   const [itemList, setItemList] = useRecoilState(projectItems);
   const [step, setStep] = useRecoilState(stepState);
-  console.log(itemList, 'itemList');
 
   const handleCheckedElement = (markdownItem: ItemProps) => {
     const isAlreadyChecked = itemList.some(
