@@ -4,7 +4,7 @@ export const Inner = styled.div`
   width: 100%;
   background: #ffffff;
   border-radius: 1rem;
-  padding: 2rem 0 2rem 2rem;
+  padding: 2rem 0 0 2rem;
 `;
 
 export const ItemListContainer = styled.div`
