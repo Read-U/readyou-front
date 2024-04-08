@@ -5,6 +5,7 @@ import Button from '../common/Button';
 import useToast from '@/shared/hooks/useToast';
 import { useRecoilState } from 'recoil';
 import { projectItems } from '@/recoil/states';
+import { it } from 'node:test';
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -30,8 +31,8 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
   // 항목 삭제
   const handleUploadItemDelete = (index: number, link: string) => {
     const newMarkdown = markdown.map((item) => {
-      if (item.name === 'video') {
-        const newData = item?.detail.replace(link, '');
+      if (item.name === 'video' && item.detail) {
+        const newData = item.detail.replace(link, '');
         return { ...item, detail: newData };
       }
       return item;
@@ -104,7 +105,7 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
       </S.RelativeBox>
       <S.BottomWrapper>
         {markdown.map((item) => {
-          if (item.name === 'video') {
+          if (item.name === 'video' && item.detail) {
             const arr = item.detail.split('\n');
             arr.pop();
             return arr?.map((list, idx) => {

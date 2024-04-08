@@ -33,7 +33,7 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
 
   const handleUploadItemDelete = (index: number, text: string) => {
     const newMarkdown = markdown.map((item) => {
-      if (item.name === 'techStack') {
+      if (item.name === 'techStack' && item.detail) {
         const newData = item.detail.replace(text, '');
         return { ...item, detail: newData };
       }
@@ -98,7 +98,7 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
       </S.Wrap>
       <S.BottomWrapper>
         {markdown.map((item) => {
-          if (item.name === 'techStack') {
+          if (item.name === 'techStack' && item.detail) {
             const slice = item.detail.split('/>');
             slice.pop();
             return slice?.map((list, idx) => {
