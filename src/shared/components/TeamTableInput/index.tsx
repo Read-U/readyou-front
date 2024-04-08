@@ -91,7 +91,10 @@ const TeamTableInput = () => {
         const data = await response.json();
         return [data.avatar_url, data.login, data.name, data.html_url];
       } else {
-        console.error('Failed to fetch user data:', response.status);
+        toast({
+          message: '존재하지 않는 유저입니다!',
+          status: 'error',
+        });
       }
     } catch (error) {
       console.error('Error:', error);
