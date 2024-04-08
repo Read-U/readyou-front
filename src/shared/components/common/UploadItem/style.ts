@@ -15,7 +15,7 @@ export const Box = styled.div`
 export const Text = styled.div`
   font-weight: 400;
   font-size: 1.6rem;
-
+  padding-top: 0.25rem;
   color: ${(props) => props.theme.colors.darknavy};
 `;
 
