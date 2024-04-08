@@ -53,7 +53,7 @@ const ProjectDuration = () => {
       if (item.name === 'period') {
         return {
           ...item,
-          detail: `## 프로젝트 기간: ${duration.start} ~ ${duration.end}`,
+          detail: `## 프로젝트 기간: ${duration.start} ~ ${duration.end}\n`,
         };
       }
       return item;

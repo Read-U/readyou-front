@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { DefaultItemProps } from '@/shared/types/markdown';
+import { ItemProps } from '@/shared/types/markdown';
 
 export const MarkdownTemplateList = styled.ul`
   width: 100%;
@@ -33,7 +33,7 @@ export const SettingButton = styled.button`
 
 export const MarkdownTemplateItem = styled.li<{
   checked: boolean;
-  type: DefaultItemProps['type'];
+  type: ItemProps['type'];
 }>`
   display: flex;
   align-items: center;
