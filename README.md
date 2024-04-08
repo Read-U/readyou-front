@@ -54,9 +54,8 @@
 
 |Design|Backend|Frontend|Frontend|Frontend|Frontend|Frontend|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:
-||<img src="https://avatars.githubusercontent.com/u/68097132?v=4,minpaeng,,https://github.com/minpaeng" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/104294861?v=4,GBAJS754,Kimdaeun,https://github.com/GBAJS754" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/81246338?v=4,gkfla668,Halim-Lim,https://github.com/gkfla668" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/70426440?v=4,hyjoong,,https://github.com/hyjoong" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/61828877?v=4,swy0123,이시영,https://github.com/swy0123" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/162881886?v=4,woo29,우혁,https://github.com/woo29" width="150" height="150"/>
-|벤또|팽<br/>[@minpaeng](https://github.com/minpaeng)|케이<br/>[@GBAJS754](https://github.com/GBAJS754)|리하<br/>[@gkfla668](https://github.com/gkfla668)|헨리<br/>[@hyjoong](https://github.com/hyjoong)|셩<br/>[@swy0123](https://github.com/swy0123)|훈이<br/>[@woo29](https://github.com/woo29)
-
+|<img src="https://avatars.githubusercontent.com/u/166393438?v=4,Oishibento,,https://github.com/Oishibento" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/68097132?v=4,minpaeng,,https://github.com/minpaeng" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/104294861?v=4,GBAJS754,Kimdaeun,https://github.com/GBAJS754" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/81246338?v=4,gkfla668,Halim-Lim,https://github.com/gkfla668" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/70426440?v=4,hyjoong,,https://github.com/hyjoong" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/61828877?v=4,swy0123,이시영,https://github.com/swy0123" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/162881886?v=4,woo29,우혁,https://github.com/woo29" width="150" height="150"/>
+|벤또<br/>[@Oishibento](https://github.com/Oishibento)|팽<br/>[@minpaeng](https://github.com/minpaeng)|케이<br/>[@GBAJS754](https://github.com/GBAJS754)|리하<br/>[@gkfla668](https://github.com/gkfla668)|헨리<br/>[@hyjoong](https://github.com/hyjoong)|셩<br/>[@swy0123](https://github.com/swy0123)|훈이<br/>[@woo29](https://github.com/woo29)
 
 <br>
 <br>
@@ -74,7 +73,8 @@
 
 ### 백엔드
 
-
+<img src="https://img.shields.io/badge/java-3a75b0?style=for-the-badge&logo=java&logoColor=black">
+<img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&amp;logo=springboot&amp;logoColor=white"/>
 
 ### 디자인
 
