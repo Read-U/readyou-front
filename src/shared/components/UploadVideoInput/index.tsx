@@ -5,7 +5,6 @@ import Button from '../common/Button';
 import useToast from '@/shared/hooks/useToast';
 import { useRecoilState } from 'recoil';
 import { projectItems } from '@/recoil/states';
-import { it } from 'node:test';
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
