@@ -14,7 +14,7 @@ interface UploadListType {
   markdown: string;
 }
 
-const regex = /\/embed\/([\w-]{11})/;
+const regex = /\/vi\/([A-Za-z0-9_-]{11})\//;
 
 const UploadVideoInput = ({ type, placeholder }: InputProps) => {
   const [value, setValue] = useState('');
@@ -48,7 +48,7 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
         throw new Error('유효하지 않은 링크입니다!');
       }
       const result = await res.json();
-      return result.iframe;
+      return result.videoId;
     } catch (error) {
       toast({
         message: '유효하지 않는 링크입니다!',
@@ -74,7 +74,12 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
     }
     const newMarkdown = markdown.map((item) => {
       if (item.name === 'video') {
-        return { ...item, detail: item.detail + `${validationResult}\n` };
+        return {
+          ...item,
+          detail:
+            item.detail +
+            `[![영상 썸네일 이미지](http://img.youtube.com/vi/${validationResult}/0.jpg)](https://youtu.be/${validationResult})\n`,
+        };
       }
       return item;
     });
@@ -86,7 +91,6 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
     ]);
     setValue('');
   };
-
   return (
     <>
       <S.RelativeBox>
@@ -101,9 +105,10 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
       <S.BottomWrapper>
         {markdown.map((item) => {
           if (item.name === 'video') {
-            const slice = item.detail.split('</iframe>');
-            slice.pop();
-            return slice?.map((list, idx) => {
+            console.log(item.detail);
+            const arr = item.detail.split('\n');
+            arr.pop();
+            return arr?.map((list, idx) => {
               const match = list.match(regex);
               if (match) {
                 return (
