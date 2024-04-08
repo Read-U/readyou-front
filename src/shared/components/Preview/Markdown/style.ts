@@ -7,6 +7,11 @@ export const PreviewContainer = styled.div<{ $lightMode: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
+  width: calc(100% - 2rem);
+  height: calc(100vh - 20rem);
+  margin: 1rem;
+
+  overflow: auto;
 
   &::-webkit-scrollbar {
     width: 1.3rem;
@@ -57,8 +62,8 @@ export const PreviewContainer = styled.div<{ $lightMode: boolean }>`
       background-color: inherit;
     }
   }
-  > div {
+  /* > div {
     height: calc(100vh - 13.4rem);
     overflow: auto;
-  }
+  } */
 `;

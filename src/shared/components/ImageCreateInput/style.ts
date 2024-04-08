@@ -44,7 +44,7 @@ export const FileButton = styled.label`
   border-radius: 1rem;
   white-space: nowrap;
 
-  padding: 1.6rem 2rem;
+  padding: 1.9rem 2rem 0;
 
   font-weight: 700;
   font-size: 1.6rem;
