@@ -15,7 +15,7 @@ export const ITEM_LIST: ItemProps[] = [
   },
   {
     id: '5',
-    type: '팀원 테이블',
+    type: '팀원 구성',
     name: 'teamTable',
     detail: '',
   },
