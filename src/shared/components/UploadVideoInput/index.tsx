@@ -93,7 +93,7 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
     setValue('');
   };
 
-  function checkEmptyString(str) {
+  function checkEmptyString(str: any) {
     return str.trim().length !== 0;
   }
 
