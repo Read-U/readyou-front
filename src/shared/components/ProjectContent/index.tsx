@@ -28,7 +28,7 @@ const ProjectContent = () => {
     <S.InputBox>
       <S.Input
         type="text"
-        value={newValue.detail.split(' ')[1]}
+        value={newValue?.detail.split('###')[1]?.replace(/^\s+/, '')}
         placeholder="프로젝트 설명을 기입해주세요."
         onChange={(e) => handleChangeContent(e)}
       />
