@@ -28,30 +28,27 @@ const ProjectDuration = () => {
   };
 
   useEffect(() => {
-    const newMarkdown = markdown.map((item: ItemProps) => {
-      if (item.name === 'period' && item.detail) {
-        let [startDate, endDate] = item.detail.split('~');
-        console.log(item.detail, startDate, endDate);
-        const dateRegex = /\b\d{4}.\d{2}.\d{2}\b/g;
-        const start = startDate ? startDate.match(dateRegex) : '';
-        const end = endDate ? endDate.match(dateRegex) : '';
-        console.log(start, end);
+    const periodItem = markdown.find((item) => item.name === 'period');
+    if (periodItem && periodItem.detail) {
+      let [startDate, endDate] = periodItem.detail.split('~');
+      const dateRegex = /\b\d{4}.\d{2}.\d{2}\b/g;
+      const start = startDate ? startDate.match(dateRegex) : '';
+      const end = endDate ? endDate.match(dateRegex) : '';
 
-        if (start && start[0] && end && end[0]) {
-          setDuration({ start: start[0], end: end[0] });
-          return;
-        }
-        if (start && start[0]) {
-          setDuration({ start: start[0], end: '' });
-          return;
-        }
-        if (end && end[0]) {
-          setDuration({ start: '', end: end[0] });
-          return;
-        }
-        setDuration({ start: '', end: '' });
+      if (start && start[0] && end && end[0]) {
+        setDuration({ start: start[0], end: end[0] });
+        return;
       }
-    });
+      if (start && start[0]) {
+        setDuration({ start: start[0], end: '' });
+        return;
+      }
+      if (end && end[0]) {
+        setDuration({ start: '', end: end[0] });
+        return;
+      }
+      setDuration({ start: '', end: '' });
+    }
   }, []);
 
   const handleChangeDuration = (

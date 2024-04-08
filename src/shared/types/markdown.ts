@@ -1,7 +1,4 @@
-interface TeamMember {
-  githubUserInfo: string[];
-  role: string;
-}
+import { TeamMemberInfo } from "../components/TeamTableInput";
 
 export interface ItemProps {
   id: string;
@@ -9,5 +6,5 @@ export interface ItemProps {
   name?: string;
   detail?: string;
   imageNameList?: string[];
-  teamMembers?: TeamMember[];
+  teamMembers?: TeamMemberInfo[];
 }
