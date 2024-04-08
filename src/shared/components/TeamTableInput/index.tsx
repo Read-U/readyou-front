@@ -6,7 +6,6 @@ import { useRecoilState } from 'recoil';
 import { projectItems } from '@/recoil/states';
 
 export interface TeamMemberInfo {
-  name: string;
   githubUserInfo: string[];
   role: string;
 }
@@ -28,7 +27,7 @@ const TeamTableInput = () => {
     if (teamItem && teamItem.name === 'teamTable' && teamItem.teamMembers) {
       const newMemberList:string[] = [];
       teamItem.teamMembers.map((item:TeamMemberInfo) => {
-        newMemberList.push(item.name);
+        newMemberList.push(item.githubUserInfo[1]);
       })
       setTeamMemberList(newMemberList);
       setTeamMemberInfoList(teamItem.teamMembers);
@@ -70,7 +69,7 @@ const TeamTableInput = () => {
     const markDownUserInfo = teamMemberInfoList
       .map(
         (member) =>
-          `|${member.role}: ${member.name}<br/>[@${member.githubUserInfo[1]}](${member.githubUserInfo[3]})`,
+          `|${member.role}: ${member.githubUserInfo[2]}<br/>[@${member.githubUserInfo[1]}](${member.githubUserInfo[3]})`,
       )
       .join('');
 
@@ -105,7 +104,6 @@ const TeamTableInput = () => {
     const githubUserInfo = await getUsers(githubId);
     if (githubUserInfo) {
       const newMember: TeamMemberInfo = {
-        name: githubId,
         githubUserInfo,
         role,
       };
