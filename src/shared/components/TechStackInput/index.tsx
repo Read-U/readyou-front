@@ -117,17 +117,6 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
           }
         })}
       </S.BottomWrapper>
-      {/* {uploadList.length !== 0 && (
-        <S.BottomWrapper>
-          {uploadList?.map((list, idx) => (
-            <UploadItem
-              onClick={() => handleUploadItemDelete(idx, list)}
-              key={idx}
-              text={list}
-            />
-          ))}
-        </S.BottomWrapper>
-      )} */}
     </>
   );
 };
