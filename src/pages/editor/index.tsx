@@ -5,23 +5,32 @@ import Editor from '@/shared/components/Editor';
 import Preview from '@/shared/components/Preview';
 import { useRecoilState } from 'recoil';
 import { styled } from 'styled-components';
-import Head from 'next/head';
+import { TABLET_SIZE } from '@/shared/constants/media';
 
 const EditorPageContainer = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 2rem;
+
+  @media (max-width: ${TABLET_SIZE}px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const EditorBox = styled.div`
   flex: 1;
-  height: 97.2rem;
   max-width: 50%;
   background: ${(props) => props.theme.colors.lightgray};
   border-radius: 1rem;
-  margin: 2rem 0 2rem 2rem;
+  margin: 2rem 0 0 2rem;
+  height: calc(100vh - 2rem);
   padding: 2rem;
+
+  @media (max-width: ${TABLET_SIZE}px) {
+    max-width: 100%;
+    width: 100%;
+  }
 `;
 
 const EditorPage = () => {
