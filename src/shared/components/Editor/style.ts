@@ -36,6 +36,5 @@ export const ItemContainer = styled.div`
   flex-direction: column;
   gap: 1.6rem;
   width: calc(100% - 2rem);
-  height: calc(100vh - 20rem);
   margin: 1rem;
 `;
