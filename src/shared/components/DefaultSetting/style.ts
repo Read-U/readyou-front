@@ -31,7 +31,7 @@ export const SettingButton = styled.button`
   background: ${(props) => props.theme.colors.blue};
 `;
 
-export const MarkdownTemplateItem = styled.li<{
+export const MarkdownTemplateItem = styled.label<{
   checked: boolean;
   type: ItemProps['type'];
 }>`

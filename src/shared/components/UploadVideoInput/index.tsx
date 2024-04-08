@@ -30,7 +30,7 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
   // 항목 삭제
   const handleUploadItemDelete = (index: number, link: string) => {
     const newMarkdown = markdown.map((item) => {
-      if (item.name === 'video') {
+      if (item.name === 'video' && item.detail) {
         const newData = item.detail.replace(link, '');
         return { ...item, detail: newData };
       }
@@ -78,7 +78,7 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
           ...item,
           detail:
             item.detail +
-            `[![영상 썸네일 이미지](http://img.youtube.com/vi/${validationResult}/0.jpg)](https://youtu.be/${validationResult})\n`,
+            `\n[![영상 썸네일 이미지](http://img.youtube.com/vi/${validationResult}/0.jpg)](https://youtu.be/${validationResult})\n`,
         };
       }
       return item;
@@ -104,7 +104,7 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
       </S.RelativeBox>
       <S.BottomWrapper>
         {markdown.map((item) => {
-          if (item.name === 'video') {
+          if (item.name === 'video' && item.detail) {
             const arr = item.detail.split('\n');
             arr.pop();
             return arr?.map((list, idx) => {

@@ -2,10 +2,10 @@ import * as S from './style';
 
 interface CheckboxProps extends React.HTMLProps<HTMLInputElement> {}
 
-const Checkbox = ({ checked }: CheckboxProps) => {
+const Checkbox = (props: CheckboxProps) => {
   return (
     <S.Checkbox>
-      <S.CheckboxInput type="checkbox" checked={checked} />
+      <S.CheckboxInput type="checkbox" {...props} />
     </S.Checkbox>
   );
 };
