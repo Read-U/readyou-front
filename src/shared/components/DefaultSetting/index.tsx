@@ -1,19 +1,32 @@
 import * as S from './style';
 import Checkbox from '@/shared/components/common/Checkbox';
-import useCheckbox from '@/shared/hooks/useCheckbox';
 import Badge from '@/shared/components/common/Badge';
-import { ITEM_LIST } from '@/shared/constants/editor';
+import { DEFAULT_ITEM_LIST } from '@/shared/constants/editor';
 import { useRecoilState } from 'recoil';
-import { stepState } from '@/recoil/states';
+import { projectItems, stepState } from '@/recoil/states';
 import Button from '../common/Button';
-
-interface DefaultSettingProps {
-  handleNextStep: () => void;
-}
+import { ItemProps } from '@/shared/types/markdown';
 
 const DefaultSetting = () => {
-  const { checkedList, handleCheckedElement } = useCheckbox(ITEM_LIST);
+  const [itemList, setItemList] = useRecoilState(projectItems);
   const [step, setStep] = useRecoilState(stepState);
+  console.log(itemList, 'itemList');
+
+  const handleCheckedElement = (markdownItem: ItemProps) => {
+    const isAlreadyChecked = itemList.some(
+      (item) => item.id === markdownItem.id,
+    );
+
+    if (isAlreadyChecked) {
+      const updatedList = itemList.filter(
+        (item) => item.id !== markdownItem.id,
+      );
+
+      setItemList(updatedList);
+    } else {
+      setItemList([...itemList, markdownItem]);
+    }
+  };
 
   return (
     <S.MarkdownTemplateList>
@@ -30,23 +43,23 @@ const DefaultSetting = () => {
           완료
         </Button>
       </S.TemplateHeader>
-      {ITEM_LIST.map((markdownItem, index) => (
+      {DEFAULT_ITEM_LIST.map((markdownItem, index) => (
         <S.MarkdownTemplateItem
           key={markdownItem.id}
           type={index === 0 ? 'required' : 'optional'}
-          checked={checkedList.some((item) => item.id === markdownItem.id)}
-          onClick={() => {
-            if (index !== 0) {
-              handleCheckedElement(markdownItem);
-            }
-          }}
+          checked={itemList.some((item) => item.id === markdownItem.id)}
         >
           {index === 0 ? (
             <S.EmptyBox />
           ) : (
             <Checkbox
               key={markdownItem.id}
-              checked={checkedList.some((item) => item.id === markdownItem.id)}
+              checked={itemList.some((item) => item.id === markdownItem.id)}
+              onChange={() => {
+                if (index !== 0) {
+                  handleCheckedElement(markdownItem);
+                }
+              }}
             />
           )}
           <Badge isRequired={index === 0} />
