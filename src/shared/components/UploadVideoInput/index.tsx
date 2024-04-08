@@ -105,7 +105,6 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
       <S.BottomWrapper>
         {markdown.map((item) => {
           if (item.name === 'video') {
-            console.log(item.detail);
             const arr = item.detail.split('\n');
             arr.pop();
             return arr?.map((list, idx) => {
