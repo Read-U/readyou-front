@@ -4,6 +4,7 @@ import UploadItem from '../common/UploadItem';
 import Button from '../common/Button';
 import { useRecoilState } from 'recoil';
 import { projectItems } from '@/recoil/states';
+import useToast from '@/shared/hooks/useToast';
 
 export interface TeamMemberInfo {
   githubUserInfo: string[];
@@ -20,15 +21,15 @@ const TeamTableInput = () => {
   const [teamTableMarkdown, setTeamTableMarkdown] = useState<string>('');
 
   const [markdown, setMarkdown] = useRecoilState(projectItems);
-
+  const toast = useToast();
   /** sessionStorage에 이미 존재하는 경우 setting */
   useEffect(() => {
     const teamItem = markdown.find((item) => item.name === 'teamTable');
     if (teamItem && teamItem.name === 'teamTable' && teamItem.teamMembers) {
-      const newMemberList:string[] = [];
-      teamItem.teamMembers.map((item:TeamMemberInfo) => {
+      const newMemberList: string[] = [];
+      teamItem.teamMembers.map((item: TeamMemberInfo) => {
         newMemberList.push(item.githubUserInfo[1]);
-      })
+      });
       setTeamMemberList(newMemberList);
       setTeamMemberInfoList(teamItem.teamMembers);
     }
@@ -90,7 +91,10 @@ const TeamTableInput = () => {
         const data = await response.json();
         return [data.avatar_url, data.login, data.name, data.html_url];
       } else {
-        console.error('Failed to fetch user data:', response.status);
+        toast({
+          message: '존재하지 않는 유저입니다!',
+          status: 'error',
+        });
       }
     } catch (error) {
       console.error('Error:', error);
@@ -99,7 +103,11 @@ const TeamTableInput = () => {
 
   /** 추가 */
   const handleTeamMemberCreate = async () => {
-    if (!githubId || !role) return alert('Github ID와 직무를 입력해주세요.');
+    if (!githubId || !role)
+      return toast({
+        message: 'Github ID와 직무를 입력해주세요.',
+        status: 'error',
+      });
 
     const githubUserInfo = await getUsers(githubId);
     if (githubUserInfo) {

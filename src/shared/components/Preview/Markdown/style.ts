@@ -3,7 +3,6 @@ import { styled } from 'styled-components';
 export const PreviewContainer = styled.div<{ $lightMode: boolean }>`
   position: relative;
   width: 100%;
-  height: 83rem;
   overflow-y: auto;
 
   display: flex;
