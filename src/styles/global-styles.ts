@@ -5,10 +5,10 @@ const customReset = css`
   ${reset}
   html {
     font-size: 62.5%;
+    font-family: 'Pretendard';
   }
 `;
 
 export const GlobalStyle = createGlobalStyle`
-  font-family: "Pretendard";
   ${customReset}
 `;
