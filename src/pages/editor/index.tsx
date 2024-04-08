@@ -16,6 +16,7 @@ const Header = styled.header`
 `;
 
 const HeaderTitle = styled.h1`
+  color: ${(props) => props.theme.colors.darknavy};
   font-size: 2.4rem;
   weight: 900;
 `;
