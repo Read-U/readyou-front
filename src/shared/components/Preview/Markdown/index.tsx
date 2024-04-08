@@ -17,7 +17,7 @@ const MarkdownPreview = ({ lightMode }: Markdown) => {
   const markdown = useRecoilValue(projectItems);
 
   useEffect(() => {
-    console.log(markdown.map((v: ItemProps) => v.detail).join('\n'));
+    // console.log(markdown.map((v: ItemProps) => v.detail).join('\n'));
   }, [markdown]);
 
   return (
