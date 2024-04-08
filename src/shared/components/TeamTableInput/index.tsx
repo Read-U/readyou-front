@@ -5,19 +5,82 @@ import Button from '../common/Button';
 import { useRecoilState } from 'recoil';
 import { projectItems } from '@/recoil/states';
 
-interface TeamMember {
-  profileUrl: string[];
-  githubId: string;
+export interface TeamMemberInfo {
+  githubUserInfo: string[];
   role: string;
 }
 
 const TeamTableInput = () => {
   const [githubId, setGithubId] = useState('');
   const [role, setRole] = useState('');
-  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [teamMemberInfoList, setTeamMemberInfoList] = useState<
+    TeamMemberInfo[]
+  >([]);
+  const [teamMemberList, setTeamMemberList] = useState<string[]>([]); // upload 팀원
   const [teamTableMarkdown, setTeamTableMarkdown] = useState<string>('');
 
   const [markdown, setMarkdown] = useRecoilState(projectItems);
+
+  /** sessionStorage에 이미 존재하는 경우 setting */
+  useEffect(() => {
+    const teamItem = markdown.find((item) => item.name === 'teamTable');
+    if (teamItem && teamItem.name === 'teamTable' && teamItem.teamMembers) {
+      const newMemberList:string[] = [];
+      teamItem.teamMembers.map((item:TeamMemberInfo) => {
+        newMemberList.push(item.githubUserInfo[1]);
+      })
+      setTeamMemberList(newMemberList);
+      setTeamMemberInfoList(teamItem.teamMembers);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (teamMemberInfoList.length > 0) {
+      const newMarkdown = markdown.map((item) => {
+        if (item.name === 'teamTable' && item.teamMembers) {
+          return {
+            ...item,
+            detail:
+              teamMemberInfoList.length > 0
+                ? `### ${item.type}` + '\n' + teamTableMarkdown
+                : '',
+            teamMembers: [...teamMemberInfoList],
+          };
+        }
+        return item;
+      });
+
+      setMarkdown(newMarkdown);
+
+      setGithubId('');
+      setRole('');
+    }
+  }, [teamTableMarkdown]);
+
+  useEffect(() => {
+    if (teamMemberInfoList.length === 0) return setTeamTableMarkdown('');
+    const markDownImage = teamMemberInfoList
+      .map(
+        (member) =>
+          `|<img src="${member.githubUserInfo}" width="150" height="150"/>`,
+      )
+      .join('');
+
+    const markDownUserInfo = teamMemberInfoList
+      .map(
+        (member) =>
+          `|${member.role}: ${member.githubUserInfo[2]}<br/>[@${member.githubUserInfo[1]}](${member.githubUserInfo[3]})`,
+      )
+      .join('');
+
+    const table = '|:-:'.repeat(teamMemberInfoList.length);
+
+    console.log(markDownImage + '\n' + table + '\n' + markDownUserInfo);
+
+    setTeamTableMarkdown(
+      markDownImage + '\n' + table + '\n' + markDownUserInfo,
+    );
+  }, [teamMemberInfoList]);
 
   /** github user 정보 불러오기 */
   const getUsers = async (props: string): Promise<string[] | undefined> => {
@@ -38,63 +101,46 @@ const TeamTableInput = () => {
   const handleTeamMemberCreate = async () => {
     if (!githubId || !role) return alert('Github ID와 직무를 입력해주세요.');
 
-    const profileUrl = await getUsers(githubId);
-    if (profileUrl) {
-      const newMember: TeamMember = {
-        profileUrl,
-        githubId,
+    const githubUserInfo = await getUsers(githubId);
+    if (githubUserInfo) {
+      const newMember: TeamMemberInfo = {
+        githubUserInfo,
         role,
       };
 
-      setTeamMembers([...teamMembers, newMember]);
+      setTeamMemberList([...teamMemberList, githubId]);
+      setTeamMemberInfoList([...teamMemberInfoList, newMember]);
     }
   };
 
-  useEffect(() => {
-    const markDownImage = teamMembers
-      .map(
-        (member) =>
-          `|<img src="${member.profileUrl}" width="150" height="150"/>`,
-      )
-      .join('');
-
-    const markDownUserInfo = teamMembers
-      .map(
-        (member) =>
-          `|${member.role}: ${member.profileUrl[2]}<br/>[@${member.profileUrl[1]}](${member.profileUrl[3]})`,
-      )
-      .join('');
-
-    const table = '|:-:'.repeat(teamMembers.length);
-    setTeamTableMarkdown(
-      markDownImage + '\n' + table + '\n' + markDownUserInfo,
-    );
-
-    setGithubId('');
-    setRole('');
-  }, [teamMembers]);
-
-  /** 프리뷰 동기화 */
   useEffect(() => {
     const newMarkdown = markdown.map((item) => {
       if (item.name === 'teamTable') {
         return {
           ...item,
-          detail: `## 팀원 구성 \n ${teamTableMarkdown} <br />`,
+          detail:
+            teamMemberInfoList.length > 0
+              ? `### ${item.type}` + '\n' + teamTableMarkdown
+              : '',
+          teamMembers: [...teamMemberInfoList],
         };
       }
       return item;
     });
 
+    console.log(newMarkdown);
     setMarkdown(newMarkdown);
-  }, [teamTableMarkdown]);
+  }, [teamMemberList]);
 
   /** 삭제 */
   const handleTeamMemberDelete = (index: number) => {
-    return () => {
-      const newTeamMembers = teamMembers.filter((_, i) => i !== index);
-      setTeamMembers(newTeamMembers);
-    };
+    const newTeamMemberList = teamMemberList.filter((_, i) => i !== index);
+    setTeamMemberList(newTeamMemberList);
+
+    const newTeamMemberInfoList = teamMemberInfoList.filter(
+      (_, i) => i !== index,
+    );
+    setTeamMemberInfoList(newTeamMemberInfoList);
   };
 
   return (
@@ -114,14 +160,14 @@ const TeamTableInput = () => {
         />
         <Button onClick={handleTeamMemberCreate}>추가</Button>
       </S.RelativeBox>
-      {teamMembers.length > 0 && (
+      {teamMemberList.length > 0 && (
         <S.BottomWrapper>
-          {teamMembers.map((member, index) => {
+          {teamMemberList.map((member, index) => {
             return (
               <UploadItem
                 key={index}
-                text={`${member.githubId} | ${member.role}`}
-                onClick={handleTeamMemberDelete(index)}
+                text={member}
+                onClick={() => handleTeamMemberDelete(index)}
               />
             );
           })}
