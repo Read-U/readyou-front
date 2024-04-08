@@ -7,6 +7,19 @@ import { useRecoilState } from 'recoil';
 import { styled } from 'styled-components';
 import { TABLET_SIZE } from '@/shared/constants/media';
 
+const Header = styled.header`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 6.8rem;
+  background-color: ${(props) => props.theme.colors.lightgray};
+`;
+
+const HeaderTitle = styled.h1`
+  font-size: 2.4rem;
+  weight: 900;
+`;
+
 const EditorPageContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -43,6 +56,9 @@ const EditorPage = () => {
   if (!isSsr) return <></>;
   return (
     <>
+      <Header>
+        <HeaderTitle>READ YOU</HeaderTitle>
+      </Header>
       <EditorPageContainer>
         <EditorBox>
           {step === 0 && <DefaultSetting />}
