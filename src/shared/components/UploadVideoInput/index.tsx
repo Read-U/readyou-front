@@ -21,6 +21,7 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
   const [uploadList, setUploadList] = useState<UploadListType[]>([]);
   const [markdown, setMarkdown] = useRecoilState(projectItems);
   const toast = useToast();
+  let isData;
 
   const handleInputValue = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -91,6 +92,19 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
     ]);
     setValue('');
   };
+
+  function checkEmptyString(str) {
+    return str.trim().length !== 0;
+  }
+
+  markdown.forEach((item) => {
+    const check = checkEmptyString(item.detail);
+    if (item.name === 'video' && item.detail && check) {
+      isData = true;
+    }
+  });
+  // console.log(markdown);
+  // console.log(isData);
   return (
     <>
       <S.RelativeBox>
@@ -102,26 +116,28 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
         />
         <Button onClick={handleUploadItemAdd}>추가</Button>
       </S.RelativeBox>
-      <S.BottomWrapper>
-        {markdown.map((item) => {
-          if (item.name === 'video' && item.detail) {
-            const arr = item.detail.split('\n');
-            arr.pop();
-            return arr?.map((list, idx) => {
-              const match = list.match(regex);
-              if (match) {
-                return (
-                  <UploadItem
-                    onClick={() => handleUploadItemDelete(idx, list)}
-                    key={idx}
-                    text={`https://www.youtube.com/watch?v=${match[1]}`}
-                  />
-                );
-              }
-            });
-          }
-        })}
-      </S.BottomWrapper>
+      {isData && (
+        <S.BottomWrapper>
+          {markdown.map((item) => {
+            if (item.name === 'video' && item.detail) {
+              const arr = item.detail.split('\n');
+              arr.pop();
+              return arr?.map((list, idx) => {
+                const match = list.match(regex);
+                if (match) {
+                  return (
+                    <UploadItem
+                      onClick={() => handleUploadItemDelete(idx, list)}
+                      key={idx}
+                      text={`https://www.youtube.com/watch?v=${match[1]}`}
+                    />
+                  );
+                }
+              });
+            }
+          })}
+        </S.BottomWrapper>
+      )}
     </>
   );
 };

@@ -14,6 +14,7 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
   const [matchList, setMatchList] = useState<string[]>([]);
   const [uploadList, setUploadList] = useState<string[]>([]);
   const [markdown, setMarkdown] = useRecoilState(projectItems);
+  let isData;
 
   const handleAreaClick = () => {
     setIsOpen(false);
@@ -75,6 +76,12 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
     setMatchList(matchDataList.slice(0, 4));
   }, [value]);
 
+  markdown.forEach((item) => {
+    if (item.name === 'techStack' && item.detail !== '\n' && item.detail) {
+      isData = true;
+    }
+  });
+
   return (
     <>
       <S.Wrap>
@@ -96,27 +103,30 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
           )}
         </S.ReletiveBox>
       </S.Wrap>
-      <S.BottomWrapper>
-        {markdown.map((item) => {
-          if (item.name === 'techStack' && item.detail) {
-            const slice = item.detail.split('/>');
-            slice.pop();
-            return slice?.map((list, idx) => {
-              const element = list + '/>';
-              const match = element.match(/logo=([^&]+)/);
-              if (match) {
-                return (
-                  <UploadItem
-                    onClick={() => handleUploadItemDelete(idx, element)}
-                    key={idx}
-                    text={match[1]}
-                  />
-                );
-              }
-            });
-          }
-        })}
-      </S.BottomWrapper>
+
+      {isData && (
+        <S.BottomWrapper>
+          {markdown.map((item) => {
+            if (item.name === 'techStack' && item.detail) {
+              const slice = item.detail.split('/>');
+              slice.pop();
+              return slice?.map((list, idx) => {
+                const element = list + '/>';
+                const match = element.match(/logo=([^&]+)/);
+                if (match) {
+                  return (
+                    <UploadItem
+                      onClick={() => handleUploadItemDelete(idx, element)}
+                      key={idx}
+                      text={match[1]}
+                    />
+                  );
+                }
+              });
+            }
+          })}
+        </S.BottomWrapper>
+      )}
     </>
   );
 };
