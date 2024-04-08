@@ -9,7 +9,6 @@ export const Box = styled.div`
   border-radius: 1rem;
   margin: 2rem 2rem 0 0;
   padding: 2rem;
-  height: calc(100vh - 2rem);
 
   @media (max-width: ${TABLET_SIZE}px) {
     max-width: 100%;
@@ -21,7 +20,7 @@ export const Box = styled.div`
 export const Inner = styled.div<{ $lightMode: boolean }>`
   position: relative;
   width: 100%;
-  height: calc(100vh - 6.4rem);
+  height: 100%;
 
   overflow: hidden;
   background: ${(props) =>

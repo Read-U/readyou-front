@@ -8,6 +8,7 @@ import { styled } from 'styled-components';
 import { TABLET_SIZE } from '@/shared/constants/media';
 
 const Header = styled.header`
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,17 +19,19 @@ const Header = styled.header`
 const HeaderTitle = styled.h1`
   color: ${(props) => props.theme.colors.darknavy};
   font-size: 2.4rem;
-  weight: 900;
+  font-weight: 900;
 `;
 
 const EditorPageContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 2rem;
+  height: calc(100vh - 6.8rem);
 
   @media (max-width: ${TABLET_SIZE}px) {
     flex-direction: column;
     align-items: center;
+    height: 100%;
   }
 `;
 
@@ -38,7 +41,6 @@ const EditorBox = styled.div`
   background: ${(props) => props.theme.colors.lightgray};
   border-radius: 1rem;
   margin: 2rem 0 0 2rem;
-  height: calc(100vh - 2rem);
   padding: 2rem;
 
   @media (max-width: ${TABLET_SIZE}px) {
