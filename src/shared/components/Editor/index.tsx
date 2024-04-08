@@ -58,32 +58,34 @@ const Editor = () => {
         <Button type="back" onClick={() => setStep(step - 1)}>
           뒤로가기
         </Button>
-        <Droppable droppableId="editor">
-          {(provided) => (
-            <S.ItemContainer
-              ref={provided.innerRef}
-              {...provided.droppableProps}
-            >
-              {itemList.map((item, index) => (
-                <Draggable key={item.id} draggableId={item.id} index={index}>
-                  {(provided) => (
-                    <div
-                      ref={provided.innerRef}
-                      {...provided.dragHandleProps}
-                      {...provided.draggableProps}
-                    >
-                      <ProjectInputItem
-                        handleItemDelete={handleItemDelete}
-                        type={item.type}
-                      />
-                    </div>
-                  )}
-                </Draggable>
-              ))}
-              {provided.placeholder}
-            </S.ItemContainer>
-          )}
-        </Droppable>
+        <S.ItemListContainer>
+          <Droppable droppableId="editor">
+            {(provided) => (
+              <S.ItemContainer
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+              >
+                {itemList.map((item, index) => (
+                  <Draggable key={item.id} draggableId={item.id} index={index}>
+                    {(provided) => (
+                      <div
+                        ref={provided.innerRef}
+                        {...provided.dragHandleProps}
+                        {...provided.draggableProps}
+                      >
+                        <ProjectInputItem
+                          handleItemDelete={handleItemDelete}
+                          type={item.type}
+                        />
+                      </div>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </S.ItemContainer>
+            )}
+          </Droppable>
+        </S.ItemListContainer>
       </S.Inner>
     </DragDropContext>
   );

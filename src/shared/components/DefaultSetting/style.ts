@@ -5,6 +5,7 @@ export const MarkdownTemplateList = styled.ul`
   width: 100%;
   padding: 2.4rem 2rem;
   overflow-y: auto;
+  height: calc(100vh - 12.4rem);
 
   background: #ffffff;
   border-radius: 1rem;
