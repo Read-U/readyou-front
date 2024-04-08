@@ -23,52 +23,44 @@ const ImageCreateInput = () => {
   }, []);
 
   /** 이미지 -> 링크 변환 API */
-  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target;
 
     if (files && files.length > 0) {
-      const formData = new FormData();
-      formData.append('image', files[0]);
+      try {
+        const formData = new FormData();
+        formData.append('image', files[0]);
 
-      let config = {
-        method: 'post',
-        maxBodyLength: Infinity,
-        url: `${process.env.NEXT_PUBLIC_API_URL}/api/img`,
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-        data: formData,
-      };
-
-      axios
-        .request(config)
-        .then((response) => {
-          const imageLink = response.data.imageLink;
-          console.log(imageLink);
-          const newMarkdown = markdown.map((item) => {
-            if (item.name === 'image') {
-              if (item.imageNameList) {
-                return {
-                  ...item,
-                  detail:
-                    item.detail +
-                    `<img src="${imageLink}" width="${width}" height="${height}" />\n`,
-                  imageNameList: [...item.imageNameList, files[0].name],
-                };
-              }
+        let config = {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        };
+        const response = await axios.post('/api/img', formData, config);
+        const imageLink = response.data.imageLink;
+        const newMarkdown = markdown.map((item) => {
+          if (item.name === 'image') {
+            if (item.imageNameList) {
+              return {
+                ...item,
+                detail:
+                  item.detail +
+                  `<img src="${imageLink}" width="${width}" height="${height}" />\n`,
+                imageNameList: [...item.imageNameList, files[0].name],
+              };
             }
-            return item;
-          });
-
-          setMarkdown(newMarkdown);
-
-          /** 초기화 */
-          setWidth('');
-          setHeight('');
-        })
-        .catch((error) => {
-          console.log(error);
+          }
+          return item;
         });
+
+        setMarkdown(newMarkdown);
+
+        /** 초기화 */
+        setWidth('');
+        setHeight('');
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
