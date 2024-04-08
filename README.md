@@ -39,13 +39,27 @@
 # 💻 핵심 기능
 
 ### 1. 원하는 항목들만 골라 자신만의 README를 쓸 수 있어요.
-<img src="https://readyou.s3.ap-southeast-2.amazonaws.com/115d9c98-f8a1-440e-b438-f5c8cc8cd264-%E1%84%8B%E1%85%A6%E1%84%83%E1%85%B5%E1%86%BA%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB-%E1%84%83%E1%85%A1%E1%84%8F%E1%85%B3%20%E1%84%86%E1%85%A9%E1%84%83%E1%85%B3%28%E1%84%83%E1%85%B5%E1%84%91%E1%85%A9%E1%86%AF%E1%84%90%E1%85%B3%29.png" width="500" height="400" />
+![1](https://github.com/Read-U/readyou-front/assets/81246338/49ed7992-e2ac-4a9e-8de9-f27759c9ad64)
+
 
 ### 2. 추가된 항목들은 드래그 앤 드롭을 이용해 순서를 마음대로 바꿀 수 있어요. 
-<img src="https://readyou.s3.ap-southeast-2.amazonaws.com/009df82d-fb47-4012-9b99-8e5ceeebc4ff-%E1%84%8B%E1%85%A6%E1%84%83%E1%85%B5%E1%86%BA%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB-%E1%84%92%E1%85%A1%E1%86%BC%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%89%E1%85%A5%E1%86%AB%E1%84%90%E1%85%A2%E1%86%A8%20%E1%84%92%E1%85%AE%20%E1%84%8B%E1%85%A6%E1%84%83%E1%85%B5%E1%86%BA%20%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB.png" width="500" height="400" />
+![2](https://github.com/Read-U/readyou-front/assets/81246338/9d2ea806-1814-40ad-9a63-a5de52b8b8c2)
+
 
 ### 3. 프리뷰를 통해 작성하는 내용을 실시간으로 확인해요.
-<img src="https://readyou.s3.ap-southeast-2.amazonaws.com/2a30d8af-bfdf-4f4d-be9c-0b303ec84d6d-Untitled.png" width="700" height="300" />
+![3](https://github.com/Read-U/readyou-front/assets/81246338/f0070fe3-d3c9-4c30-a98c-d71ac16ea837)
+
+
+- 사용한 기술 스택을 검색 해 보세요.
+  ![4](https://github.com/Read-U/readyou-front/assets/81246338/63d87c23-8ef8-4537-bdbc-55e934a046ab)
+
+    
+- 팀원의 github ID와 직무를 입력 해 보세요. 자동으로 팀원 테이블을 만들어 드려요!
+   ![5](https://github.com/Read-U/readyou-front/assets/81246338/f2012072-1f10-40ef-91b4-ca87a3723081)
+
+    
+- 프로젝트의 대표 이미지 또는 영상을 추가해 보세요!
+  ![6](https://github.com/Read-U/readyou-front/assets/81246338/cfb143ad-15de-4e7e-8ae1-c54fcf6a0b78)
 
 <br >
 <br >
