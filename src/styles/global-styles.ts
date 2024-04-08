@@ -1,7 +1,14 @@
+import { createGlobalStyle, css } from 'styled-components';
 import reset from 'styled-reset';
-import { createGlobalStyle } from 'styled-components';
+
+const customReset = css`
+  ${reset}
+  html {
+    font-size: 62.5%;
+  }
+`;
 
 export const GlobalStyle = createGlobalStyle`
   font-family: "Pretendard";
-  ${reset}
+  ${customReset}
 `;

@@ -56,7 +56,7 @@ export default class MyDocument extends Document {
             content="누구나 간편하게 README.md 작성하기"
           />
           <meta property="og:type" content="website" />
-          <meta property="og:url" content="배포 링크" />
+          <meta property="og:url" content="https://readyou.vercel.app/" />
           <meta property="og:image" content="/images/kakao.png" />
           <meta property="og:image:alt" content="READ YOU 이미지" />
           <meta property="og:locale" content="ko_KR" />
@@ -68,7 +68,7 @@ export default class MyDocument extends Document {
             content="누구나 간편하게 README.md 작성하기"
           />
           <meta name="twitter:card" content="website" />
-          <meta property="twitter:site" content="배포 링크(추가 예정)" />
+          <meta property="twitter:site" content="https://readyou.vercel.app/" />
           <meta name="twitter:image" content="/images/twitter.png" />
           <meta property="twitter:image:alt" content="READ YOU 이미지" />
         </Head>
