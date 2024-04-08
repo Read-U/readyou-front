@@ -28,7 +28,7 @@ const ITEM_SCRIPT: ItemScript = {
       placeholder="이 칸에서 기술 스택을 검색하세요!"
     />
   ),
-  '팀원 테이블': <TeamTableInput />,
+  '팀원 구성': <TeamTableInput />,
   '이미지 삽입': <ImageCreateInput />,
   '프로젝트 기간': <ProjectDuration></ProjectDuration>,
 };
