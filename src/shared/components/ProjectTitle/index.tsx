@@ -27,7 +27,11 @@ const ProjectTitle = () => {
     <S.InputBox>
       <S.Input
         type="text"
-        value={newValue.detail.split('#')[1]?.replace(/^\s+/, '')}
+        value={
+          newValue?.detail
+            ? newValue.detail.split('#')[1]?.replace(/^\s+/, '')
+            : ''
+        }
         placeholder="프로젝트 제목을 기입해주세요."
         onChange={(e) => handleChangeTitle(e)}
       />

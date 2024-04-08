@@ -31,7 +31,7 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
   const handleUploadItemDelete = (index: number, link: string) => {
     const newMarkdown = markdown.map((item) => {
       if (item.name === 'video') {
-        const newData = item.detail.replace(link, '');
+        const newData = item?.detail.replace(link, '');
         return { ...item, detail: newData };
       }
       return item;
@@ -78,7 +78,7 @@ const UploadVideoInput = ({ type, placeholder }: InputProps) => {
           ...item,
           detail:
             item.detail +
-            `[![영상 썸네일 이미지](http://img.youtube.com/vi/${validationResult}/0.jpg)](https://youtu.be/${validationResult})\n`,
+            `\n[![영상 썸네일 이미지](http://img.youtube.com/vi/${validationResult}/0.jpg)](https://youtu.be/${validationResult})\n`,
         };
       }
       return item;
