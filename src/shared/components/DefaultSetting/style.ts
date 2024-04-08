@@ -5,10 +5,26 @@ export const MarkdownTemplateList = styled.ul`
   width: 100%;
   padding: 2.4rem 2rem;
   overflow-y: auto;
-  height: calc(100vh - 12.4rem);
+  height: 100%;
 
   background: #ffffff;
   border-radius: 1rem;
+
+  &::-webkit-scrollbar {
+    width: 1.3rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: white;
+    background-clip: padding-box;
+    border: 0.5rem solid transparent;
+    border-radius: 10rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 10rem;
+    background: ${(props) => props.theme.colors.gray};
+  }
 `;
 
 export const TemplateHeader = styled.div`

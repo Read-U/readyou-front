@@ -7,7 +7,7 @@ export const Box = styled.div`
 
   background: ${(props) => props.theme.colors.lightgray};
   border-radius: 1rem;
-  margin: 2rem 2rem 0 0;
+  margin: 2rem 2rem 2rem 0;
   padding: 2rem;
   height: calc(100vh - 2rem);
 
