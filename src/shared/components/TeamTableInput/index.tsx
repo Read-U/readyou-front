@@ -16,7 +16,7 @@ const TeamTableInput = () => {
   const [teamMemberInfoList, setTeamMemberInfoList] = useState<
     TeamMemberInfo[]
   >([]);
-  const [teamMemberList, setTeamMemberList] = useState<string[]>([]); // upload된 팀원
+  const [teamMemberList, setTeamMemberList] = useState<string[]>([]); // upload 팀원
   const [teamTableMarkdown, setTeamTableMarkdown] = useState<string>('');
 
   const [markdown, setMarkdown] = useRecoilState(projectItems);
@@ -31,31 +31,34 @@ const TeamTableInput = () => {
   }, [markdown]);
 
   useEffect(() => {
-    console.log(teamMemberInfoList);
-    if (teamMemberInfoList.length === 0) return setTeamTableMarkdown('');
-    const newMarkdown = markdown.map((item) => {
-      if (item.name === 'teamTable' && item.teamMembers) {
-        const newMembers = teamMemberInfoList.map((member) => {
-          return `${member.githubUserInfo[1]} | ${member.role}`;
-        });
-        return {
-          ...item,
-          detail: `### ${item.type}` + '\n' + teamTableMarkdown,
-          teamMembers: newMembers,
-        };
-      }
-      return item;
-    });
+    if (teamMemberInfoList.length > 0) {
+      const newMarkdown = markdown.map((item) => {
+        if (item.name === 'teamTable' && item.teamMembers) {
+          const newMembers = teamMemberInfoList.map((member) => {
+            return `${member.githubUserInfo[1]} | ${member.role}`;
+          });
 
-    console.log(newMarkdown);
-    setMarkdown(newMarkdown);
+          return {
+            ...item,
+            detail:
+              teamMemberInfoList.length > 0
+                ? `### ${item.type}` + '\n' + teamTableMarkdown
+                : '',
+            teamMembers: newMembers,
+          };
+        }
+        return item;
+      });
 
-    setGithubId('');
-    setRole('');
+      setMarkdown(newMarkdown);
+
+      setGithubId('');
+      setRole('');
+    }
   }, [teamTableMarkdown]);
 
   useEffect(() => {
-    console.log(teamMemberInfoList.length);
+    if (teamMemberInfoList.length === 0) return setTeamTableMarkdown('');
     const markDownImage = teamMemberInfoList
       .map(
         (member) =>
@@ -109,19 +112,34 @@ const TeamTableInput = () => {
     }
   };
 
+  useEffect(() => {
+    const newMarkdown = markdown.map((item) => {
+      if (item.name === 'teamTable') {
+        return {
+          ...item,
+          detail:
+            teamMemberInfoList.length > 0
+              ? `### ${item.type}` + '\n' + teamTableMarkdown
+              : '',
+          teamMembers: teamMemberList,
+        };
+      }
+      return item;
+    });
+
+    console.log(newMarkdown);
+    setMarkdown(newMarkdown);
+  }, [teamMemberList]);
+
   /** 삭제 */
   const handleTeamMemberDelete = (index: number) => {
-    return () => {
-      const newTeamMemberList = teamMemberList.filter((_, i) => i !== index);
-      console.log(newTeamMemberList);
-      setTeamMemberList(newTeamMemberList);
+    const newTeamMemberList = teamMemberList.filter((_, i) => i !== index);
+    setTeamMemberList(newTeamMemberList);
 
-      const newTeamMemberInfoList = teamMemberInfoList.filter(
-        (_, i) => i !== index,
-      );
-      console.log(newTeamMemberInfoList);
-      setTeamMemberInfoList(newTeamMemberInfoList);
-    };
+    const newTeamMemberInfoList = teamMemberInfoList.filter(
+      (_, i) => i !== index,
+    );
+    setTeamMemberInfoList(newTeamMemberInfoList);
   };
 
   return (
@@ -148,7 +166,7 @@ const TeamTableInput = () => {
               <UploadItem
                 key={index}
                 text={member}
-                onClick={handleTeamMemberDelete(index)}
+                onClick={() => handleTeamMemberDelete(index)}
               />
             );
           })}
