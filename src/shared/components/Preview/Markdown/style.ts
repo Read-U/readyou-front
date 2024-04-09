@@ -8,7 +8,7 @@ export const PreviewContainer = styled.div<{ $lightMode: boolean }>`
   flex-direction: column;
   gap: 1.6rem;
   width: calc(100% - 2rem);
-  height: calc(100vh - 20rem);
+  height: calc(100vh - 23rem);
   margin: 1rem;
 
   overflow: auto;
