@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface TechStackInputStyle {
+  $isOver: boolean;
+}
+
 export const Wrap = styled.div`
   display: flex;
   gap: 1.6rem;
@@ -50,12 +54,13 @@ export const MatchList = styled.ul`
   z-index: 999;
 `;
 
-export const MatchItem = styled.li`
+export const MatchItem = styled.li<TechStackInputStyle>`
   cursor: pointer;
   font-size: 1.6rem;
   padding: 1.6rem 2.4rem 1.6rem 2rem;
   color: ${(props) => props.theme.colors.blue};
-  background: #ffffff;
+  background-color: ${(props) =>
+    props.$isOver ? props.theme.colors.lightblue : props.theme.colors.white};
   width: 100%;
   border: ${(props) => `1px solid ${props.theme.colors.darkgray}`};
   border-top: none;
@@ -70,7 +75,7 @@ export const MatchItem = styled.li`
   }
 
   &:hover {
-    background-color: ${(props) => props.theme.colors.lightgray};
+    background-color: ${(props) => props.theme.colors.lightblue};
   }
 `;
 

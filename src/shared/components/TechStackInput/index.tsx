@@ -15,10 +15,22 @@ import useToast from '@/shared/hooks/useToast';
 
 interface InputProps extends React.HTMLProps<HTMLInputElement> {}
 
+interface TMatchList {
+  text: string;
+  index: number;
+  isOver: boolean;
+}
+let nowIndex = -1;
 const TechStackInput = ({ type, placeholder }: InputProps) => {
   const [value, setValue] = useState('');
   const [isOpen, setIsOpen] = useState(false);
-  const [matchList, setMatchList] = useState<string[]>([]);
+  const [matchList, setMatchList] = useState<TMatchList[]>([
+    {
+      text: '',
+      index: 0,
+      isOver: false,
+    },
+  ]);
   const [uploadList, setUploadList] = useState<string[]>([]);
   const [markdown, setMarkdown] = useRecoilState(projectItems);
   const toast = useToast();
@@ -40,22 +52,64 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
   };
 
   const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.keyCode === 13) {
-      if (Object.keys(TECH_STACK_DATA).includes(value.toLowerCase())) {
-        addMarkdown(value.toLowerCase());
-        setUploadList((prevList: string[]) => [
-          ...prevList,
-          value.toLowerCase(),
-        ]);
-        setIsOpen(false);
-        setValue('');
-        return;
-      }
-      toast({
-        message: '존재하지 않는 기술스택입니다!',
-        status: 'error',
-      });
+    const matchDataList = value
+      ? Object.keys(TECH_STACK_DATA).filter((target) =>
+          target.startsWith(value.toLowerCase()),
+        )
+      : [];
+
+    switch (e.keyCode) {
+      // UP KEY
+      case 38:
+        nowIndex = Math.max(nowIndex - 1, 0);
+        break;
+
+      // DOWN KEY
+      case 40:
+        console.log(nowIndex);
+        nowIndex = Math.min(nowIndex + 1, matchDataList.length - 1);
+        break;
+
+      // ENTER KEY
+      case 13:
+        // nowIndex가 있을 때
+        if (nowIndex > -1) {
+          addMarkdown(matchDataList[nowIndex]);
+          setIsOpen(false);
+          setValue('');
+          break;
+        }
+        // 유저 인풋 휴먼에러 체크
+        if (Object.keys(TECH_STACK_DATA).includes(value.toLowerCase())) {
+          addMarkdown(value.toLowerCase());
+          setUploadList((prevList: string[]) => [
+            ...prevList,
+            value.toLowerCase(),
+          ]);
+          setIsOpen(false);
+          setValue('');
+          break;
+        }
+        // 휴면 에러가 있을 경우
+        toast({
+          message: '존재하지 않는 기술스택입니다!',
+          status: 'error',
+        });
+        break;
+
+      // 그외 입력은 초기화
+      default:
+        nowIndex = -1;
+        break;
     }
+
+    const newMacthList = matchDataList.slice(0, 4).map((data, index) => {
+      if (index === nowIndex) {
+        return { text: data, index, isOver: true };
+      }
+      return { text: data, index, isOver: false };
+    });
+    setMatchList(newMacthList);
   };
 
   const handleUploadItemDelete = (index: number, text: string) => {
@@ -96,14 +150,18 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
   };
 
   // 연관 데이터 필터
-  useEffect(() => {
-    const matchDataList = value
-      ? Object.keys(TECH_STACK_DATA).filter((target) =>
-          target.startsWith(value.toLowerCase()),
-        )
-      : [];
-    setMatchList(matchDataList.slice(0, 4));
-  }, [value]);
+  // useEffect(() => {
+  //   const matchDataList = value
+  //     ? Object.keys(TECH_STACK_DATA).filter((target) =>
+  //         target.startsWith(value.toLowerCase()),
+  //       )
+  //     : [];
+
+  //   const newMacthList = matchDataList.slice(0, 4).map((data, index) => {
+  //     return { text: data, index, isOver: false };
+  //   });
+  //   setMatchList(newMacthList);
+  // }, [value]);
 
   return (
     <>
@@ -119,8 +177,12 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
           {isOpen && (
             <S.MatchList>
               {matchList?.map((list, idx) => (
-                <S.MatchItem key={idx} onClick={handleMatchItemClick}>
-                  {list}
+                <S.MatchItem
+                  key={idx}
+                  onClick={handleMatchItemClick}
+                  $isOver={list.isOver}
+                >
+                  {list.text}
                 </S.MatchItem>
               ))}
             </S.MatchList>
