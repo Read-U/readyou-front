@@ -66,7 +66,6 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
 
       // DOWN KEY
       case 40:
-        console.log(nowIndex);
         nowIndex = Math.min(nowIndex + 1, matchDataList.length - 1);
         break;
 
