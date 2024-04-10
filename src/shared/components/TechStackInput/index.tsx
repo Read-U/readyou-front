@@ -20,17 +20,15 @@ interface TMatchList {
   index: number;
   isOver: boolean;
 }
+
+const UP_KEY_CODE = 38;
+const DOWM_KEY_CODE = 40;
+const ENTER_KEY_CODE = 13;
 let nowIndex = -1;
 const TechStackInput = ({ type, placeholder }: InputProps) => {
   const [value, setValue] = useState('');
   const [isOpen, setIsOpen] = useState(false);
-  const [matchList, setMatchList] = useState<TMatchList[]>([
-    {
-      text: '',
-      index: 0,
-      isOver: false,
-    },
-  ]);
+  const [matchList, setMatchList] = useState<TMatchList[]>([]);
   const [uploadList, setUploadList] = useState<string[]>([]);
   const [markdown, setMarkdown] = useRecoilState(projectItems);
   const toast = useToast();
@@ -60,17 +58,17 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
 
     switch (e.keyCode) {
       // UP KEY
-      case 38:
+      case UP_KEY_CODE:
         nowIndex = Math.max(nowIndex - 1, 0);
         break;
 
       // DOWN KEY
-      case 40:
+      case DOWM_KEY_CODE:
         nowIndex = Math.min(nowIndex + 1, matchDataList.length - 1);
         break;
 
       // ENTER KEY
-      case 13:
+      case ENTER_KEY_CODE:
         // nowIndex가 있을 때
         if (nowIndex > -1) {
           addMarkdown(matchDataList[nowIndex]);
@@ -102,11 +100,9 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
         break;
     }
 
+    // 기술스택 검색 추천 리스트를 첫 4가지 요소에 대한 옵션을 제공(데이터가 많아질 경우를 대비)
     const newMacthList = matchDataList.slice(0, 4).map((data, index) => {
-      if (index === nowIndex) {
-        return { text: data, index, isOver: true };
-      }
-      return { text: data, index, isOver: false };
+      return { text: data, index, isOver: index === nowIndex };
     });
     setMatchList(newMacthList);
   };
@@ -147,20 +143,6 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
       setValue('');
     }
   };
-
-  // 연관 데이터 필터
-  // useEffect(() => {
-  //   const matchDataList = value
-  //     ? Object.keys(TECH_STACK_DATA).filter((target) =>
-  //         target.startsWith(value.toLowerCase()),
-  //       )
-  //     : [];
-
-  //   const newMacthList = matchDataList.slice(0, 4).map((data, index) => {
-  //     return { text: data, index, isOver: false };
-  //   });
-  //   setMatchList(newMacthList);
-  // }, [value]);
 
   return (
     <>
