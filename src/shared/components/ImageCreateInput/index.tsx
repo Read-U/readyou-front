@@ -52,7 +52,7 @@ const ImageCreateInput = () => {
                   ...item,
                   detail:
                     item.detail +
-                    `<br><img src="${imageLink}" width="${width}" height="${height}" /><br>`,
+                    `<br>\n<img src="${imageLink}" width="${width}" height="${height}" />`,
                   imageNameList: [...item.imageNameList, files[0].name],
                 };
               }
