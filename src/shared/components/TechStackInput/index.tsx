@@ -1,10 +1,17 @@
-import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
+import {
+  ChangeEvent,
+  KeyboardEvent,
+  MouseEvent,
+  useEffect,
+  useState,
+} from 'react';
 import { renderToString } from 'react-dom/server';
 import * as S from './style';
 import TECH_STACK_DATA from '@/shared/constants/techStackData';
 import UploadItem from '../common/UploadItem';
 import { useRecoilState } from 'recoil';
 import { projectItems } from '@/recoil/states';
+import useToast from '@/shared/hooks/useToast';
 
 interface InputProps extends React.HTMLProps<HTMLInputElement> {}
 
@@ -14,6 +21,7 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
   const [matchList, setMatchList] = useState<string[]>([]);
   const [uploadList, setUploadList] = useState<string[]>([]);
   const [markdown, setMarkdown] = useRecoilState(projectItems);
+  const toast = useToast();
 
   const handleAreaClick = () => {
     setIsOpen(false);
@@ -31,6 +39,25 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
     setIsOpen(true);
   };
 
+  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.keyCode === 13) {
+      if (Object.keys(TECH_STACK_DATA).includes(value.toLowerCase())) {
+        addMarkdown(value.toLowerCase());
+        setUploadList((prevList: string[]) => [
+          ...prevList,
+          value.toLowerCase(),
+        ]);
+        setIsOpen(false);
+        setValue('');
+        return;
+      }
+      toast({
+        message: '존재하지 않는 기술스택입니다!',
+        status: 'error',
+      });
+    }
+  };
+
   const handleUploadItemDelete = (index: number, text: string) => {
     const newMarkdown = markdown.map((item) => {
       if (item.name === 'techStack' && item.detail) {
@@ -44,20 +71,24 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
     setUploadList(newUploadItem);
   };
 
+  const addMarkdown = (target: string) => {
+    const newMarkdown = markdown.map((item) => {
+      if (item.name === 'techStack') {
+        return {
+          ...item,
+          detail: item.detail + renderToString(TECH_STACK_DATA[target]),
+        };
+      }
+      return item;
+    });
+    setMarkdown(newMarkdown);
+  };
+
   // 연관 데이터 클릭
   const handleMatchItemClick = (e: MouseEvent) => {
     const { textContent } = e.target as HTMLLIElement;
     if (textContent) {
-      const newMarkdown = markdown.map((item) => {
-        if (item.name === 'techStack') {
-          return {
-            ...item,
-            detail: item.detail + renderToString(TECH_STACK_DATA[textContent]),
-          };
-        }
-        return item;
-      });
-      setMarkdown(newMarkdown);
+      addMarkdown(textContent);
       setUploadList((prevList: string[]) => [...prevList, textContent!]);
       setIsOpen(false);
       setValue('');
@@ -83,6 +114,7 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
             onChange={handleInputValue}
             type={type}
             placeholder={placeholder}
+            onKeyUp={handleKeyPress}
           />
           {isOpen && (
             <S.MatchList>
