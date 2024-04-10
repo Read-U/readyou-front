@@ -52,8 +52,7 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
         if (item.name === 'techStack') {
           return {
             ...item,
-            detail:
-              item.detail + renderToString(TECH_STACK_DATA[textContent]) + '\n',
+            detail: item.detail + renderToString(TECH_STACK_DATA[textContent]),
           };
         }
         return item;
