@@ -25,6 +25,7 @@ const UP_KEY_CODE = 38;
 const DOWM_KEY_CODE = 40;
 const ENTER_KEY_CODE = 13;
 let nowIndex = -1;
+
 const TechStackInput = ({ type, placeholder }: InputProps) => {
   const [value, setValue] = useState('');
   const [isOpen, setIsOpen] = useState(false);
@@ -57,17 +58,14 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
       : [];
 
     switch (e.keyCode) {
-      // UP KEY
       case UP_KEY_CODE:
         nowIndex = Math.max(nowIndex - 1, 0);
         break;
 
-      // DOWN KEY
       case DOWM_KEY_CODE:
         nowIndex = Math.min(nowIndex + 1, matchDataList.length - 1);
         break;
 
-      // ENTER KEY
       case ENTER_KEY_CODE:
         // nowIndex가 있을 때
         if (nowIndex > -1) {
