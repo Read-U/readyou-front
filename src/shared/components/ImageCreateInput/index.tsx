@@ -44,7 +44,6 @@ const ImageCreateInput = () => {
         .request(config)
         .then((response) => {
           const imageLink = response.data.imageLink;
-          console.log(imageLink);
           const newMarkdown = markdown.map((item) => {
             if (item.name === 'image') {
               if (item.imageNameList) {

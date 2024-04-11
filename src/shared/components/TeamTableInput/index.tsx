@@ -76,8 +76,6 @@ const TeamTableInput = () => {
 
     const table = '|:-:'.repeat(teamMemberInfoList.length);
 
-    console.log(markDownImage + '\n' + table + '\n' + markDownUserInfo);
-
     setTeamTableMarkdown(
       markDownImage + '\n' + table + '\n' + markDownUserInfo,
     );
@@ -136,7 +134,6 @@ const TeamTableInput = () => {
       return item;
     });
 
-    console.log(newMarkdown);
     setMarkdown(newMarkdown);
   }, [teamMemberList]);
 
