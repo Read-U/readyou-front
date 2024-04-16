@@ -168,6 +168,7 @@ const TechStackInput = ({ type, placeholder }: InputProps) => {
           )}
         </S.ReletiveBox>
       </S.Wrap>
+
       <S.BottomWrapper>
         {markdown.map((item) => {
           if (item.name === 'techStack' && item.detail) {
