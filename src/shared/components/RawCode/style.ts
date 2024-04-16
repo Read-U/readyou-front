@@ -7,16 +7,38 @@ export const Inner = styled.div`
   padding: 2rem 0 0 2rem;
 `;
 
-export const ItemListContainer = styled.div`
-  height: calc(100vh - 22rem);
-  margin-top: 2rem;
-  overflow-y: auto;
+export const TextContainer = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  width: calc(100% - 2rem);
+  height: calc(100vh - 23rem);
+  overflow: auto;
+`;
+
+export const TextArea = styled.textarea`
+  margin: 2rem 0;
+  padding: 0 0 1.6rem 0;
+  resize: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+  border: solid 1px ${(props) => props.theme.colors.gray};
+  &:focus {
+    outline: 0;
+  }
+  
   &::-webkit-scrollbar {
     width: 1.3rem;
   }
 
   &::-webkit-scrollbar-thumb {
     background: white;
+    /* background: ${(props) =>
+      props.$lightMode ? `white` : `${props.theme.colors.darkgray}`}; */
     background-clip: padding-box;
     border: 0.5rem solid transparent;
     border-radius: 10rem;
@@ -25,16 +47,9 @@ export const ItemListContainer = styled.div`
   &::-webkit-scrollbar-track {
     border-radius: 10rem;
     background: ${(props) => props.theme.colors.gray};
+    /* background: ${(props) =>
+      props.$lightMode
+        ? `${props.theme.colors.gray}`
+        : `${props.theme.colors.navy}`}; */
   }
-`;
-
-export const ItemContainer = styled.div`
-  margin: 2rem 0;
-  padding: 0 1.2rem 1.6rem 0;
-
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
-  width: calc(100% - 2rem);
-  margin: 1rem;
 `;

@@ -1,34 +1,51 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ChangeEvent } from 'react';
 import Button from '../common/Button';
 import ProjectInputItem from '../common/ProjectInputItem';
 import * as S from './style';
 import { useRecoilState } from 'recoil';
-import { projectItems, stepState } from '@/recoil/states';
+import { markdown, stepState } from '@/recoil/states';
+import { DisabledCopyButton } from '../Preview/CopyButton/style';
+import Swal from 'sweetalert2';
 
 const RawCode = () => {
-  const [enabled, setEnabled] = useState(false);
   const [step, setStep] = useRecoilState(stepState);
-  useEffect(() => {
-    const animation = requestAnimationFrame(() => setEnabled(true));
+  const [markdownText, setMarkdown] = useRecoilState(markdown);
 
-    return () => {
-      cancelAnimationFrame(animation);
-      setEnabled(false);
-    };
-  }, []);
+  const handleSetValue = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setMarkdown(e.target.value);
+  };
 
-  if (!enabled) {
-    return null;
-  }
+  const handleConfirm = () => {
+    Swal.fire({
+      title: '뒤로가기',
+      text: '코드가 초기화됩니다!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '확인!',
+      cancelButtonText: '취소!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setStep(step - 1);
+      }
+    });
+  };
 
   return (
     <S.Inner>
-      <Button type="complete" onClick={() => setStep(step - 1)}>
+      <DisabledCopyButton type="back" onClick={handleConfirm}>
         뒤로가기
-      </Button>
-      <S.ItemListContainer>
-        
-      </S.ItemListContainer>
+      </DisabledCopyButton>
+      <S.TextContainer>
+        <S.TextArea
+          spellCheck="false"
+          onChange={(e) => {
+            handleSetValue(e);
+          }}
+          value={markdownText}
+        />
+      </S.TextContainer>
     </S.Inner>
   );
 };
