@@ -15,6 +15,8 @@ const Editor = () => {
   const [itemList, setItemList] = useRecoilState(projectItems);
   const [enabled, setEnabled] = useState(false);
   const [step, setStep] = useRecoilState(stepState);
+  const [hidden, setHidden] = useState(true);
+
   useEffect(() => {
     const animation = requestAnimationFrame(() => setEnabled(true));
 
@@ -55,9 +57,22 @@ const Editor = () => {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <S.Inner>
-        <Button type="back" onClick={() => setStep(step - 1)}>
-          뒤로가기
-        </Button>
+        <S.EditorHeader>
+          <Button type="back" onClick={() => setStep(step - 1)}>
+            뒤로가기
+          </Button>
+          <S.Div
+            onMouseEnter={() => setHidden(false)}
+            onMouseLeave={() => setHidden(true)}
+          >
+            <Button type="complete" onClick={() => setStep(2)}>
+              완료하기
+            </Button>
+            {!hidden && (
+              <S.CompleteHover>Raw Code 수정하기로 이동</S.CompleteHover>
+            )}
+          </S.Div>
+        </S.EditorHeader>
         <S.ItemListContainer>
           <Droppable droppableId="editor">
             {(provided) => (
