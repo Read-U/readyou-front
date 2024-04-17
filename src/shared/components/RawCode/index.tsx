@@ -11,7 +11,7 @@ const RawCode = () => {
   const [step, setStep] = useRecoilState(stepState);
   const [markdownText, setMarkdown] = useRecoilState(markdown);
 
-  const handleSetValue = (e: ChangeEvent<HTMLTextAreaElement>) => {
+  const handleMarkdownChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setMarkdown(e.target.value);
   };
 
@@ -40,9 +40,7 @@ const RawCode = () => {
       <S.TextContainer>
         <S.TextArea
           spellCheck="false"
-          onChange={(e) => {
-            handleSetValue(e);
-          }}
+          onChange={handleMarkdownChange}
           value={markdownText}
         />
       </S.TextContainer>

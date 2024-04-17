@@ -15,7 +15,7 @@ const Editor = () => {
   const [itemList, setItemList] = useRecoilState(projectItems);
   const [enabled, setEnabled] = useState(false);
   const [step, setStep] = useRecoilState(stepState);
-  const [hidden, setHidden] = useState(true);
+  const [isHidden, setIsHidden] = useState(true)
 
   useEffect(() => {
     const animation = requestAnimationFrame(() => setEnabled(true));
@@ -62,13 +62,13 @@ const Editor = () => {
             뒤로가기
           </Button>
           <S.Div
-            onMouseEnter={() => setHidden(false)}
-            onMouseLeave={() => setHidden(true)}
+            onMouseEnter={() => setIsHidden(false)}
+            onMouseLeave={() => setIsHidden(true)}
           >
             <Button type="complete" onClick={() => setStep(2)}>
               완료하기
             </Button>
-            {!hidden && (
+            {!isHidden && (
               <S.CompleteHover>Raw Code 수정하기로 이동</S.CompleteHover>
             )}
           </S.Div>

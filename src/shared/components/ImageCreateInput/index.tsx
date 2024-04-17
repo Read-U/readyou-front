@@ -33,8 +33,8 @@ const ImageCreateInput = () => {
       let config = {
         method: 'post',
         maxBodyLength: Infinity,
-        // url: `${process.env.NEXT_PUBLIC_API_URL}/api/img`,
-        url: `https://readyou.shop/api/img`,
+        url: `${process.env.NEXT_PUBLIC_API_URL}/api/img`,
+        // url: `https://readyou.shop/api/img`,
         headers: {
           'Content-Type': 'multipart/form-data',
         },
