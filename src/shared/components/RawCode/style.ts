@@ -37,8 +37,6 @@ export const TextArea = styled.textarea`
 
   &::-webkit-scrollbar-thumb {
     background: white;
-    /* background: ${(props) =>
-      props.$lightMode ? `white` : `${props.theme.colors.darkgray}`}; */
     background-clip: padding-box;
     border: 0.5rem solid transparent;
     border-radius: 10rem;
@@ -47,9 +45,5 @@ export const TextArea = styled.textarea`
   &::-webkit-scrollbar-track {
     border-radius: 10rem;
     background: ${(props) => props.theme.colors.gray};
-    /* background: ${(props) =>
-      props.$lightMode
-        ? `${props.theme.colors.gray}`
-        : `${props.theme.colors.navy}`}; */
   }
 `;
