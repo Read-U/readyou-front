@@ -2,8 +2,6 @@ import { styled } from 'styled-components';
 
 export const PreviewContainer = styled.div<{ $lightMode: boolean }>`
   position: relative;
-  width: 100%;
-
   display: flex;
   flex-direction: column;
   gap: 1.6rem;

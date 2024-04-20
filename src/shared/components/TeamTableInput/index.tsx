@@ -77,7 +77,7 @@ const TeamTableInput = () => {
     const table = '|:-:'.repeat(teamMemberInfoList.length);
 
     setTeamTableMarkdown(
-      markDownImage + '\n' + table + '\n' + markDownUserInfo,
+      markDownImage + '\n' + table + '\n' + markDownUserInfo+ '\n',
     );
   }, [teamMemberInfoList]);
 

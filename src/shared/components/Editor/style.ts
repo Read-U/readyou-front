@@ -7,8 +7,36 @@ export const Inner = styled.div`
   padding: 2rem 0 0 2rem;
 `;
 
+export const EditorHeader = styled.div`
+  padding-right: 2rem;
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const Div = styled.div`
+  position: relative;
+`;
+
+export const CompleteHover = styled.div`
+  position: absolute;
+  pointer-events: none;
+  top: -3rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: max-content;
+  border-radius: 1rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+  background-color: ${(props) => props.theme.colors.gray};
+  opacity: 0.7;
+  color: ${(props) => props.theme.colors.pink};
+  padding: 1.5rem;
+  z-index: 50;
+`;
+
 export const ItemListContainer = styled.div`
   height: calc(100vh - 22rem);
+  width: calc(100% - 2rem);
   margin-top: 2rem;
   overflow-y: auto;
   &::-webkit-scrollbar {

@@ -16,7 +16,7 @@ const ProjectContent = () => {
   const handleChangeContent = (e: ChangeEvent<HTMLInputElement>) => {
     const newMarkdown = markdown.map((item: ItemProps) => {
       if (item.name === 'content') {
-        return { ...item, detail: `### ${e.target.value}` };
+        return { ...item, detail: `### ${e.target.value}\n` };
       }
       return item;
     });

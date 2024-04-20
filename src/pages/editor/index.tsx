@@ -6,6 +6,7 @@ import Preview from '@/shared/components/Preview';
 import { useRecoilState } from 'recoil';
 import { styled } from 'styled-components';
 import { TABLET_SIZE } from '@/shared/constants/media';
+import RawCode from '@/shared/components/RawCode';
 
 const Header = styled.header`
   width: 100%;
@@ -66,6 +67,7 @@ const EditorPage = () => {
         <EditorBox>
           {step === 0 && <DefaultSetting />}
           {step === 1 && <Editor />}
+          {step === 2 && <RawCode />}
         </EditorBox>
         <Preview />
       </EditorPageContainer>
