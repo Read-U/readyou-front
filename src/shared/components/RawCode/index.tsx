@@ -18,13 +18,13 @@ const RawCode = () => {
   const handleConfirm = () => {
     Swal.fire({
       title: '뒤로가기',
-      text: '코드가 초기화됩니다!',
+      text: '수정한 코드가 초기화됩니다. 뒤로가시겠습니까?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: '확인!',
-      cancelButtonText: '취소!',
+      confirmButtonText: '네',
+      cancelButtonText: '아니오',
     }).then((result) => {
       if (result.isConfirmed) {
         setStep(step - 1);
