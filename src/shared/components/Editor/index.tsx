@@ -15,7 +15,7 @@ const Editor = () => {
   const [itemList, setItemList] = useRecoilState(projectItems);
   const [enabled, setEnabled] = useState(false);
   const [step, setStep] = useRecoilState(stepState);
-  const [isHidden, setIsHidden] = useState(true)
+  const [isHidden, setIsHidden] = useState(true);
 
   useEffect(() => {
     const animation = requestAnimationFrame(() => setEnabled(true));
@@ -66,11 +66,11 @@ const Editor = () => {
             onMouseLeave={() => setIsHidden(true)}
           >
             <Button type="complete" onClick={() => setStep(2)}>
-              완료하기
+              Raw Code 수정하기
             </Button>
-            {!isHidden && (
+            {/* {!isHidden && (
               <S.CompleteHover>Raw Code 수정하기로 이동</S.CompleteHover>
-            )}
+            )} */}
           </S.Div>
         </S.EditorHeader>
         <S.ItemListContainer>
