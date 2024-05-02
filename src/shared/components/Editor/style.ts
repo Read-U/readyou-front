@@ -8,7 +8,7 @@ export const Inner = styled.div`
 `;
 
 export const EditorHeader = styled.div`
-  padding-right: 2rem;
+  margin-right: 3.2rem;
   display: flex;
   justify-content: space-between;
 `;
@@ -37,7 +37,7 @@ export const CompleteHover = styled.div`
 export const ItemListContainer = styled.div`
   height: calc(100vh - 22rem);
   width: calc(100% - 2rem);
-  margin-top: 2rem;
+  margin-top: 1.6rem;
   overflow-y: auto;
   &::-webkit-scrollbar {
     width: 1.3rem;
