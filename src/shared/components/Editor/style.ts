@@ -7,6 +7,29 @@ export const Inner = styled.div`
   padding: 2rem 0 0 2rem;
 `;
 
+export const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.6rem;
+`;
+
+export const ToastMessage = styled.div<{ isVisible: boolean }>`
+  white-space: nowrap;
+  background: ${(props) => props.theme.colors.lightnavy};
+  padding: 1.6rem 0;
+  width: 100%;
+  border-radius: 1rem;
+  color: ${(props) => props.theme.colors.lightgray};
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+  text-align: center;
+  margin-right: 2rem;
+  transition: opacity 3s ease-in-out;
+  opacity: ${(props) => (props.isVisible ? 1 : 0)};
+`;
+
 export const ItemListContainer = styled.div`
   height: calc(100vh - 22rem);
   margin-top: 2rem;
