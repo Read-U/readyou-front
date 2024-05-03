@@ -1,4 +1,4 @@
-# [2조_READ US] READ YOU _ 테오의 스프린트 17기
+# [테오의 스프린트 17기] 2조_READ US_READ YOU
 
 ### [서비스 링크](https://readyou.vercel.app/)
 
@@ -6,7 +6,7 @@
 <img src="https://readyou.s3.ap-southeast-2.amazonaws.com/92f37744-a33a-491c-91c1-d7ec6f61ce2c-facebook.png" width="60%" />
 </p>
 
-# 💼 서비스 소개
+## 💼 서비스 소개
 **README.md** 파일은 **코드 프로젝트의 첫인상을 결정짓는 중요한 콘텐츠**입니다. 
 
 개발자들은 꼭 작성해야 하는 이 문서, 잘 작성하고 계신가요?
@@ -29,16 +29,14 @@
 
 ```
 <br >
-<br >
 
-# 🗓️ 개발 기간
+## 🗓️ 개발 기간
 
 > **24.04.06 ~ 24.04.08 (총 3일)**
 
 <br >
-<br >
 
-# 💻 핵심 기능
+## 💻 핵심 기능
 
 ### 1. 원하는 항목들만 골라 자신만의 README를 쓸 수 있어요.
 ![1](https://github.com/Read-U/readyou-front/assets/81246338/49ed7992-e2ac-4a9e-8de9-f27759c9ad64)
@@ -64,9 +62,8 @@
   ![6](https://github.com/Read-U/readyou-front/assets/81246338/cfb143ad-15de-4e7e-8ae1-c54fcf6a0b78)
 
 <br >
-<br >
 
-# 👨‍👩‍👧‍👦 팀 소개
+## 👨‍👩‍👧‍👦 팀 소개
 
 |Design|Backend|Frontend|Frontend|Frontend|Frontend|Frontend|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:
@@ -74,9 +71,8 @@
 |벤또<br/>[@Oishibento](https://github.com/Oishibento)|팽<br/>[@minpaeng](https://github.com/minpaeng)|케이<br/>[@GBAJS754](https://github.com/GBAJS754)|리하<br/>[@gkfla668](https://github.com/gkfla668)|헨리<br/>[@hyjoong](https://github.com/hyjoong)|셩<br/>[@swy0123](https://github.com/swy0123)|훈이<br/>[@woo29](https://github.com/woo29)
 
 <br>
-<br>
 
-# ⚙️ 기술 스택
+## ⚙️ 기술 스택
 
 <div align="middle">
  
@@ -99,5 +95,5 @@
 
 <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white">
 
-<br/>
-<br/>
+<br>
+<br>
