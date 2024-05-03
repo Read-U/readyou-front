@@ -15,7 +15,7 @@ const ProjectTitle = () => {
   const handleChangeTitle = (e: ChangeEvent<HTMLInputElement>) => {
     const newMarkdown = markdown.map((item) => {
       if (item.name === 'title') {
-        return { ...item, detail: `# ${e.target.value}` };
+        return { ...item, detail: `# ${e.target.value}\n` };
       }
       return item;
     });

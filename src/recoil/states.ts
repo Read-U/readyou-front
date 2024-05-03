@@ -21,3 +21,9 @@ export const projectItems = atom<ItemProps[]>({
   default: ITEM_LIST,
   effects_UNSTABLE: [persistAtom],
 });
+
+export const markdown = atom({
+  key: 'markdown',
+  default: "",
+});
+

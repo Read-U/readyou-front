@@ -5,8 +5,8 @@ import rehypeRaw from 'rehype-raw';
 import * as S from './style';
 import 'github-markdown-css';
 import remarkGfm from 'remark-gfm';
-import { useRecoilValue } from 'recoil';
-import { projectItems } from '@/recoil/states';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { markdown, projectItems } from '@/recoil/states';
 import { ItemProps } from '@/shared/types/markdown';
 
 interface Markdown {
@@ -14,11 +14,12 @@ interface Markdown {
 }
 
 const MarkdownPreview = ({ lightMode }: Markdown) => {
-  const markdown = useRecoilValue(projectItems);
+  const itemList = useRecoilValue(projectItems);
+  const [markdownText, setMarkdown] = useRecoilState(markdown);
 
   useEffect(() => {
-    // console.log(markdown.map((v: ItemProps) => v.detail).join('\n'));
-  }, [markdown]);
+    setMarkdown(itemList.map((v: ItemProps) => v.detail).join('\n'));
+  }, [itemList]);
 
   return (
     <S.PreviewContainer $lightMode={lightMode}>
@@ -26,7 +27,7 @@ const MarkdownPreview = ({ lightMode }: Markdown) => {
         className="markdown-body"
         rehypePlugins={[remarkGfm, rehypeHighlight, rehypeRaw]}
       >
-        {markdown.map((v: ItemProps) => v.detail).join('\n')}
+        {markdownText}
       </ReactMarkdown>
     </S.PreviewContainer>
   );

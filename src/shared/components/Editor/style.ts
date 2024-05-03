@@ -8,31 +8,49 @@ export const Inner = styled.div`
 `;
 
 export const Header = styled.div`
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1.6rem;
+  gap: 1rem;
+  padding-right: 3.2rem;
 `;
 
 export const ToastMessage = styled.div<{ isVisible: boolean }>`
-  white-space: nowrap;
   background: ${(props) => props.theme.colors.lightnavy};
   padding: 1.6rem 0;
   width: 100%;
   border-radius: 1rem;
   color: ${(props) => props.theme.colors.lightgray};
   font-weight: 700;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   line-height: 1.9rem;
   text-align: center;
-  margin-right: 2rem;
   transition: opacity 3s ease-in-out;
   opacity: ${(props) => (props.isVisible ? 1 : 0)};
 `;
 
+// export const CompleteHover = styled.div`
+//   position: absolute;
+//   pointer-events: none;
+//   top: -3rem;
+//   left: 50%;
+//   transform: translate(-50%, 0);
+//   width: max-content;
+//   border-radius: 1rem;
+//   font-weight: 600;
+//   font-size: 1.2rem;
+//   background-color: ${(props) => props.theme.colors.gray};
+//   opacity: 0.7;
+//   color: ${(props) => props.theme.colors.pink};
+//   padding: 1.5rem;
+//   z-index: 50;
+// `;
+
 export const ItemListContainer = styled.div`
   height: calc(100vh - 22rem);
-  margin-top: 2rem;
+  width: calc(100% - 2rem);
+  margin-top: 1.6rem;
   overflow-y: auto;
   &::-webkit-scrollbar {
     width: 1.3rem;

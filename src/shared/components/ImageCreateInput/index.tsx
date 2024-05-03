@@ -34,6 +34,7 @@ const ImageCreateInput = () => {
         method: 'post',
         maxBodyLength: Infinity,
         url: `${process.env.NEXT_PUBLIC_API_URL}/api/img`,
+        // url: `https://readyou.shop/api/img`,
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -51,7 +52,7 @@ const ImageCreateInput = () => {
                   ...item,
                   detail:
                     item.detail +
-                    `<br>\n<img src="${imageLink}" width="${width}" height="${height}" />`,
+                    `<br><img src="${imageLink}" width="${width}" height="${height}" /><br>\n`,
                   imageNameList: [...item.imageNameList, files[0].name],
                 };
               }
@@ -86,7 +87,7 @@ const ImageCreateInput = () => {
     const newMarkdown = markdown.map((item) => {
       if (item.name === 'image' && item.detail && item.imageNameList) {
         const arr =
-          item.detail.replace(/<br\s*\/?>/g, '').match(/<img[^>]+>/g) || [];
+          item.detail.replace(/<br>/g, '').match(/<img[^>]+>/g) || [];
         const newArr = arr.filter((_, i) => i !== index);
         const newDetail = newArr.join('<br>');
         const newImageNameList = item.imageNameList.filter(

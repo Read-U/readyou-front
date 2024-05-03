@@ -76,6 +76,9 @@ const Editor = () => {
             추가된 항목들은 DND를 이용해 순서를 바꿀 수 있어요! 항목을 마우스로
             잡고 이동해보세요.
           </S.ToastMessage>
+          <Button type="complete" onClick={() => setStep(2)}>
+            Raw Code 수정하기
+          </Button>
         </S.Header>
 
         <S.ItemListContainer>
