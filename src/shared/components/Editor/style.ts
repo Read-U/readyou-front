@@ -7,13 +7,16 @@ export const Inner = styled.div`
   padding: 2rem 0 0 2rem;
 `;
 
-export const Header = styled.div`
+export const Header = styled.div<{ isMobile?: boolean }>`
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
   padding-right: 3.2rem;
+
+  position: relative;
+  z-index: 999;
 `;
 
 export const ToastMessage = styled.div<{ isVisible: boolean }>`
@@ -28,6 +31,15 @@ export const ToastMessage = styled.div<{ isVisible: boolean }>`
   text-align: center;
   transition: opacity 3s ease-in-out;
   opacity: ${(props) => (props.isVisible ? 1 : 0)};
+
+  @media (max-width: 768px) {
+    position: absolute;
+    top: 112%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    padding: 0.4rem 1rem;
+    z-index: 999;
+  }
 `;
 
 // export const CompleteHover = styled.div`

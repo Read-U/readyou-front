@@ -16,6 +16,7 @@ const Editor = () => {
   const [enabled, setEnabled] = useState(false);
   const [step, setStep] = useRecoilState(stepState);
   const [isVisible, setIsVisible] = useState(false);
+  const isMobile = window.innerWidth < 768;
 
   useEffect(() => {
     const animation = requestAnimationFrame(() => setEnabled(true));
@@ -68,18 +69,43 @@ const Editor = () => {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <S.Inner>
-        <S.Header>
-          <Button type="back" onClick={() => setStep(step - 1)}>
-            뒤로가기
-          </Button>
-          <S.ToastMessage isVisible={isVisible}>
-            추가된 항목들은 DND를 이용해 순서를 바꿀 수 있어요! 항목을 마우스로
-            잡고 이동해보세요.
-          </S.ToastMessage>
-          <Button type="complete" onClick={() => setStep(2)}>
-            Raw Code 수정하기
-          </Button>
-        </S.Header>
+        {isMobile ? (
+          <S.Header>
+            <div
+              style={{
+                display: 'flex',
+                width: '100%',
+                justifyContent: 'space-between',
+              }}
+            >
+              <Button type="back" onClick={() => setStep(step - 1)}>
+                뒤로가기
+              </Button>
+              <Button type="complete" onClick={() => setStep(2)}>
+                Raw Code 수정하기
+              </Button>
+            </div>
+            <div>
+              <S.ToastMessage isVisible={isVisible}>
+                추가된 항목들은 DND를 이용해 순서를 바꿀 수 있어요! 항목을
+                마우스로 잡고 이동해보세요.
+              </S.ToastMessage>
+            </div>
+          </S.Header>
+        ) : (
+          <S.Header>
+            <Button type="back" onClick={() => setStep(step - 1)}>
+              뒤로가기
+            </Button>
+            <S.ToastMessage isVisible={isVisible}>
+              추가된 항목들은 DND를 이용해 순서를 바꿀 수 있어요! 항목을
+              마우스로 잡고 이동해보세요.
+            </S.ToastMessage>
+            <Button type="complete" onClick={() => setStep(2)}>
+              Raw Code 수정하기
+            </Button>
+          </S.Header>
+        )}
 
         <S.ItemListContainer>
           <Droppable droppableId="editor">
