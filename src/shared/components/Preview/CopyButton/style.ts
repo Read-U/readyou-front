@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const DisabledCopyButton = styled.button<{ type: string }>`
+  cursor: pointer;
   border: none;
   outline: none;
   background: ${(props) => props.theme.colors.lightblue};

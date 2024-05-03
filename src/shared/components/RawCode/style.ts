@@ -18,8 +18,10 @@ export const TextContainer = styled.div`
 `;
 
 export const TextArea = styled.textarea`
+  font-family: Pretendard;
+  font-size: 1.6rem;
   margin: 2rem 0;
-  padding: 0 0 1.6rem 0;
+  padding: 1.6rem;
   resize: none;
   display: flex;
   flex-direction: column;
@@ -30,7 +32,7 @@ export const TextArea = styled.textarea`
   &:focus {
     outline: 0;
   }
-  
+
   &::-webkit-scrollbar {
     width: 1.3rem;
   }
