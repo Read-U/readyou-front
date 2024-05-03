@@ -70,14 +70,14 @@ const TeamTableInput = () => {
     const markDownUserInfo = teamMemberInfoList
       .map(
         (member) =>
-          `|${member.role}: ${member.githubUserInfo[2]}<br/>[@${member.githubUserInfo[1]}](${member.githubUserInfo[3]})`,
+          `|${member.role} ${member.githubUserInfo[2] ? ':' : ''} ${member.githubUserInfo[2]}<br/>[@${member.githubUserInfo[1]}](${member.githubUserInfo[3]})`,
       )
       .join('');
 
     const table = '|:-:'.repeat(teamMemberInfoList.length);
 
     setTeamTableMarkdown(
-      markDownImage + '\n' + table + '\n' + markDownUserInfo+ '\n',
+      markDownImage + '\n' + table + '\n' + markDownUserInfo + '\n',
     );
   }, [teamMemberInfoList]);
 
@@ -87,7 +87,7 @@ const TeamTableInput = () => {
       const response = await fetch(`https://api.github.com/users/${props}`);
       if (response.status === 200) {
         const data = await response.json();
-        return [data.avatar_url, data.login, data.name, data.html_url];
+        return [data.avatar_url, data.login, data.name || '', data.html_url];
       } else {
         toast({
           message: '존재하지 않는 유저입니다!',
