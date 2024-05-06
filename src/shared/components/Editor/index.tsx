@@ -15,14 +15,26 @@ const Editor = () => {
   const [itemList, setItemList] = useRecoilState(projectItems);
   const [enabled, setEnabled] = useState(false);
   const [step, setStep] = useRecoilState(stepState);
-  const [isHidden, setIsHidden] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+  const isMobile = window.innerWidth < 768;
 
   useEffect(() => {
     const animation = requestAnimationFrame(() => setEnabled(true));
 
+    let timer1 = setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
+
+    let timer2 = setTimeout(() => {
+      setIsVisible(false);
+    }, 4000);
+
     return () => {
       cancelAnimationFrame(animation);
       setEnabled(false);
+
+      clearTimeout(timer1);
+      clearTimeout(timer2);
     };
   }, []);
 
@@ -57,22 +69,44 @@ const Editor = () => {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <S.Inner>
-        <S.EditorHeader>
-          <Button type="back" onClick={() => setStep(step - 1)}>
-            뒤로가기
-          </Button>
-          <S.Div
-            onMouseEnter={() => setIsHidden(false)}
-            onMouseLeave={() => setIsHidden(true)}
-          >
+        {isMobile ? (
+          <S.Header>
+            <div
+              style={{
+                display: 'flex',
+                width: '100%',
+                justifyContent: 'space-between',
+              }}
+            >
+              <Button type="back" onClick={() => setStep(step - 1)}>
+                뒤로가기
+              </Button>
+              <Button type="complete" onClick={() => setStep(2)}>
+                Raw Code 수정하기
+              </Button>
+            </div>
+            <div>
+              <S.ToastMessage isVisible={isVisible}>
+                추가된 항목들은 DND를 이용해 순서를 바꿀 수 있어요! 항목을
+                마우스로 잡고 이동해보세요.
+              </S.ToastMessage>
+            </div>
+          </S.Header>
+        ) : (
+          <S.Header>
+            <Button type="back" onClick={() => setStep(step - 1)}>
+              뒤로가기
+            </Button>
+            <S.ToastMessage isVisible={isVisible}>
+              추가된 항목들은 DND를 이용해 순서를 바꿀 수 있어요! 항목을
+              마우스로 잡고 이동해보세요.
+            </S.ToastMessage>
             <Button type="complete" onClick={() => setStep(2)}>
               Raw Code 수정하기
             </Button>
-            {/* {!isHidden && (
-              <S.CompleteHover>Raw Code 수정하기로 이동</S.CompleteHover>
-            )} */}
-          </S.Div>
-        </S.EditorHeader>
+          </S.Header>
+        )}
+
         <S.ItemListContainer>
           <Droppable droppableId="editor">
             {(provided) => (

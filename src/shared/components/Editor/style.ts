@@ -7,32 +7,57 @@ export const Inner = styled.div`
   padding: 2rem 0 0 2rem;
 `;
 
-export const EditorHeader = styled.div`
-  margin-right: 3.2rem;
+export const Header = styled.div<{ isMobile?: boolean }>`
+  width: 100%;
   display: flex;
   justify-content: space-between;
-`;
+  align-items: center;
+  gap: 1rem;
+  padding-right: 3.2rem;
 
-export const Div = styled.div`
   position: relative;
+  z-index: 999;
 `;
 
-export const CompleteHover = styled.div`
-  position: absolute;
-  pointer-events: none;
-  top: -3rem;
-  left: 50%;
-  transform: translate(-50%, 0);
-  width: max-content;
+export const ToastMessage = styled.div<{ isVisible: boolean }>`
+  background: ${(props) => props.theme.colors.lightnavy};
+  padding: 1.6rem 0;
+  width: 100%;
   border-radius: 1rem;
-  font-weight: 600;
-  font-size: 1.2rem;
-  background-color: ${(props) => props.theme.colors.gray};
-  opacity: 0.7;
-  color: ${(props) => props.theme.colors.pink};
-  padding: 1.5rem;
-  z-index: 50;
+  color: ${(props) => props.theme.colors.lightgray};
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1.9rem;
+  text-align: center;
+  transition: opacity 3s ease-in-out;
+  opacity: ${(props) => (props.isVisible ? 1 : 0)};
+
+  @media (max-width: 768px) {
+    position: absolute;
+    top: 112%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    padding: 0.4rem 1rem;
+    z-index: 999;
+  }
 `;
+
+// export const CompleteHover = styled.div`
+//   position: absolute;
+//   pointer-events: none;
+//   top: -3rem;
+//   left: 50%;
+//   transform: translate(-50%, 0);
+//   width: max-content;
+//   border-radius: 1rem;
+//   font-weight: 600;
+//   font-size: 1.2rem;
+//   background-color: ${(props) => props.theme.colors.gray};
+//   opacity: 0.7;
+//   color: ${(props) => props.theme.colors.pink};
+//   padding: 1.5rem;
+//   z-index: 50;
+// `;
 
 export const ItemListContainer = styled.div`
   height: calc(100vh - 22rem);
