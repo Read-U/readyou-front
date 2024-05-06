@@ -21,7 +21,7 @@ export const Header = styled.div<{ isMobile?: boolean }>`
 
 export const ToastMessage = styled.div<{ isVisible: boolean }>`
   background: ${(props) => props.theme.colors.lightnavy};
-  padding: 1.6rem 0;
+  padding: 1rem 0;
   width: 100%;
   border-radius: 1rem;
   color: ${(props) => props.theme.colors.lightgray};
@@ -37,7 +37,7 @@ export const ToastMessage = styled.div<{ isVisible: boolean }>`
     top: 112%;
     left: 48%;
     transform: translate(-50%, -50%);
-    padding: 0.4rem 1rem;
+    padding: 0.4rem;
     z-index: 999;
   }
 `;

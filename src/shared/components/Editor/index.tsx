@@ -87,8 +87,8 @@ const Editor = () => {
             </div>
             <div>
               <S.ToastMessage isVisible={isVisible}>
-                추가된 항목들은 DND를 이용해 순서를 바꿀 수 있어요! 항목을
-                마우스로 잡고 이동해보세요.
+                추가된 항목들은 DND를 이용해 순서를 바꿀 수 있어요! <br />
+                항목을 마우스로 잡고 이동해보세요.
               </S.ToastMessage>
             </div>
           </S.Header>
@@ -98,7 +98,7 @@ const Editor = () => {
               뒤로가기
             </Button>
             <S.ToastMessage isVisible={isVisible}>
-              추가된 항목들은 DND를 이용해 순서를 바꿀 수 있어요! 항목을
+              추가된 항목들은 DND를 이용해 순서를 바꿀 수 있어요! <br /> 항목을
               마우스로 잡고 이동해보세요.
             </S.ToastMessage>
             <Button type="complete" onClick={() => setStep(2)}>
