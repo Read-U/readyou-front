@@ -70,7 +70,7 @@ const TeamTableInput = () => {
     const markDownUserInfo = teamMemberInfoList
       .map(
         (member) =>
-          `|${member.role} ${member.githubUserInfo[2] ? ':' : ''} ${member.githubUserInfo[2]}<br/>[@${member.githubUserInfo[1]}](${member.githubUserInfo[3]})`,
+          `|${member.role} : [@${member.githubUserInfo[1]}](${member.githubUserInfo[3]})`,
       )
       .join('');
 
